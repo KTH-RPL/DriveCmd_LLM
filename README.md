@@ -8,10 +8,10 @@ Here is our solution code. Please check the report for more detail.
 
 ## llama
 
-[Pretrained model from Meta](https://ai.meta.com/llama/) and code from [codellama](https://github.com/facebookresearch/codellama/tree/main), Here we show how to downloaded their model
+Here we introduced how to setup. [Pretrained model from Meta](https://ai.meta.com/llama/) and code from [codellama](https://github.com/facebookresearch/codellama/tree/main), Here we show how to downloaded their model:
 
 1. Send request to their form and you will receive an email with some details.
-2. `git clone TBD && cd llc` 
+2. `git clone https://github.com/KTH-RPL/llc && cd llc` 
 3. Dependencies: `sudo apt install wget ucommon-utils`
 4. run `./download.sh` Then enter **<u>the link</u>** you received at first step.
 
@@ -26,7 +26,7 @@ Here is our solution code. Please check the report for more detail.
        --max_seq_len 128 --max_batch_size 4
    ```
 
-Here is the table to show how many memory we need use when run different model.
+Here is the table to show how many memory we need use when run different models. Then you should read [this part](#command-analysis) for running this task
 
 TODO table here
 
@@ -36,7 +36,9 @@ TODO table here
 | CodeLlama-13b-Instruct |         24GB    |              |
 | CodeLlama-34b-Instruct |         63GB    |              |
 
+## ChatGPT
 
+TODO Yi Yang here.
 
 ## Command Analysis 
 
