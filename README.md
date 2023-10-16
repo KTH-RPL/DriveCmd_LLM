@@ -65,3 +65,11 @@ Saving results....
 
 Here is demo image:
 ![](assets/readme/demo.png)
+
+
+## Issue I met and record here
+- torchrun error with ddp:
+  ```bash
+  RuntimeError: The server socket has failed to listen on any local network address. The server socket has failed to bind to [::]:29500 (errno: 98 - Address already in use). The server socket has failed to bind to 0.0.0.0:29500 (errno: 98 - Address already in use).
+  ```
+  Solution: [ref1](https://discuss.pytorch.org/t/runtimeerror-the-server-socket-has-failed-to-listen-on-any-local-network-address-the-server-socket-has-failed-to-bind-to-29500/180333), [ref2](https://pytorch.org/docs/stable/elastic/run.html), running with flag `--rdzv-endpoint=localhost:60012`
