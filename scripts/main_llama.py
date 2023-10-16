@@ -167,7 +167,8 @@ def main(
         start_time = time.time()
         response, style_response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
                                                   provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step)
-        wandb.log({"cost (s)": time.time() - start_time})
+        if rank == 0:
+            wandb.log({"cost (s)": time.time() - start_time})
         if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
             print(f"> {response}")
