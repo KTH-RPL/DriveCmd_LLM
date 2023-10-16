@@ -5,3 +5,4 @@ codellama.egg-info/*
 # produce data format...
 *.npy
 *.txt
+assets/logs/*

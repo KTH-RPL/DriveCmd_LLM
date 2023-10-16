@@ -20,6 +20,8 @@ import torch.distributed as dist
 import re, time
 import numpy as np
 from tabulate import tabulate
+import os, sys
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 
 def read_all_command(path: str):
     commands_df = pd.read_csv(path, encoding='ISO-8859-1')
@@ -75,13 +77,17 @@ def print_result(pred, gt, tasks):
     printed_data.append(["Overall", np.mean(acc)])
     print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
 
-def get_completion_from_user_input(user_input, generator, max_gen_len, temperature, top_p, provide_detailed_explain=False, provide_few_shots = False):
-    messages =  [  
-    {'role':'system', 'content': system_message},
-    ]
+def get_completion_from_user_input(user_input, generator, max_gen_len, temperature, top_p, \
+                                   provide_detailed_explain=False, provide_few_shots = False, step_by_step=False,
+                                   emphasis=""):
+    fix_system_message = system_message
+    if step_by_step:
+        fix_system_message = step_system_message
+
+    messages =  [{'role':'system', 'content': fix_system_message},]
 
     if provide_detailed_explain:
-        messages.append({'role':'assistant', 'content': f"{delimiter}{assitant}{delimiter}"})
+        messages =  [  {'role':'system', 'content': fix_system_message+assistant},]
 
     if provide_few_shots:
         messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
@@ -89,7 +95,7 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
         messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
         messages.append({'role':'assistant', 'content': few_shot_assistant_2})
 
-    messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}"})
+    messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}{emphasis}{delimiter}"})
     response = generator.chat_completion(
         [messages],  # type: ignore
         max_gen_len=max_gen_len,
@@ -98,6 +104,16 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
     )
     return response[0]['generation']['content'], response[0]
 
+def create_save_name(model_base_name, provide_detailed_explain, provide_few_shots, step_by_step, debug_len):
+    flags = [
+        '1' if provide_detailed_explain else '0',
+        '1' if provide_few_shots else '0',
+        '1' if step_by_step else '0',
+        '' if debug_len == -1 else '-debug'
+    ]
+    flag_str = ''.join(flags)
+    return model_base_name + "-" + flag_str
+
 def main(
     ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
     # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-13b-Instruct",
@@ -105,12 +121,13 @@ def main(
     csv_path: str = "assets/ucu.csv",
     temperature: float = 0.0,
     top_p: float = 0.95,
-    max_seq_len: int = 512, # if the sentence is really long, should consider longer this one.
+    max_seq_len: int = 4096, # if the sentence is really long, should consider longer this one.
     max_batch_size: int = 6, # TODO changed according to the memory
     max_gen_len: Optional[int] = None,
     debug_len: int = 10, # TODO! if it's really big may have problem with memory
     provide_detailed_explain: bool = False,
     provide_few_shots: bool = False,
+    step_by_step: bool = False,
 ):
     
     generator = Llama.build(
@@ -119,7 +136,7 @@ def main(
         max_seq_len=max_seq_len,
         max_batch_size=max_batch_size,
     )
-    model_name = ckpt_dir.split("/")[-1]
+    model_name = create_save_name(ckpt_dir.split("/")[-1], provide_detailed_explain, provide_few_shots, step_by_step, debug_len)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 
     commands, tasks, gt_array = read_all_command(csv_path)
@@ -129,7 +146,7 @@ def main(
     all_results = []
     for i, command in enumerate(commands):
         response, style_response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
-                                                  provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots)
+                                                  provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step)
         if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
             print(f"> {response}")
@@ -142,18 +159,31 @@ def main(
     all_pred = []
     rank = dist.get_rank()
     if rank == 0:
-        with open(f"output_content_{model_name}.txt", "w") as f:
-            f.write(f"""\n""".join([str(result) for result in all_outputs]))
-
+        os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
         for i, result in enumerate(all_results):
             pred = extract_outputs(result, i)
-            # if pred is None: TODO, save i then rerun the command again.
+
+            # rerun if the prediction is wrong to extract through the output
+            cnt = 0
+            while pred[0] == -1 and cnt<2:
+                print(f"Result {i} is wrong, we will rerun this command {commands[i]} again.")
+                response, style_response = get_completion_from_user_input(commands[i], generator, max_gen_len, temperature, top_p, \
+                                                  provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step, \
+                                                  emphasis=emphasis_output*cnt)
+                pred = extract_outputs(result, i)
+                cnt = cnt + 1
+                all_results[i] = response
+                all_outputs[i] = style_response
+
             all_pred.append(pred)
+
+        with open(f"{BASE_DIR}/assets/result/{model_name}.txt", "w") as f:
+            f.write(f"""\n""".join([str(result) for result in all_outputs]))
 
     print("Saving results....")
     if rank == 0:
         all_pred = np.vstack(all_pred)
-        np.save(f"pred_res_{model_name}.npy", all_pred)
+        np.save(f"{BASE_DIR}/assets/result/{model_name}.npy", all_pred)
         print_result(all_pred, gt_array[:len(all_pred)], tasks)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 

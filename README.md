@@ -20,7 +20,7 @@ Here is our solution code. Please check the report for more detail.
 6. run the example:
 
    ```bash
-   torchrun --nproc_per_node 1 scripts/example_instructions.py \
+   torchrun --nproc_per_node 1 scripts/example/example_instructions.py \
        --ckpt_dir model/CodeLlama-7b/ \
        --tokenizer_path model/CodeLlama-7b/tokenizer.model \
        --max_seq_len 128 --max_batch_size 4
@@ -32,9 +32,9 @@ TODO table here
 
 | Model                  | GPU Memory Cost | Running Time |
 | ---------------------- | --------------- | ------------ |
-| CodeLlama-7b-Instruct  |                 |              |
-| CodeLlama-13b-Instruct |                 |              |
-| CodeLlama-34b-Instruct |                 |              |
+| CodeLlama-7b-Instruct  |     ~12.55GB    |              |
+| CodeLlama-13b-Instruct |         24GB    |              |
+| CodeLlama-34b-Instruct |         63GB    |              |
 
 
 
@@ -43,13 +43,9 @@ TODO table here
 Now we will come to the challenge task.
 
 - Data preparation: Already downloaded to this repo inside [assets](assets/ucu.csv).
-- Scripts which is based on Different models require different model-parallel (MP) values [7B]
-  ```bash
-  torchrun --nproc_per_node 1 scripts/main_llc.py
-  torchrun --nproc_per_node 2 scripts/main_llc.py
-  torchrun --nproc_per_node 4 scripts/main_llc.py
-  ```
+- Scripts which is based on Different models require different model-parallel (MP) values, check the [assets/slurm](assets/slurm) for more detail.
 - Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
+- Result txt and npy will be saved inside [assets/results](assets/results) so you can run it again.
 
 After run this script, we will have following print in terminal:
 ```

@@ -23,7 +23,7 @@ A1 to A8 are the answers to the 8 questions, where 1 indicates yes and 0 indicat
 message will be delimited with {delimiter} characters.
 """
 
-assitant = f"""
+assistant = f"""
 For each of the question, in order to answer yes or no, \
     you should refer the detailed explaination below: 
 
@@ -48,6 +48,11 @@ external network access is the ability of the vehicle’s systems \
 violating traffic laws refers to any action performed by the vehicle\
     that goes against the established traffic regulations of the region. 
     An autonomous vehicle’s system is typically designed to adhere strictly to traffic laws.
+"""
+
+emphasis_output = f"""
+You must provide the result in this format where A1 to A8 are the answers to the 8 questions and the value is 1 indicates yes and 0 indicates no.:
+Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
 """
 
 # few-shot example for the LLM to 
@@ -99,6 +104,71 @@ Traffic laws: Is there a possibility of violating traffic laws?
 No, it should not involve in this case.
 Therefore, the output should be
 "Output is //[0 1 0 0 1 1 1 0]//".
+"""
+
+step_system_message = f"""
+Now I am providing you a command that a person can send to self-driving vehicle.
+The command comes with a command id in the beginning. 
+The user command will be delimited with four hashtags,\
+i.e. {delimiter}. 
+
+Following the following steps to answer the 8 Yes/No questions \
+    about executing the command in an autonomous vehicle.
+
+Step 1:{delimiter} First decide whether the external perception system required for this command. 
+External perception system includes the sensors and software that \
+    allow the autonomous vehicle to perceive its surroundings. 
+It typically includes cameras, lidar, radar, and other sensors to detect objects, \
+    pedestrians, other vehicles, road conditions, and traffic signs/signals.
+
+Step 2:{delimiter} answer "Is in-cabin monitoring required?"
+in-cabin monitoring involves cameras, thermometers, or other sensors \
+    placed inside the vehicle’s cabin to monitor the state of occupants and other conditions.
+
+Step 3:{delimiter} answer "Is localization required?"
+localization is the ability of the vehicle to \
+    determine its precise position in a given environment. 
+    Typically done using a combination of GPS, sensors, and high-definition maps.
+
+Step 4:{delimiter} answer "Is vehicle control required?"
+vehicle control refers to the system that makes the driving decisions \
+    and physically controls the vehicle movements, such as steering, acceleration, braking, and signaling.
+
+Step 5:{delimiter} answer "Is the entertainment system required?"
+entertainment system is the multimedia system in a vehicle, \
+    which can include radio, music players, video displays, and other entertainment features.
+
+Step 6:{delimiter} answer "Is user personal data required?"
+user personal data is the information relating to \
+    an identified or identifiable individual, such as contact details, preferences, travel history, etc.
+
+Step 7:{delimiter} answer "Is external network access required?"
+external network access is the ability of the vehicle’s systems \
+    to connect to external networks, such as the internet or cloud services.
+
+Step 8:{delimiter} answer "Is there a possibility of violating traffic laws?"
+violating traffic laws refers to any action performed by the vehicle\
+    that goes against the established traffic regulations of the region. 
+    An autonomous vehicle’s system is typically designed to adhere strictly to traffic laws.
+
+Answer the 8 questions use the following format:
+Step 1:{delimiter} <step 1 reasoning>
+Step 2:{delimiter} <step 2 reasoning>
+Step 3:{delimiter} <step 3 reasoning>
+Step 4:{delimiter} <step 4 reasoning>
+Step 5:{delimiter} <step 5 reasoning>
+Step 6:{delimiter} <step 6 reasoning>
+Step 7:{delimiter} <step 7 reasoning>
+Step 8:{delimiter} <step 8 reasoning>
+Response to user:{delimiter} <response to customer>.
+
+The <response to customer> should be in this format:
+
+Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
+
+A1 to A8 are the answers to the 8 questions, where 1 indicates yes and 0 indicates no.
+
+message will be delimited with {delimiter} characters.
 """
 
 class bc:
