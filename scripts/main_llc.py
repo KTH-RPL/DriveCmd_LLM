@@ -100,13 +100,21 @@ def main(
     )
 
     print("Here are results...")
+    all_results = []
     all_pred = []
     rank = dist.get_rank()
     if rank == 0:
         for i, result in enumerate(results):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
             print(f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}")
-            pred = extract_outputs(result['generation']['content'])
+            all_results.append(result)
+
+        with open("output_content.txt", "w") as f:
+            # with '---' as separator
+            f.write(f"""{"-"*20}\n""".join([str(result) for result in all_results]))
+
+        for result in all_results:
+            pred = extract_outputs(result)
             # if pred is None: TODO, save i then rerun the command again.
             print(f"pred: {pred}")
             all_pred.append(pred)
@@ -114,7 +122,7 @@ def main(
     print("Saving results....")
     if rank == 0:
         all_pred = np.array(all_pred)
-        np.save("test.npy", all_pred)
+        np.save("pred_res.npy", all_pred)
         acc = evaluate(all_pred, gt_array[:len(all_pred)])
         printed_data = []
 
