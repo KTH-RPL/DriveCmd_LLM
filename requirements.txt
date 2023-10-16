@@ -4,3 +4,4 @@ fire
 sentencepiece
 pandas
 tabulate
+wandb

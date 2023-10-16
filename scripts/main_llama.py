@@ -21,6 +21,7 @@ import re, time
 import numpy as np
 from tabulate import tabulate
 import os, sys
+import wandb
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 
 def read_all_command(path: str):
@@ -114,11 +115,23 @@ def create_save_name(model_base_name, provide_detailed_explain, provide_few_shot
     flag_str = ''.join(flags)
     return model_base_name + "-" + flag_str
 
+def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id):
+    wandb.init(entity="hdmaptest", project="llc", 
+        name=f"{slurm_job_id}-{model_name}",
+        mode= ("online" if debug_len == -1 else "offline"),
+        config={
+        "provide_detailed_explain": provide_detailed_explain,
+        "provide_few_shots": provide_few_shots,
+        "step_by_step": step_by_step,
+        "model_name": model_name,
+        },
+    )
+
 def main(
     ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
     # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-13b-Instruct",
     # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-34b-Instruct",
-    csv_path: str = "assets/ucu.csv",
+    csv_path: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llc/assets/ucu.csv",
     temperature: float = 0.0,
     top_p: float = 0.95,
     max_seq_len: int = 4096, # if the sentence is really long, should consider longer this one.
@@ -128,6 +141,7 @@ def main(
     provide_detailed_explain: bool = False,
     provide_few_shots: bool = False,
     step_by_step: bool = False,
+    slurm_job_id: str = "00000",
 ):
     
     generator = Llama.build(
@@ -137,6 +151,11 @@ def main(
         max_batch_size=max_batch_size,
     )
     model_name = create_save_name(ckpt_dir.split("/")[-1], provide_detailed_explain, provide_few_shots, step_by_step, debug_len)
+    rank = dist.get_rank()
+
+    if rank == 0:
+        wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id)
+
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 
     commands, tasks, gt_array = read_all_command(csv_path)
@@ -145,8 +164,10 @@ def main(
     all_outputs = []
     all_results = []
     for i, command in enumerate(commands):
+        start_time = time.time()
         response, style_response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
                                                   provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step)
+        wandb.log({"cost (s)": time.time() - start_time})
         if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
             print(f"> {response}")
@@ -157,7 +178,6 @@ def main(
 
     print("Here are results...")
     all_pred = []
-    rank = dist.get_rank()
     if rank == 0:
         os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
         for i, result in enumerate(all_results):
@@ -179,14 +199,17 @@ def main(
 
         with open(f"{BASE_DIR}/assets/result/{model_name}.txt", "w") as f:
             f.write(f"""\n""".join([str(result) for result in all_outputs]))
-
+        if debug_len == -1:
+            wandb.save(f"{BASE_DIR}/assets/result/{model_name}.txt")
     print("Saving results....")
     if rank == 0:
         all_pred = np.vstack(all_pred)
         np.save(f"{BASE_DIR}/assets/result/{model_name}.npy", all_pred)
+        if debug_len == -1:
+            wandb.save(f"{BASE_DIR}/assets/result/{model_name}.npy")
         print_result(all_pred, gt_array[:len(all_pred)], tasks)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
-
+    wandb.finish()
 if __name__ == "__main__":
     start_time = time.time()
     fire.Fire(main)

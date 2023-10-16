@@ -6,3 +6,5 @@ codellama.egg-info/*
 *.npy
 *.txt
 assets/logs/*
+
+wandb/*
