@@ -47,3 +47,12 @@ TODO table here
 ## Command Analysis 
 
 Now we will come to the challenge task.
+
+- Data preparation: Already downloaded to this repo inside [assets](assets/ucu.csv).
+- Scripts which is based on Different models require different model-parallel (MP) values [7B]
+  ```bash
+  torchrun --nproc_per_node 1 scripts/main_llc.py
+  torchrun --nproc_per_node 2 scripts/main_llc.py
+  torchrun --nproc_per_node 4 scripts/main_llc.py
+  ```
+- Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
