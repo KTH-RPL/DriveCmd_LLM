@@ -2,15 +2,10 @@ import pandas as pd
 import re, time
 import numpy as np
 from tabulate import tabulate
-
-from main_llc import read_all_command, extract_outputs, evaluate
-DEFAULT_SYSTEM_PROMPT = """\
-Now I am providing you a command that a person can send to self-driving vehicle. \
-Could you say whether this command needs to use how many of the below sections? \
-It includes Perception, In-cabin monitoring, Localization, Vehicle control, Entertainmen, Personal data, Network access, Traffic laws. \
-For example, I provide "Drive to the nearest train station.", Then it should include yes for Perception, Localization, Vehicle control, Network access.\
-So you should output corresponding yes to these and no for others. Then you should output "1 0 1 1 0 0 1 0" to me. \
-Now Tell me if the command is: """
+import os, sys
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
+sys.path.append(BASE_DIR)
+from main_llama import read_all_command, extract_outputs, evaluate
 
 if __name__ == "__main__":
     commands, tasks, gt_array = read_all_command("/home/kin/workspace/llcommand/assets/ucu.csv")

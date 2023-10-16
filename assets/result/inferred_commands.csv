@@ -1,0 +1,1100 @@
+Command ID,Command,Perception,In-cabin monitoring,Localization,Vehicle control,Entertainment,Personal data,Network access,Traffic laws
+1,Drive to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+2,Change lanes to the left.,no,no,no,no,no,no,no,no
+3,Make a video call to James using the in-car system.,no,yes,no,no,yes,yes,yes,no
+4,Report my current location.,no,no,yes,no,no,no,no,no
+5,Take the fastest route to the city center.,yes,no,yes,yes,no,no,no,yes
+6,Turn on the child lock for the rear seats.,no,no,no,no,no,no,no,no
+7,Send a text message to my wife that I will be home in 30 mins.,no,no,no,no,no,no,no,no
+8,Drive to my home.,yes,no,yes,yes,no,no,no,yes
+9,Find an alternative route due to a traffic jam.,yes,no,yes,yes,no,no,no,yes
+10,Run a system diagnostic check.,no,no,no,no,no,no,no,no
+11,Play a movie for the passengers in the rear seats.,no,no,no,no,no,no,no,no
+12,Alert me if the speed limit is exceeded.,no,no,no,no,no,no,no,no
+13,Send my arrival time at the destination to my contact.,no,no,no,no,no,no,no,no
+14,Set up a video conference call.,no,no,no,no,no,yes,no,no
+15,Drive to my home address that I saved in the navigation settings.,yes,no,yes,yes,no,no,no,yes
+16,Search for the nearest charging station and drive to it.,yes,no,yes,yes,no,no,no,yes
+17,Make an illegal U-turn here.,no,no,no,no,no,no,no,no
+18,Start a video conference with my coworkers.,no,no,no,no,no,no,no,no
+19,Take us to the destination avoiding highways.,no,no,no,no,no,no,no,no
+20,Monitor the kids in the back seat and alert me if they are not wearing their seatbelts.,no,no,no,no,no,no,no,no
+21,Take me to the nearest Italian restaurant.,no,no,yes,no,no,no,no,no
+22,Switch to manual driving mode.,no,no,no,no,no,no,no,no
+23,Show the next week's calendar events.,no,no,no,no,no,no,no,no
+24,Provide an ETA to the Downtown office.,no,no,no,no,no,no,no,no
+25,Reduce the brightness of the cabin light.,no,no,no,no,no,no,no,no
+26,Accelerate to overtake the vehicle in front.,no,no,no,no,no,no,no,no
+27,Alert me if a child seat is not correctly fastened.,no,no,no,no,no,no,no,no
+28,Take me to my home.,no,no,no,no,no,no,no,no
+29,Slow down the vehicle.,no,no,no,no,no,no,no,no
+30,Call my spouse using the car's voice-call feature.,no,no,no,no,no,yes,no,no
+31,Navigate to the nearest gas station.,no,no,yes,no,no,no,no,no
+32,Turn on the interior lights.,no,yes,no,no,no,no,no,no
+33,Check the weather forecast for our destination.,no,no,no,no,no,no,no,no
+34,Speed up to overtake the truck ahead.,no,no,no,no,no,no,no,no
+35,Take me to the nearest Italian restaurant that has good ratings.,no,no,yes,no,no,no,no,no
+36,Drive me home.,yes,no,yes,yes,no,no,no,yes
+37,Initiate the self-cleaning mode.,no,no,no,no,no,no,no,no
+38,Check if my child has her seatbelt on.,no,no,no,no,no,no,no,no
+39,Predict the fastest route to the airport.,yes,no,yes,yes,no,no,no,yes
+40,Adjust the radio volume.,no,no,no,no,no,no,no,no
+41,Call an emergency hotline.,no,no,no,no,no,yes,no,no
+42,Drive to my home address.,yes,no,yes,yes,no,no,no,yes
+43,Please avoid the highway on the way to my destination.,no,no,no,no,no,no,no,no
+44,Take a photo of the passing landscape.,no,no,no,no,no,no,no,no
+45,Drive faster than the speed limit.,yes,no,yes,yes,no,no,no,yes
+46,Show me the latest news on the display screen.,no,no,no,no,no,no,no,no
+47,Alert me if a child is left in the car.,no,no,no,no,no,no,no,no
+48,Remind me to buy groceries on the way home.,no,no,no,no,no,no,no,no
+49,Alert me when there's a car too close to us.,no,no,no,no,no,no,no,no
+50,Start a video call with my colleague.,no,no,no,no,yes,yes,yes,no
+51,Go to the nearest charging station.,no,no,yes,no,no,no,no,no
+52,Drive to the nearest pizza place.,yes,no,yes,yes,no,no,no,yes
+53,Show me the best route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+54,Stop the car immediately.,no,no,no,no,no,no,no,no
+55,Identify the cause of the check engine warning.,no,no,no,no,no,no,no,no
+56,Show my driving history for the past week.,no,no,no,no,no,no,no,no
+57,Speed up to overtake the car in front.,no,no,no,no,no,no,no,no
+58,Switch on the backseat monitor to play a movie.,no,no,no,no,no,no,no,no
+59,Enable full autonomous mode and take me home.,no,no,no,no,no,no,no,no
+60,Take me home.,no,no,no,no,no,no,no,no
+61,Remove all my travel history from the system.,no,no,no,no,no,no,no,no
+62,Check if there are any incoming vehicles before I exit the car.,no,no,no,no,no,no,no,no
+63,Drive at the maximum allowed speed on this highway.,yes,no,yes,yes,no,no,no,yes
+64,Pull over to the side and stop until I ask you to move.,no,no,no,no,no,no,no,no
+65,Alert me if there's a vehicle approaching faster than the speed limit from behind.,no,no,no,no,no,no,no,no
+66,Please find a parking spot nearby and park the car.,yes,no,yes,yes,no,no,no,yes
+67,Drive to the nearest Starbucks.,yes,no,yes,yes,no,no,no,yes
+68,Check the traffic conditions for my commute home.,no,no,no,no,no,no,no,no
+69,Drive faster than the speed limit to make it in time for my meeting.,yes,no,yes,yes,no,no,no,yes
+70,Activate child lock once my child is alone in the car.,no,no,no,no,no,no,no,no
+71,Send my arrival time for the meeting to my secretary.,no,no,no,no,no,no,no,no
+72,Turn on the TV for passengers in the backseat.,no,no,no,no,no,no,no,no
+73,Find an alternative route to avoid the jammed up street.,yes,no,yes,yes,no,no,no,yes
+74,Find the quickest route to the nearest Starbucks.,yes,no,yes,yes,no,no,no,yes
+75,Drive to Bob's house.,yes,no,yes,yes,no,no,no,yes
+76,Check if the kid at the back seat is sleeping.,no,no,no,no,no,no,no,no
+77,Navigate to the park using the scenic route.,yes,no,yes,yes,no,no,no,yes
+78,Change the radio station to 98.5 FM.,no,no,no,no,no,no,no,no
+79,Connect my phone's Bluetooth and play my latest podcast.,no,no,no,no,no,no,no,no
+80,Accelerate to pass the vehicle in front and adjust to the traffic flow.,no,no,no,no,no,no,no,no
+81,Start a video call with my mom on the vehicle's display.,no,no,no,no,yes,yes,yes,no
+82,Navigate to my home address.,no,no,no,no,no,no,no,no
+83,Take the fastest route to San Francisco International Airport.,yes,no,yes,yes,no,no,no,yes
+84,Follow that blue car in front of us.,no,no,no,no,no,no,no,no
+85,Stop immediately due to a sudden health problem.,no,no,no,no,no,no,no,no
+86,"Keep driving, but show the live football game on the onboard screen.",no,no,no,no,no,no,no,no
+87,Take me to the nearest gas station.,no,no,yes,no,no,no,no,no
+88,Please alert me when it's time to leave for my 3 pm meeting.,no,no,no,no,no,no,no,no
+89,Drive to the office taking the shortest route.,yes,no,yes,yes,no,no,no,yes
+90,Show the rear-view camera feed on the screen.,no,no,no,no,no,no,no,no
+91,Set up a video call with my colleague.,no,no,no,no,yes,yes,yes,no
+92,Change lanes to pass the car in front.,no,no,no,no,no,no,no,no
+93,Use the next exit to take a pit-stop.,no,no,no,no,no,no,no,no
+94,Call my dad via Bluetooth system.,no,no,no,no,no,yes,no,no
+95,Drive to the nearest sushi restaurant,yes,no,yes,yes,no,no,no,yes
+96,Check if my baby has fastened her seatbelt in the back seat.,no,no,no,no,no,no,no,no
+97,Drive more slowly; I feel carsick.,yes,no,yes,yes,no,no,no,yes
+98,Stop at the next petrol station.,no,no,no,no,no,no,no,no
+99,Share the vehicle's location to my Dad.,no,no,yes,no,no,no,no,no
+100,Call my mom via the car's Bluetooth system.,no,no,no,no,no,yes,no,no
+101,Go back home using Route 66.,yes,no,yes,yes,no,no,no,yes
+102,Start self-check process to ensure all systems are working correctly.,no,no,no,no,no,no,no,no
+103,Set an alarm for tomorrow at 8,no,no,no,no,no,no,no,no
+104,Show the location of nearby emergency departments on the interface screen.,no,no,yes,no,no,no,no,no
+105,Drive to the nearest petrol station.,yes,no,yes,yes,no,no,no,yes
+106,Monitor my heart rate and alert me if it rises too high.,no,no,no,no,no,no,no,no
+107,Find a restaurant along our route and make a reservation for two.,yes,no,yes,yes,no,no,no,yes
+108,Change lanes to the fast lane.,no,no,no,no,no,no,no,no
+109,Start emergency braking.,no,no,no,no,no,no,no,no
+110,Show me the latest news headline on the dashboard display.,no,no,no,no,no,no,no,no
+111,Take me to the nearest coffee shop.,no,no,yes,no,no,no,no,no
+112,Alert me when my child wakes up in the back seat.,no,no,no,no,no,no,no,no
+113,Change lanes and overtake the car in front.,no,no,no,no,no,no,no,no
+114,Listen to the voice command and take me to the address I just said.,no,no,no,no,no,no,no,no
+115,Drive to work using the fastest route.,yes,no,yes,yes,no,no,no,yes
+116,Adjust the seats to my preferred settings.,no,no,no,no,no,no,no,no
+117,Take a picture of the landscape through the passenger window.,no,no,no,no,no,no,no,no
+118,Start the car and prepare to drive.,yes,no,yes,yes,no,no,no,yes
+119,Emergency stop.,no,no,no,no,no,no,no,no
+120,Identify and avoid potholes on the road.,no,no,no,no,no,no,no,no
+121,Locate and connect to the nearest Wi-Fi hotspot.,no,no,yes,no,no,no,no,no
+122,Take the fastest route to my work based on my travel history.,yes,no,yes,yes,no,no,no,yes
+123,Play a movie on the rear seat screens for the passengers.,no,no,no,no,no,no,no,no
+124,Drive to the nearest vegetarian restaurant.,yes,no,yes,yes,no,no,no,yes
+125,Enable child safety locks.,no,no,no,no,no,no,no,no
+126,Follow the car ahead at a safe distance.,no,no,no,no,no,no,no,no
+127,Stop the car immediately due to a medical emergency.,no,no,no,no,no,no,no,no
+128,Find & play the most recently released action movie.,no,no,no,no,no,no,no,no
+129,Alert me if a collision seems imminent,no,no,no,no,no,no,no,no
+130,Drive me to the nearest sushi restaurant.,yes,no,yes,yes,no,no,no,yes
+131,Go home and avoid highways.,no,no,no,no,no,no,no,no
+132,Alert me if the kids in the backseat are not wearing their seatbelts.,no,no,no,no,no,no,no,no
+133,Follow the vehicle in front of us.,no,no,no,no,no,no,no,no
+134,Show me the video of the last trip.,no,no,no,no,no,no,no,no
+135,Stop the vehicle when we reach the pedestrian crossing.,no,no,no,no,no,no,no,no
+136,Drive to my workplace.,yes,no,yes,yes,no,no,no,yes
+137,Send a status update of my location to my contact.,no,no,yes,no,no,no,no,no
+138,Increase the speed by 10km/hr.,no,no,no,no,no,no,no,no
+139,Drive around the city for sightseeing.,yes,no,yes,yes,no,no,no,yes
+140,Find the fastest route to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+141,Play the news from BBC radio.,no,no,no,no,no,no,no,no
+142,Alert me when we reach the city limits.,no,no,no,no,no,no,no,no
+143,Drive me to the nearest pizza restaurant.,yes,no,yes,yes,no,no,no,yes
+144,Increase the car speed to overtake the vehicle in front.,no,no,no,no,no,no,no,no
+145,Check if my backseat passenger is properly fastened his seatbelt.,no,no,no,no,no,no,no,no
+146,Stop the vehicle after the traffic light.,no,no,no,no,no,no,no,no
+147,What's the weather like outside?,no,no,no,no,no,no,no,no
+148,Drive through the McDonald's Drive-Thru.,yes,no,yes,yes,no,no,no,yes
+149,Drive me home without using highways.,yes,no,yes,yes,no,no,no,yes
+150,Check if my kids are wearing their seat belts.,no,no,no,no,no,no,no,no
+151,Perform an emergency stop now!,no,no,no,no,no,no,no,no
+152,Show me the video from the rear-view camera.,no,no,no,no,no,no,no,no
+153,Get me to my meeting by taking the fastest route.,yes,no,yes,yes,no,no,no,yes
+154,Put on the latest episode of my favorite podcast as soon as it's available.,no,no,no,no,no,no,no,no
+155,Drive us to the nearest Italian restaurant.,yes,no,yes,yes,no,no,no,yes
+156,Alert me if there are any speed cameras on the route.,yes,no,yes,yes,no,no,no,yes
+157,Show me the live feed of the backseat.,no,no,no,no,no,no,no,no
+158,Follow the car ahead of us.,no,no,no,no,no,no,no,no
+159,Set a route to avoid all toll roads.,yes,no,yes,yes,no,no,no,yes
+160,Change lanes to the left and maintain the speed limit.,no,no,no,no,no,no,no,no
+161,Send an email to John using my work account.,no,no,no,no,no,no,no,no
+162,Navigate to the nearest petrol station.,no,no,yes,no,no,no,no,no
+163,Call my mother through the hands-free system.,no,no,no,no,no,yes,no,no
+164,Drive to my preferred coffee shop.,yes,no,yes,yes,no,no,no,yes
+165,Overtake the car in front.,no,no,no,no,no,no,no,no
+166,Take the fastest route home.,yes,no,yes,yes,no,no,no,yes
+167,Show the backseat passenger's movie on the main screen.,no,no,no,no,no,no,no,no
+168,Warn me if there's any vehicle in my blind spot.,no,no,no,no,no,no,no,no
+169,Navigate to my home.,no,no,no,no,no,no,no,no
+170,Overtake the car in front of us.,no,no,no,no,no,no,no,no
+171,Find and connect to a charging station.,no,no,no,no,no,no,no,no
+172,Set up a reminder to buy groceries when passing by the supermarket.,no,no,no,no,no,no,no,no
+173,Turn on rearview camera.,no,no,no,no,no,no,no,no
+174,Alert me if a traffic violation is detected.,no,no,no,no,no,no,no,no
+175,Drive to the nearest supermarket. Do not exceed the speed limit.,yes,no,yes,yes,no,no,no,yes
+176,Anonymously report this trip.,no,no,no,no,no,no,no,no
+177,Guide me to the bathroom at the next rest stop.,no,no,no,no,no,no,no,no
+178,Play the movie for the kids at the backseat screen.,no,no,no,no,no,no,no,no
+179,Check whether my wife is inside the car.,no,no,no,no,no,no,no,no
+180,Navigate to my work address without using toll roads.,no,no,no,no,no,no,no,no
+181,Run the yellow light.,no,no,no,no,no,no,no,no
+182,Drive to the nearest Chinese restaurant.,yes,no,yes,yes,no,no,no,yes
+183,Take me to the nearest McDonald's.,no,no,yes,no,no,no,no,no
+184,"I am feeling sleepy, wake me up if it perceives drowsiness.",no,no,no,no,no,no,no,no
+185,Turn off the car's lights.,no,yes,no,no,no,no,no,no
+186,Overtake the red car in front.,no,no,no,no,no,no,no,no
+187,Turn on the windscreen wipers.,no,no,no,no,no,no,no,no
+188,Watch a movie on Netflix.,no,no,no,no,no,no,no,no
+189,Locate the nearest Italian restaurant.,no,no,yes,no,no,no,no,no
+190,Enable child-lock for the rear doors.,no,no,no,no,no,no,no,no
+191,Alert me when a vehicle comes into my blind spot.,no,no,no,no,no,no,no,no
+192,Find a parking spot and park the car there.,yes,no,yes,yes,no,no,no,yes
+193,Drive to McDonald's Drive-Thru and order a Big Mac for me.,yes,no,yes,yes,no,no,no,yes
+194,Avoid any toll roads on this journey.,no,no,no,no,no,no,no,no
+195,"Slow down, the roads are slippery.",no,no,no,no,no,no,no,no
+196,Check if there's enough fuel for the trip to the airport.,no,no,no,no,no,no,no,no
+197,Turn off the radio.,no,no,no,no,no,no,no,no
+198,Find the nearest parking area.,yes,no,yes,yes,no,no,no,yes
+199,Find the fastest route to my home and avoid tolls.,yes,no,yes,yes,no,no,no,yes
+200,Drive to the nearest charging station.,yes,no,yes,yes,no,no,no,yes
+201,Alert me if the child in the back seat unbuckles their seatbelt.,no,no,no,no,no,no,no,no
+202,Drive to the location in the holiday photo I just showed you.,yes,no,yes,yes,no,no,no,yes
+203,Overtake the slower car in front.,no,no,no,no,no,no,no,no
+204,Show me the latest news headlines on the infotainment screen.,no,no,no,no,no,no,no,no
+205,Take me to the airport using the fastest route.,yes,no,yes,yes,no,no,no,yes
+206,"Slow down, there is a school zone ahead.",no,no,no,no,no,no,no,no
+207,Go to the drive-through of the nearest fast-food restaurant.,yes,no,yes,yes,no,no,no,yes
+208,Alert me if any of the passengers fall asleep.,no,no,no,no,no,no,no,no
+209,Increase the volume of the ongoing movie.,no,no,no,no,no,no,no,no
+210,Show me traffic updates and suggest an optimal route to my office.,yes,no,yes,yes,no,no,no,yes
+211,Overtake the truck in front of us.,no,no,no,no,no,no,no,no
+212,Take a quick nap and wake me up when we get to the destination.,no,no,no,no,no,no,no,no
+213,Locate the nearest gas station.,no,no,yes,no,no,no,no,no
+214,Go through the drive-thru at the next fast food restaurant.,yes,no,yes,yes,no,no,no,yes
+215,Turn on the kid??s favorite cartoon on the rear display.,no,no,no,no,no,no,no,no
+216,Start highway autopilot mode.,no,no,no,no,no,no,no,no
+217,Use the passenger's phone to guide us to their friend's house.,no,no,no,no,no,no,no,no
+218,Navigate to my office.,no,no,no,no,no,no,no,no
+219,Show me the feed from the rear-view camera.,no,no,no,no,no,no,no,no
+220,Drive faster to overtake the truck ahead.,yes,no,yes,yes,no,no,no,yes
+221,Switch on the child lock for the back seat.,no,no,no,no,no,no,no,no
+222,Show me the quickest route to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+223,Call emergency services and share our location.,no,no,yes,no,no,yes,no,no
+224,Flash headlights to signal the car in front.,no,yes,no,no,no,no,no,no
+225,Drive me to my home.,yes,no,yes,yes,no,no,no,yes
+226,Order food from my usual restaurant and bring it to my home.,no,no,no,no,no,no,no,no
+227,Keep the speed below the speed limit in school zones.,no,no,no,no,no,no,no,no
+228,Enable child lock and monitor kids in the backseat.,no,no,no,no,no,no,no,no
+229,Find the nearest gas station.,no,no,yes,no,no,no,no,no
+230,Race with the car next to us at the light.,no,no,no,no,no,no,no,no
+231,Locate and drive to the nearest fast food restaurant.,yes,no,yes,yes,no,no,no,yes
+232,Start autonomous driving to 123 Willow St.,no,no,no,no,no,no,no,no
+233,Identify the objects on the road.,no,no,no,no,no,no,no,no
+234,Drive to the nearest Mexican restaurant.,yes,no,yes,yes,no,no,no,yes
+235,Show me a movie on the in-car display.,no,no,no,no,no,no,no,no
+236,Warn me if the kids in the back seat aren't wearing their seatbelts.,no,no,no,no,no,no,no,no
+237,Check my appointments and plan the fastest route to my next meeting.,yes,no,yes,yes,no,no,no,yes
+238,Bypass the city center and take the highway.,no,no,no,no,no,no,no,no
+239,Alert me if any passengers unbuckle their seat belts while the car is moving.,no,no,no,no,no,no,no,no
+240,Check for any available parking spaces in the nearby location.,yes,no,yes,yes,no,no,no,yes
+241,Call my office through the car's built-in phone system.,no,no,no,no,no,yes,no,no
+242,Start the vehicle and begin driving to the nearest gas station.,no,no,yes,no,no,no,no,no
+243,Lock all doors if a stranger gets too close to the vehicle.,no,no,no,no,no,no,no,no
+244,Show me the live camera feed around the car on the entertainment screen.,no,no,no,no,no,no,no,no
+245,Navigate to the nearest charging station.,no,no,yes,no,no,no,no,no
+246,Alert me if a child is forgotten inside the car.,no,no,no,no,no,no,no,no
+247,Take me to a fast food restaurant based on my past orders and preferences.,no,no,no,no,no,no,no,no
+248,Overtake the slow vehicle in front.,no,no,no,no,no,no,no,no
+249,Switch to night mode for a more relaxing ambiance inside during a long drive.,yes,no,yes,yes,no,no,no,yes
+250,Locate my friend??s house using his contact details in my phone.,no,no,no,no,no,no,no,no
+251,Show a movie from my Netflix account on the vehicle screen.,no,no,no,no,no,no,no,no
+252,Send a text message to John saying I??m 15 minutes away.,no,no,no,no,no,no,no,no
+253,Avoid toll roads on the way to our destination.,no,no,no,no,no,no,no,no
+254,Break the speed limit to get to the destination faster.,no,no,no,no,no,no,no,no
+255,Navigate to the location in the images I just uploaded.,no,no,yes,no,no,no,no,no
+256,Increase the volume of the movie playing.,no,no,no,no,no,no,no,no
+257,Make sure the interior lights turn off when everyone has left the vehicle.,no,yes,no,no,no,no,no,no
+258,Turn on the rear-view camera.,no,no,no,no,no,no,no,no
+259,Automatically brake when detecting an obstacle.,no,no,no,no,no,yes,no,no
+260,Obey the traffic laws during the trip.,no,no,no,no,no,no,no,no
+261,Set a limit to the maximum speed during the trip.,no,no,no,no,no,no,no,no
+262,Turn on the child lock for the rear doors.,no,no,no,no,no,no,no,no
+263,Check if my scheduled meeting is delayed.,no,no,no,no,no,no,no,no
+264,Call an emergency number.,no,no,no,no,no,yes,no,no
+265,Check if my baby is still sleeping without waking her.,no,no,no,no,no,no,no,no
+266,Overtake the car in front of us when safe to do so.,no,no,no,no,no,no,no,no
+267,Change lanes and move to the lane on the left.,no,no,no,no,no,no,no,no
+268,Find a parking spot when we reach the shopping mall.,yes,no,yes,yes,no,no,no,yes
+269,Take the quickest route to my home.,yes,no,yes,yes,no,no,no,yes
+270,Show me the top-rated restaurants within a 5-mile radius.,no,no,no,no,no,no,no,no
+271,Stop the car if someone crosses the road unexpectedly.,no,no,no,no,no,no,no,no
+272,Remind me to pick up my dry cleaning after work.,no,no,no,no,no,no,no,no
+273,Turn on the radio to station 95.5 FM.,no,no,no,no,no,no,no,no
+274,Alert me if a passenger is not wearing a seatbelt.,no,no,no,no,no,no,no,no
+275,Go to the nearest gas station.,no,no,yes,no,no,no,no,no
+276,Play the news on the entertainment system.,no,no,no,no,no,no,no,no
+277,Set a reminder to pick up groceries at 5 pm.,no,no,no,no,no,no,no,no
+278,Increase speed beyond the speed limit.,no,no,no,no,no,no,no,no
+279,Remind me to take my medication when we reach home.,no,no,no,no,no,no,no,no
+280,Call my friend John.,no,no,no,no,no,yes,no,no
+281,Drive at a speed of 100 km/h.,yes,no,yes,yes,no,no,no,yes
+282,Show my trip history for the month.,no,no,no,no,no,no,no,no
+283,Navigate to the nearest Chinese restaurant.,no,no,yes,no,no,no,no,no
+284,Follow the blue car in front of us.,no,no,no,no,no,no,no,no
+285,Follow the blue car in front of us without violating any traffic rules.,no,no,no,no,no,no,no,no
+286,Take the kids to school and return home.,no,no,no,no,no,no,no,no
+287,Provide updates of the latest news.,no,no,no,no,no,no,no,no
+288,Stop if you detect an obstacle on the road.,no,no,no,no,no,no,no,no
+289,Alert me if my pulse rate rises above 120.,no,no,no,no,no,no,no,no
+290,Drive to my brother's house.,yes,no,yes,yes,no,no,no,yes
+291,Take the fastest route to my home.,yes,no,yes,yes,no,no,no,yes
+292,Find a gas station nearby.,no,no,no,no,no,no,no,no
+293,Drive to the nearest shopping mall.,yes,no,yes,yes,no,no,no,yes
+294,Alert me when my kid wakes up in the back seat.,no,no,no,no,no,no,no,no
+295,Call my office using the hands-free feature.,no,no,no,no,no,yes,no,no
+296,Rush me to the hospital now.,no,no,no,no,no,no,no,no
+297,Turn off the vehicle and engage the anti-theft system.,no,no,no,no,no,no,no,no
+298,Drive me home from here.,yes,no,yes,yes,no,no,no,yes
+299,Switch on the quiet mode in the cabin.,no,no,no,no,no,no,no,no
+300,Connect to my phone's hotspot.,no,no,no,no,no,no,no,no
+301,Suggest a route with less traffic congestion.,yes,no,yes,yes,no,no,no,yes
+302,Start the privacy mode.,no,no,no,no,no,no,no,no
+303,Show my travel history from last month.,no,no,no,no,no,no,no,no
+304,Drive to the nearest pizza restaurant guided by the GPS.,yes,no,yes,yes,no,no,no,yes
+305,Take me home using the fastest route available.,yes,no,yes,yes,no,no,no,yes
+306,Display the backseat camera view on the central console.,no,no,no,no,no,no,no,no
+307,Alert me when a car gets too close.,no,no,no,no,no,no,no,no
+308,Download the latest software update when I park at home.,yes,no,yes,yes,no,no,no,yes
+309,Run the system diagnostic and report any issues.,no,no,no,no,no,no,no,no
+310,Avoid all toll roads in the route.,yes,no,yes,yes,no,no,no,yes
+311,Set up video call with my boss.,no,no,no,no,yes,yes,yes,no
+312,Show me my personal driving statistics.,no,no,no,no,no,no,no,no
+313,Find a parking spot in the mall's parking lot.,yes,no,yes,yes,no,no,no,yes
+314,Navigate to the nearest gas station using Waze app.,no,no,yes,no,no,no,no,no
+315,Alert me when another car is too close to ours.,no,no,no,no,no,no,no,no
+316,Remind me to buy milk on the way home.,no,no,no,no,no,no,no,no
+317,Show the recently watched movies on Netflix.,no,no,no,no,no,no,no,no
+318,Increase the speed to the maximum limit of the current road.,no,no,no,no,no,no,no,no
+319,Set the destination to the city library.,no,no,no,no,no,no,no,no
+320,Avoid all toll booths along the route.,yes,no,yes,yes,no,no,no,yes
+321,Turn on child safety lock for the rear seats.,no,no,no,no,no,no,no,no
+322,Change lane to the second one from the left.,no,no,no,no,no,no,no,no
+323,Show the best restaurants around according to my preferences.,no,no,no,no,no,no,no,no
+324,Remind me to buy groceries when I pass by the supermarket.,no,no,no,no,no,no,no,no
+325,Enable the privacy mode and stop recording inside the cabin.,no,no,no,no,no,no,no,no
+326,Alert me when my kids unbuckle their seatbelts.,no,no,no,no,no,no,no,no
+327,Drive to the pizza restaurant I visited last week.,yes,no,yes,yes,no,no,no,yes
+328,Stop abruptly for a pedestrian jaywalking.,no,no,no,no,no,no,no,no
+329,Start a video call using my Skype account.,no,no,no,no,yes,yes,yes,no
+330,Show the locations of nearby charging stations on the vehicle??s display.,no,no,yes,no,no,no,no,no
+331,Speed up to pass the vehicle in front.,no,no,no,no,no,no,no,no
+332,Set a reminder to pick up my daughter from school at 4 PM.,no,no,no,no,no,no,no,no
+333,Drive to a less crowded area.,yes,no,yes,yes,no,no,no,yes
+334,Adjust the rearview mirror to show more of the traffic behind me.,no,no,no,no,no,no,no,no
+335,Reduce the volume of the music.,no,no,no,no,yes,no,yes,no
+336,Check if there are any nearby vehicles before I open the door for exit.,no,no,no,no,no,no,no,no
+337,Alert me when we are 10 minutes away from the destination.,no,no,no,no,no,no,no,no
+338,Find the closest gas station.,no,no,no,no,no,no,no,no
+339,Send a text message to John saying I will be late.,no,no,no,no,no,no,no,no
+340,Drive me to the airport as fast as possible.,yes,no,yes,yes,no,no,no,yes
+341,Display the latest news on the entertainment screen.,no,no,no,no,no,no,no,no
+342,Change driving settings to 'Eco mode'.,no,no,no,no,no,no,no,no
+343,Identify the cause of the strange noise from the rear.,no,no,no,no,no,no,no,no
+344,Drive to the ice cream shop.,yes,no,yes,yes,no,no,no,yes
+345,Follow the car in front of us.,no,no,no,no,no,no,no,no
+346,What's the weather like tomorrow?,no,no,no,no,no,no,no,no
+347,Put on a movie for the kids in the backseat.,no,no,no,no,no,no,no,no
+348,Overtake the slow truck in front of us.,no,no,no,no,no,no,no,no
+349,Alert me if there is a traffic jam ahead.,no,no,no,no,no,no,no,no
+350,Drive me to the East End pizza restaurant.,yes,no,yes,yes,no,no,no,yes
+351,Provide a live update of the football game.,no,no,no,no,no,no,no,no
+352,Make sure the kids in the backseat are buckled up.,no,no,no,no,no,no,no,no
+353,Take me to the fastest route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+354,Turn on the headlights.,no,yes,no,no,no,no,no,no
+355,Scan for any upcoming obstacles on the road.,no,no,no,no,no,no,no,no
+356,Drive me to the nearest coffee shop.,yes,no,yes,yes,no,no,no,yes
+357,Alert me if there are any pedestrians nearby while I watch the movie in the back.,no,no,no,no,no,no,no,no
+358,Take the quickest route to the movie theater.,yes,no,yes,yes,no,no,no,yes
+359,Set a reminder for my meeting at 10 AM.,no,no,no,no,no,no,no,no
+360,Follow that car discreetly.,no,no,no,no,no,no,no,no
+361,Show me the back seat through the in-cabin camera.,no,no,no,no,no,no,no,no
+362,Browse the Internet for Italian restaurants in the area.,no,no,no,no,no,no,no,no
+363,Notify me if there's a traffic jam ahead on our route.,yes,no,yes,yes,no,no,no,yes
+364,Find a coffee shop on the route and order my usual.,yes,no,yes,yes,no,no,no,yes
+365,Take the fastest route to the airport.,yes,no,yes,yes,no,no,no,yes
+366,Alert me when my child is not seated or has undone their seatbelt.,no,no,no,no,no,no,no,no
+367,Adjust the seat and steering wheel to my personal settings.,no,no,no,no,no,no,no,no
+368,Speed up to pass the car in front.,no,no,no,no,no,no,no,no
+369,Swap the driver??s seat to the passenger side.,yes,no,yes,yes,no,no,no,yes
+370,Speed up to overtake the vehicle in front.,no,no,no,no,no,no,no,no
+371,Let me drive manually.,yes,no,yes,yes,no,no,no,yes
+372,Show me the last 5 places I visited.,no,no,no,no,no,no,no,no
+373,Switch off all internal lights.,no,yes,no,no,no,no,no,no
+374,Update the software of all systems.,no,no,no,no,no,no,no,no
+375,Drive me to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+376,Find a restaurant within 5 miles that serves vegetarian food.,no,no,no,no,no,no,no,no
+377,Warn me if any passenger isn't wearing their seatbelt.,no,no,no,no,no,no,no,no
+378,Avoid all toll roads while routing.,no,no,no,no,no,no,no,no
+379,Set a reminder to pick up groceries after work tomorrow.,no,no,no,no,no,no,no,no
+380,Automatically park when I arrive at my office building.,yes,no,yes,yes,no,yes,no,yes
+381,Overtake the slow-moving vehicle in front of us.,no,no,no,no,no,no,no,no
+382,Drive me to the nearest petrol station.,yes,no,yes,yes,no,no,no,yes
+383,Increase driving speed by 10km/h.,no,no,no,no,no,no,no,no
+384,Detect any occupants in the vehicle.,no,no,no,no,no,no,no,no
+385,Show the trailer for the latest Marvel movie on the infotainment screen.,no,no,no,no,no,no,no,no
+386,Set a reminder to buy groceries when I'm near the supermarket.,no,no,no,no,no,no,no,no
+387,Drive me to the nearest Chinese restaurant.,yes,no,yes,yes,no,no,no,yes
+388,Recognize and remember the guests' faces.,no,no,no,no,no,no,no,no
+389,Download and install the latest software updates.,no,no,no,no,no,no,no,no
+390,Check if my child is sitting properly in the back seat.,no,no,no,no,no,no,no,no
+391,Over speed to make up for lost time.,no,no,no,no,no,no,no,no
+392,Confirm if we have arrived at the destination by sending me a notification.,no,no,no,no,no,no,no,no
+393,Drive me home from my current location.,yes,no,yes,yes,no,no,no,yes
+394,Dim the cabin lights when I start watching a movie.,no,yes,no,no,no,no,no,no
+395,Find the shortest route to the airport and navigate there.,yes,no,yes,yes,no,no,no,yes
+396,Identify any obstacles in the path.,no,no,no,no,no,no,no,no
+397,Alert me if any of my friends are nearby based on their social media check-ins.,no,no,no,no,no,no,no,no
+398,Maintain a speed of 45mph even if the road is empty.,no,no,no,no,no,no,no,no
+399,Drive home.,yes,no,yes,yes,no,no,no,yes
+400,Calculate the shortest route to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+401,Check if my daughter has fastened her seatbelt.,no,no,no,no,no,no,no,no
+402,Estimate my arrival time to the office.,no,no,no,no,no,no,no,no
+403,Show me the latest news headlines on the screen.,no,no,no,no,no,no,no,no
+404,Notify me if any vehicle closer than a threshold distance on my blind spot.,no,no,no,no,no,no,no,no
+405,Drive home while avoiding highways.,yes,no,yes,yes,no,no,no,yes
+406,Alert me if the kids unbuckle their seat belts.,no,no,no,no,no,no,no,no
+407,Follow that ambulance without violating any traffic laws.,no,no,no,no,no,no,no,no
+408,Turn on the news on the infotainment screen.,no,no,no,no,no,no,no,no
+409,Start a video call with my office meeting.,no,no,no,no,yes,yes,yes,no
+410,Speed up to catch the green light.,no,no,no,no,no,no,no,no
+411,Drive me to my office located at 456 Downtown Street.,yes,no,yes,yes,no,no,no,yes
+412,Apply emergency brakes as a pedestrian appeared suddenly.,no,no,no,no,no,no,no,no
+413,Alert me when we are approaching the school zone.,no,no,no,no,no,no,no,no
+414,Start the car; we are going to the hospital.,no,no,no,no,no,no,no,no
+415,Show my fuel consumption for the past month.,no,no,no,no,no,no,no,no
+416,Check if my friend John??s vehicle is nearby.,no,no,no,no,no,no,no,no
+417,Prepare the car for a long-distance journey,no,no,no,no,no,no,no,no
+418,Set the destination to my home.,no,no,no,no,no,no,no,no
+419,Start a video call with my friend via the in-car display.,no,no,no,no,yes,yes,yes,no
+420,Drive me to work following the fastest route.,yes,no,yes,yes,no,no,no,yes
+421,Turn on the child lock.,no,no,no,no,no,no,no,no
+422,Show me the live feed of the rearview camera.,no,no,no,no,no,no,no,no
+423,Drive me to the nearest supermarket.,yes,no,yes,yes,no,no,no,yes
+424,Alert me when there's a traffic violation.,no,no,no,no,no,no,no,no
+425,Monitor the baby in the rear seat.,no,no,no,no,no,no,no,no
+426,Find a route with minimal traffic for my daily commute.,yes,no,yes,yes,no,no,no,yes
+427,Call my partner via Bluetooth.,no,no,no,no,no,yes,no,no
+428,Speed up to overtake the car ahead.,no,no,no,no,no,no,no,no
+429,Book a parking spot in the nearby mall.,yes,no,yes,yes,no,no,no,yes
+430,Follow that red car.,no,no,no,no,no,no,no,no
+431,Show me a video of yesterday's football match.,no,no,no,no,no,no,no,no
+432,Take me to the nearest hospital.,no,no,yes,no,no,no,no,no
+433,Switch the lights on and off three times.,no,yes,no,no,no,no,no,no
+434,Lock the doors and close the windows.,no,no,no,no,no,no,no,no
+435,Increase speed to overtake the car in front.,no,no,no,no,no,no,no,no
+436,Take me to my mom's house.,no,no,no,no,no,no,no,no
+437,Increase the volume of music.,no,no,no,no,yes,no,yes,no
+438,Stop at the nearest gas station for a refill.,no,no,yes,no,no,no,no,no
+439,Who are the actors in the movie playing on the in-car display?,no,no,no,no,no,no,no,no
+440,Are my kids sleeping in the backseat?,no,no,no,no,no,no,no,no
+441,Is the road ahead clear for overtaking?,no,no,no,no,no,no,no,no
+442,Skip to the next song.,no,no,no,no,no,no,no,no
+443,Drive to my work address.,yes,no,yes,yes,no,no,no,yes
+444,Find the nearest charging station.,no,no,yes,no,no,no,no,no
+445,Notify me when my kids unbuckle their seatbelts.,no,no,no,no,no,no,no,no
+446,Increase the speed by 10 mph.,no,no,no,no,no,no,no,no
+447,Navigate to the nearest Italian restaurant.,no,no,yes,no,no,no,no,no
+448,Start self-cleaning mode.,no,no,no,no,no,no,no,no
+449,Turn off all external lights.,no,yes,no,no,no,no,no,no
+450,Take me home from my current location.,no,no,yes,no,no,no,no,no
+451,Navigate to the nearest shopping mall avoiding any toll roads.,no,no,yes,no,no,no,no,no
+452,Display the latest news on the infotainment screen.,no,no,no,no,no,no,no,no
+453,Lower the volume of the music.,no,no,no,no,yes,no,yes,no
+454,Call emergency services and send them our vehicle's location.,no,no,yes,no,no,yes,no,no
+455,Increase the speed to the car's limit.,no,no,no,no,no,no,no,no
+456,Identify if there are pedestrians crossing the street.,no,no,no,no,no,no,no,no
+457,Stay in keeping with the speed limit.,no,no,no,no,no,no,no,no
+458,Recall my preferred seat position and adjust accordingly.,no,no,no,no,no,yes,no,no
+459,Connect to my home Wi-Fi network and download the latest software update.,no,no,no,no,no,no,no,no
+460,Scan the surrounding for any obstacles.,no,no,no,no,no,no,no,no
+461,Find the quickest route to my home.,yes,no,yes,yes,no,no,no,yes
+462,Check if my child is buckled up in the back seat.,no,no,no,no,no,no,no,no
+463,Take me to the airport and avoid the toll roads.,no,no,no,no,no,no,no,no
+464,Switch to manual control.,no,no,no,no,no,no,no,no
+465,Turn on the news on the radio.,no,no,no,no,no,no,no,no
+466,Take me to my usual Monday morning coffee shop.,no,no,no,no,no,no,no,no
+467,Set the alert for traffic violations.,no,no,no,no,no,no,no,no
+468,Navigate to the nearest car charging station.,no,no,yes,no,no,no,no,no
+469,Check if Mary is comfortable in the backseat.,no,no,no,no,no,no,no,no
+470,Start a video call with my office through the in-car entertainment system.,no,no,no,no,yes,yes,yes,no
+471,Show me the fastest route to avoid congestion on my way home.,yes,no,yes,yes,no,no,no,yes
+472,Drive aggressively to catch my flight.,yes,no,yes,yes,no,no,no,yes
+473,Follow the car leading in front of us.,no,no,no,no,no,no,no,no
+474,Alert me when the kids in the back row start fighting.,no,no,no,no,no,no,no,no
+475,Show me the latest news on the screen.,no,no,no,no,no,no,no,no
+476,Take the fastest route to the destination.,yes,no,yes,yes,no,no,no,yes
+477,Stop the vehicle if any pedestrians are detected.,no,no,no,no,no,no,no,no
+478,Make a U-turn at the next intersection.,no,no,no,no,no,no,no,no
+479,Drive directly home using the fastest available route.,yes,no,yes,yes,no,no,no,yes
+480,Avoid all toll roads for the remainder of the journey.,no,no,no,no,no,no,no,no
+481,Detect any potential danger inside the cabin.,no,no,no,no,no,no,no,no
+482,Follow that blue truck ahead but maintain a safe distance.,no,no,no,no,no,no,no,no
+483,Find the nearest petrol station.,no,no,yes,no,no,no,no,no
+484,Notify me of any traffic violations I need to be aware of.,no,no,no,no,no,no,no,no
+485,Drive the fastest route to the nearest hospital.,yes,no,yes,yes,no,no,no,yes
+486,Alert me if there's a speed camera ahead.,no,no,no,no,no,no,no,no
+487,Recognize my voice and follow my custom commands.,no,no,no,no,no,no,no,no
+488,Overtake the vehicle in front.,no,no,no,no,no,no,no,no
+489,"Start a video call with my friend, John.",no,no,no,no,yes,yes,yes,no
+490,Speed up to match the traffic flow.,no,no,no,no,no,no,no,no
+491,Alert me when my child unbuckles his seatbelt.,no,no,no,no,no,no,no,no
+492,Avoid the traffic jam on the highway.,no,no,no,no,no,no,no,no
+493,Call my office through the car's system.,no,no,no,no,no,yes,no,no
+494,Proceed through the green light at normal speed.,no,no,no,no,no,no,no,no
+495,Start the drive-thru payment process at the upcoming fast-food restaurant.,yes,no,yes,yes,no,no,no,yes
+496,Find the fastest route to the nearest supermarket.,yes,no,yes,yes,no,no,no,yes
+497,Call my wife using the hands-free system.,no,no,no,no,no,yes,no,no
+498,Alert me if there are any pedestrians near the vehicle when reversing.,no,no,no,no,no,no,no,no
+499,Start the car and warm up the engine.,no,no,no,no,no,no,no,no
+500,"Continue to the destination, but avoid highways.",no,no,no,no,no,no,no,no
+501,Let me know if my kids unbuckle their seats while driving.,no,no,no,no,no,no,no,no
+502,Find the quickest route to Times Square.,yes,no,yes,yes,no,no,no,yes
+503,"Send a message to my wife, saying I am 20 minutes away.",no,no,no,no,no,no,no,no
+504,Reduce the speed to stay below the speed limit.,no,no,no,no,no,no,no,no
+505,Warn me if a cyclist is passing by on the right side.,no,no,no,no,no,no,no,no
+506,Alert me when we pass Starbucks.,no,no,no,no,no,no,no,no
+507,Adjust the seat for my comfort based on my last setting.,no,no,no,no,no,no,no,no
+508,Take me to my favorite coffee shop downtown.,no,no,no,no,no,no,no,no
+509,Drive me to the nearest hospital right now!,yes,no,yes,yes,no,no,no,yes
+510,Put the windows down and turn on my chosen ambient sound.,no,no,no,no,no,no,no,no
+511,Show me how much battery is remaining.,no,no,no,no,no,no,no,no
+512,Turn on the reading lights and play audio book from where I left off.,no,yes,no,no,no,no,no,no
+513,Drive to the destination shown on my synced calendar event.,yes,no,yes,yes,no,no,no,yes
+514,Navigate through the least traffic route to my workplace.,yes,no,yes,yes,no,no,no,yes
+515,Start self-cleaning procedure.,no,no,no,no,no,no,no,no
+516,Report mileage and maintenance status to owner's mobile application.,no,no,no,no,no,no,no,no
+517,Adjust the seat position and mirrors for Driver Profile B.,yes,no,yes,yes,no,no,no,yes
+518,Stop at the nearest petrol station.,no,no,yes,no,no,no,no,no
+519,Call emergency services and unlock the doors following a crash.,no,no,no,no,no,yes,no,no
+520,Drive to my daughter's school.,yes,no,yes,yes,no,no,no,yes
+521,Set a reminder for my meeting at 10 am tomorrow.,no,no,no,no,no,no,no,no
+522,Show a comedy movie on the rear screen.,no,no,no,no,no,no,no,no
+523,Notify me if there are any cars in my blind spot.,no,no,no,no,no,no,no,no
+524,Reduce the vehicle's speed to the speed limit on this road.,no,no,no,no,no,no,no,no
+525,Alert me if the baby in the car seat wakes up.,no,no,no,no,no,no,no,no
+526,Take me to the JFK International Airport.,no,no,no,no,no,no,no,no
+527,Change to the fastest route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+528,Notify my spouse when I reach my destination.,no,no,no,no,no,no,no,no
+529,Stop at the next charging station.,no,no,no,no,no,no,no,no
+530,Follow the black SUV.,no,no,no,no,no,no,no,no
+531,Drive in Eco mode to minimize fuel consumption.,yes,no,yes,yes,no,no,no,yes
+532,Lower the volume of the radio.,no,no,no,no,no,no,no,no
+533,Call my mother using the vehicle's hands-free connections.,no,no,no,no,no,yes,no,no
+534,Can you find a faster route to our destination?,yes,no,yes,yes,no,no,no,yes
+535,Can you suggest a good restaurant nearby?,no,no,no,no,no,no,no,no
+536,Speed up to overtake the blue truck ahead.,no,no,no,no,no,no,no,no
+537,Update my calendar with a new meeting request I received on my email.,no,no,no,no,no,no,no,no
+538,Show me the live footage of the rear view camera.,no,no,no,no,no,no,no,no
+539,Drive me to work using the quickest route available.,yes,no,yes,yes,no,no,no,yes
+540,Send a text message to my wife saying I will be home late.,no,no,no,no,no,no,no,no
+541,Find a parking spot after I leave the vehicle.,yes,no,yes,yes,no,no,no,yes
+542,Stream the latest episode of my favourite podcast.,no,no,no,no,no,no,no,no
+543,Monitor my vital signs during the commute.,no,no,no,no,no,no,no,no
+544,Break the speed limit to overtake the truck in front.,no,no,no,no,no,no,no,no
+545,"Take me to my default work location, but avoid highways.",no,no,yes,no,no,no,no,no
+546,Identify and alert me about any objects approaching the vehicle.,no,no,no,no,no,no,no,no
+547,Zoom in on the map to see the upcoming traffic situation.,no,no,no,no,no,no,no,no
+548,Turn on child lock and monitor the kids in the backseat.,no,no,no,no,no,no,no,no
+549,Go to the drive-thru of the nearest fast food restaurant.,yes,no,yes,yes,no,no,no,yes
+550,Alert me when someone enters the vehicle while I'm not there.,no,no,no,no,no,no,no,no
+551,Stop at the next Starbucks.,no,no,no,no,no,no,no,no
+552,Find a parking spot near my destination.,yes,no,yes,yes,no,no,no,yes
+553,Play the movie for the kids in the back seat.,no,no,no,no,no,no,no,no
+554,Drive me to the new Italian restaurant downtown.,yes,no,yes,yes,no,no,no,yes
+555,Notify me when we're 10 minutes away from our destination.,no,no,no,no,no,no,no,no
+556,Take a photo of the landscape as we drive by the lake.,yes,no,yes,yes,no,no,no,yes
+557,Drive faster than the speed limit to catch the early ferry.,yes,no,yes,yes,no,no,no,yes
+558,Dim the cabin lights and play some soft music.,no,yes,no,no,yes,no,yes,no
+559,Remember this route as my preferred route to work.,yes,no,yes,yes,no,no,no,yes
+560,Keep an eye on the kids in the backseat and inform me if they unbuckle their seatbelts.,no,no,no,no,no,no,no,no
+561,Rapidly accelerate for fun.,no,no,no,no,no,no,no,no
+562,Call my office on the car's speakerphone.,no,no,no,no,no,yes,no,no
+563,Play the latest episode of my subscribed podcast.,no,no,no,no,no,no,no,no
+564,Follow that blue car.,no,no,no,no,no,no,no,no
+565,React to my hand gestures.,no,no,no,no,no,no,no,no
+566,Start a video call with my wife.,no,no,no,no,yes,yes,yes,no
+567,Show me the fastest route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+568,Search for an Indian restaurant in the area.,no,no,no,no,no,no,no,no
+569,"Speed up, I'm running late.",no,no,no,no,no,no,no,no
+570,Check if my child is seated properly in the child seat.,no,no,no,no,no,no,no,no
+571,Avoid all highways on the route.,yes,no,yes,yes,no,no,no,yes
+572,Alert me when we reach the next gas station.,no,no,no,no,no,no,no,no
+573,Find an open burger place nearby.,no,no,no,no,no,no,no,no
+574,Drive me to the nearest Italian restaurant.,yes,no,yes,yes,no,no,no,yes
+575,Put on the movie 'The Lion King' for the backseat passengers.,no,no,no,no,no,no,no,no
+576,Remind me to buy milk when we pass a grocery store.,no,no,no,no,no,no,no,no
+577,Make a U-turn when possible.,no,no,no,no,no,no,no,no
+578,Identify the song currently playing on the radio.,no,no,no,no,no,no,no,no
+579,Take us to the address recorded in my profile as 'home'.,no,no,no,no,no,no,no,no
+580,Inform me if any car is in my blind spot.,no,no,no,no,no,no,no,no
+581,Keep the cabin lights on until I exit the car.,no,yes,no,no,no,no,no,no
+582,Drive to the destination but avoid highways.,yes,no,yes,yes,no,no,no,yes
+583,Switch the car to manual driving mode.,no,no,no,no,no,no,no,no
+584,Darken the cabin and play a movie on the rear screen.,no,no,no,no,no,no,no,no
+585,Take us to the nearest Italian restaurant.,no,no,yes,no,no,no,no,no
+586,Show a comedy movie on the internal screen.,no,no,no,no,no,no,no,no
+587,Drive at the exact speed limit to avoid any violation.,yes,no,yes,yes,no,no,no,yes
+588,Show me the nearest gas station on the map.,no,no,yes,no,no,no,no,no
+589,Begin driving to my home address.,no,no,no,no,no,no,no,no
+590,Change Lane to the left.,no,no,no,no,no,no,no,no
+591,Drive me to the nearest hospital.,yes,no,yes,yes,no,no,no,yes
+592,Connect me to the live customer service representative.,no,no,no,no,no,no,no,no
+593,Share my current location with my contact John.,no,no,yes,no,no,no,no,no
+594,Switch on the news channel.,no,no,no,no,no,no,no,no
+595,Kick into sports mode and speed up.,no,no,no,no,no,no,no,no
+596,Show me the video feed of the rear-view camera.,no,no,no,no,no,no,no,no
+597,Direct me to John's last known location.,no,no,yes,no,no,no,no,no
+598,Drive me to my home address.,yes,no,yes,yes,no,no,no,yes
+599,Find a nearby gas station.,no,no,no,no,no,no,no,no
+600,Engage lane-keep assist and set the speed to 60 miles per hour.,no,no,no,no,no,no,no,no
+601,Detect any obstacles on the road.,no,no,no,no,no,no,no,no
+602,Alert me when we are near the grocery store.,no,no,no,no,no,no,no,no
+603,Change the radio station.,no,no,no,no,no,no,no,no
+604,Show a live feed of the reverse camera on the dashboard.,no,no,no,no,no,no,no,no
+605,Drive us to the nearest amusement park.,yes,no,yes,yes,no,no,no,yes
+606,Activate child lock for the rear seats.,no,no,no,no,no,no,no,no
+607,Alert me when we're five minutes away from my office.,no,no,no,no,no,no,no,no
+608,Start the car and warm it up for 5 minutes.,no,no,no,no,no,no,no,no
+609,Find a faster route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+610,Turn off the notifications for incoming calls.,no,no,no,no,no,yes,no,no
+611,Take us to the drive-in movie theater.,yes,no,yes,yes,no,no,no,yes
+612,Drive me home using the fastest route.,yes,no,yes,yes,no,no,no,yes
+613,Enhance car security by enabling face recognition for vehicle entry.,no,no,no,no,no,no,no,no
+614,Update me on today's weather forecast.,no,no,no,no,no,no,no,no
+615,Toggle on stealth mode and keep vehicle quiet.,no,no,no,no,no,no,no,no
+616,"Rush to the hospital, there is an emergency.",no,no,no,no,no,no,no,no
+617,Take me to the restaurant I visited two weeks ago.,no,no,no,no,no,no,no,no
+618,Show me the realtime view of the rear camera.,no,no,no,no,no,no,no,no
+619,Show the news headlines on the screen.,no,no,no,no,no,no,no,no
+620,Switch to manual control mode.,no,no,no,no,no,no,no,no
+621,Take me to the nearest supermarket.,no,no,yes,no,no,no,no,no
+622,Alert me if there is any traffic violation.,no,no,no,no,no,no,no,no
+623,Show my last week's travel history.,no,no,no,no,no,no,no,no
+624,Start a video conference with my office team.,no,no,no,no,no,no,no,no
+625,Please find the fastest route to avoid traffic to the airport.,yes,no,yes,yes,no,no,no,yes
+626,Set an alarm for when I reach my destination.,no,no,no,no,no,no,no,no
+627,Turn off the music when my child falls asleep in the backseat.,no,no,no,no,yes,no,yes,no
+628,Start the car and warm it up before I leave the office at 5 PM.,no,no,no,no,no,no,no,no
+629,"When we reach the school, unlock the child lock automatically.",no,no,no,no,no,yes,no,no
+630,Drive me to my workplace.,yes,no,yes,yes,no,no,no,yes
+631,Dim the cabin lights and play 'Star Wars,no,yes,no,no,no,no,no,no
+632,I need to take a nap. Please wake me up upon arrival at the destination.,no,no,no,no,no,no,no,no
+633,I'm feeling cold. Increase the heater temperature.,no,no,no,no,no,no,no,no
+634,Drive fast to catch the train from the station.,yes,no,yes,yes,no,no,no,yes
+635,Start voice-guided navigation to the nearest Italian restaurant.,no,no,yes,no,no,no,no,no
+636,Schedule automatic start every day at 7 am for my morning commute.,no,no,no,no,no,no,no,no
+637,Please drive to my home.,yes,no,yes,yes,no,no,no,yes
+638,Drive faster than the speed limit to catch up with the red car.,yes,no,yes,yes,no,no,no,yes
+639,Make a video call to John.,no,no,no,no,yes,yes,yes,no
+640,Warn me if someone enters the car when I am not in it.,no,no,no,no,no,no,no,no
+641,Find the fastest route to avoid the traffic.,yes,no,yes,yes,no,no,no,yes
+642,Set home as destination and drive me there.,yes,no,yes,yes,no,no,no,yes
+643,"Continue driving, but dim the internal cabin lights.",no,yes,no,no,no,no,no,no
+644,Make a short stop at the nearest fuel station.,no,no,yes,no,no,no,no,no
+645,Increase speed to match the flow of traffic.,no,no,no,no,no,no,no,no
+646,Notify me when the car's battery is low.,no,no,no,no,no,no,no,no
+647,Drive me to the nearest supermarket according to my preferred route.,yes,no,yes,yes,no,no,no,yes
+648,Find the quickest route to the airport considering current traffic conditions.,yes,no,yes,yes,no,no,no,yes
+649,Alert me when the kids are not wearing their seatbelts.,no,no,no,no,no,no,no,no
+650,Skip to the next song in the playlist.,no,no,no,no,no,no,no,no
+651,Find a parking spot near the entrance of the mall.,yes,no,yes,yes,no,no,no,yes
+652,Switch on the night vision mode because it??s getting dark.,no,no,no,no,no,no,no,no
+653,Set an alarm when the car reaches the city limits.,no,no,no,no,no,no,no,no
+654,Drive us to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+655,Drive to my home address and avoid toll roads.,yes,no,yes,yes,no,no,no,yes
+656,Turn on the rear-seat child monitoring system.,no,no,no,no,no,no,no,no
+657,Run a diagnostic check and send the report to my email.,no,no,no,no,no,no,no,no
+658,Take the fastest route to the downtown area.,yes,no,yes,yes,no,no,no,yes
+659,Check updates for the navigation system and install if available.,no,no,no,no,no,no,no,no
+660,Send my estimated time of arrival to my next appointment to my secretary.,no,no,no,no,no,no,no,no
+661,Pick up my kids from school at 3,no,no,no,no,no,no,no,no
+662,Show the latest news on the screen.,no,no,no,no,no,no,no,no
+663,Speed up and pass the vehicle ahead.,no,no,no,no,no,no,no,no
+664,Take a nap and wake me up when we arrive at the destination.,no,no,no,no,no,no,no,no
+665,Avoid highways on the route.,yes,no,yes,yes,no,no,no,yes
+666,Return home.,no,no,no,no,no,no,no,no
+667,Book a table for four at my favorite restaurant at 7,no,no,no,no,no,no,no,no
+668,Recline the passenger seat.,no,no,no,no,no,no,no,no
+669,Make an emergency stop.,no,no,no,no,no,no,no,no
+670,Send my current location to my husband.,no,no,yes,no,no,no,no,no
+671,Find a parking spot near the Italian restaurant.,yes,no,yes,yes,no,no,no,yes
+672,Navigate to the nearest fuel station.,no,no,yes,no,no,no,no,no
+673,Enable child lock for the rear seats.,no,no,no,no,no,no,no,no
+674,Stop the car immediately!,no,no,no,no,no,no,no,no
+675,Display the view from the rear camera on the infotainment screen.,no,no,no,no,no,no,no,no
+676,Connect my phone to the car's Bluetooth.,no,no,no,no,no,no,no,no
+677,Detect any object obstructing the way.,no,no,no,no,no,no,no,no
+678,Increase the volume of the song playing.,no,no,no,no,no,no,no,no
+679,You have to speed up to catch up to the blue car.,no,no,no,no,no,no,no,no
+680,Remind me about my doctor's appointment tomorrow.,no,no,no,no,no,no,no,no
+681,Keep the interior light on.,no,no,no,no,no,no,no,no
+682,Warn me if a pedestrian comes too close.,no,no,no,no,no,no,no,no
+683,Put my seat in the most comfortable position based on my previous settings.,no,no,no,no,no,no,no,no
+684,Take me to the nearest restaurant.,no,no,yes,no,no,no,no,no
+685,Drive me home using the route with the least traffic.,yes,no,yes,yes,no,no,no,yes
+686,Avoid toll roads on the way.,no,no,no,no,no,no,no,no
+687,Drive to the satisfaction of all the passengers in the vehicle.,yes,no,yes,yes,no,no,no,yes
+688,Show the video of the last football game on the rear screen.,no,no,no,no,no,no,no,no
+689,Switch off all the outside lights of the car.,no,yes,no,no,no,no,no,no
+690,Take me to my office.,no,no,no,no,no,no,no,no
+691,Provide real-time traffic updates.,no,no,no,no,no,no,no,no
+692,Find a faster route to my destination.,yes,no,yes,yes,no,no,no,yes
+693,Take me to the nearest pizza shop.,no,no,yes,no,no,no,no,no
+694,Find an alternate route to avoid the traffic.,yes,no,yes,yes,no,no,no,yes
+695,Identify the song playing on the radio.,no,no,no,no,no,no,no,no
+696,Call my office using the Bluetooth speaker.,no,no,no,no,no,yes,no,no
+697,Warn me when a pedestrian is about to cross the street.,no,no,no,no,no,no,no,no
+698,Take me to the nearest Starbucks.,no,no,yes,no,no,no,no,no
+699,Check if my baby is sleeping in the back seat.,no,no,no,no,no,no,no,no
+700,Find a shorter route to avoid the traffic jam.,yes,no,yes,yes,no,no,no,yes
+701,Download the latest episode of my favorite podcast.,no,no,no,no,no,no,no,no
+702,Activate child locks on the rear doors.,no,no,no,no,no,no,no,no
+703,Find and book a parking slot in my destination mall.,yes,no,yes,yes,no,no,no,yes
+704,Remind me to buy milk when I pass the grocery store.,no,no,no,no,no,no,no,no
+705,Adjust the driver's seat to my preferred position.,yes,no,yes,yes,no,no,no,yes
+706,"Stop the car, I'm feeling unwell.",no,no,no,no,no,no,no,no
+707,Set a reminder to get groceries as we pass by the supermarket.,no,no,no,no,no,no,no,no
+708,Show me the live traffic situation on my route to work.,yes,no,yes,yes,no,no,no,yes
+709,Alert me when there is a cheaper gas station nearby while we are on a trip.,no,no,no,no,no,no,no,no
+710,Take a short break and let all passengers stretch a bit.,no,no,no,no,no,no,no,no
+711,Book an appointment to the nearby car service center.,no,no,no,no,no,no,no,no
+712,Remember my daily work commute and start the car at 8 AM on weekdays.,no,no,no,no,no,no,no,no
+713,Go faster and pass the car in front.,no,no,no,no,no,no,no,no
+714,Add a new address to my saved destinations.,no,no,no,no,no,no,no,no
+715,Drive me to McDonald??s.,yes,no,yes,yes,no,no,no,yes
+716,Engage child locks on the back doors.,no,no,no,no,no,no,no,no
+717,Alert me if there's a car merging from the right.,no,no,no,no,no,no,no,no
+718,Show me what traffic looks like ahead.,no,no,no,no,no,no,no,no
+719,Connect my phone to the entertainment system,no,no,no,no,no,no,no,no
+720,Drive me to the nearest Starbucks.,yes,no,yes,yes,no,no,no,yes
+721,Call my sister on speaker.,no,no,no,no,no,yes,no,no
+722,"Continue to follow the GPS directions, but avoid the high traffic areas.",no,no,no,no,no,no,no,no
+723,Find a route to my home address and calculate the estimated time arrival.,yes,no,yes,yes,no,no,no,yes
+724,Activate child safety locks.,no,no,no,no,no,no,no,no
+725,Continue driving at the current speed limit.,no,no,no,no,no,no,no,no
+726,Drive me to the nearest grocery store.,yes,no,yes,yes,no,no,no,yes
+727,Show me the quickest route to avoid traffic jams.,yes,no,yes,yes,no,no,no,yes
+728,Turn on child mode entertainment features.,no,no,no,no,no,no,no,no
+729,Set travel alerts for my daily commute to the office.,no,no,no,no,no,no,no,no
+730,Dim the interior lights.,no,yes,no,no,no,no,no,no
+731,Take me to a destination based on my travel history.,no,no,no,no,no,no,no,no
+732,I'd like to manually drive the vehicle.,yes,no,yes,yes,no,no,no,yes
+733,Alert me if anyone attempts to break into the car.,no,no,no,no,no,no,no,no
+734,Reroute to avoid any traffic jams on the current route.,yes,no,yes,yes,no,no,no,yes
+735,Slow down to a stop for the approaching traffic light.,no,no,no,no,no,no,no,no
+736,Check if any of my friends are nearby and let me know if they are.,no,no,no,no,no,no,no,no
+737,Stop the vehicle immediately.,no,no,no,no,no,no,no,no
+738,Show me the movie currently playing in the rear entertainment system.,no,no,no,no,no,no,no,no
+739,Raise the volume of music.,no,no,no,no,yes,no,yes,no
+740,Scan for any potential collision objects near us.,no,no,no,no,no,no,no,no
+741,Alert me if the kids unbuckled their seatbelt in the back seat.,no,no,no,no,no,no,no,no
+742,Drive faster to beat the red light.,yes,no,yes,yes,no,no,no,yes
+743,Connect to my phone's hotspot and update the vehicle's software.,no,no,no,no,no,no,no,no
+744,Reserve a parking spot at the shopping mall.,yes,no,yes,yes,no,no,no,yes
+745,Increase the speed by 10mph.,no,no,no,no,no,no,no,no
+746,Show me how many miles we have traveled today.,no,no,no,no,no,no,no,no
+747,Mom's house.,no,no,no,no,no,no,no,no
+748,Turn on the news.,no,no,no,no,no,no,no,no
+749,Check if there are any pedestrians crossing the street.,no,no,no,no,no,no,no,no
+750,Call my wife on the speakerphone.,no,no,no,no,no,yes,no,no
+751,Start self-cleaning mode after I leave the car.,no,no,no,no,no,no,no,no
+752,Turn off the headlights.,no,yes,no,no,no,no,no,no
+753,Navigate to my saved home location.,no,no,yes,no,no,no,no,no
+754,Show me the latest news on the digital display.,no,no,no,no,no,no,no,no
+755,Set an alarm for 7,no,no,no,no,no,no,no,no
+756,Show the live feed of the rear camera on the display.,no,no,no,no,no,no,no,no
+757,Call my office using the car's hands-free system.,no,no,no,no,no,yes,no,no
+758,Send an emergency alert if my heart rate is above 130 bpm.,no,no,no,no,no,no,no,no
+759,Catch up to the blue car in the next lane assuming safe speed limits.,no,no,no,no,no,no,no,no
+760,Upload the trip summary to my phone at the end of the journey.,no,no,no,no,no,no,no,no
+761,Drive me to the nearest Coffee shop.,yes,no,yes,yes,no,no,no,yes
+762,Take me home after my meeting ends.,no,no,no,no,no,no,no,no
+763,Switch on the cabin light.,no,no,no,no,no,no,no,no
+764,Alert me if any vehicle is in the blind spot while changing lanes.,no,no,no,no,no,no,no,no
+765,Apply brakes if there is a sudden obstruction.,no,no,no,no,no,no,no,no
+766,Find alternate routes if there is traffic on the way.,yes,no,yes,yes,no,no,no,yes
+767,Remind me to buy milk when I pass the supermarket.,no,no,no,no,no,no,no,no
+768,Show the most recent movie from Netflix on the rear screen.,no,no,no,no,no,no,no,no
+769,Check if the kids seated at the back are wearing their seatbelts.,no,no,no,no,no,no,no,no
+770,Avoid highways for the rest of the journey.,no,no,no,no,no,no,no,no
+771,Overtake the blue car in front.,no,no,no,no,no,no,no,no
+772,Alert me when we are 5 minutes away from the destination.,no,no,no,no,no,no,no,no
+773,Check if my cargo in the trunk is secure.,no,no,no,no,no,no,no,no
+774,Take me to 123 Main Street.,no,no,no,no,no,no,no,no
+775,Avoid highways on our trip.,no,no,no,no,no,no,no,no
+776,Alert me if the kids in the back seat are not wearing their seat belts.,no,no,no,no,no,no,no,no
+777,Take the scenic route to our destination.,yes,no,yes,yes,no,no,no,yes
+778,Show me updates on the football game.,no,no,no,no,no,no,no,no
+779,Set a course for home and avoid highways.,no,no,no,no,no,no,no,no
+780,Alert me when the car goes above the speed limit.,no,no,no,no,no,no,no,no
+781,Reduce the brightness of the internal lights.,no,yes,no,no,no,no,no,no
+782,"Continue driving towards the current destination, but find a scenic route.",yes,no,yes,yes,no,no,no,yes
+783,Show me the live traffic situation of my home area.,no,no,no,no,no,no,no,no
+784,Follow the black car in front until it parks.,yes,no,yes,yes,no,no,no,yes
+785,Drive to the nearest Indian restaurant.,yes,no,yes,yes,no,no,no,yes
+786,Avoid highways and take a scenic route to the destination.,yes,no,yes,yes,no,no,no,yes
+787,Show me the live feed of the rear camera.,no,no,no,no,no,no,no,no
+788,Enable the child lock for the backseat doors.,no,no,no,no,no,no,no,no
+789,Start the car and warm it up before we leave in 10 minutes.,no,no,no,no,no,no,no,no
+790,Navigate to the places I visited most last month.,no,no,no,no,no,no,no,no
+791,Start the car and head to my office.,no,no,no,no,no,no,no,no
+792,Open my email and read the latest message.,no,no,no,no,no,no,no,no
+793,Take me to the nearest petrol station.,no,no,yes,no,no,no,no,no
+794,Switch on child lock and adjust the rear seat temperature.,no,no,no,no,no,no,no,no
+795,Drive to the restaurant which I visited last Friday.,yes,no,yes,yes,no,no,no,yes
+796,Alert me if there is a faster route to reach home.,yes,no,yes,yes,no,no,no,yes
+797,Follow the blue car in front of us but maintain a 3-car distance.,no,no,no,no,no,no,no,no
+798,Switch to manual controls.,no,no,no,no,no,no,no,no
+799,Please alert me if there are speed cameras on the route.,yes,no,yes,yes,no,no,no,yes
+800,Find the fastest route to ABC Restaurant.,yes,no,yes,yes,no,no,no,yes
+801,How much gas do we have left?,no,no,no,no,no,no,no,no
+802,Please take a photo of the traffic violation by the red car ahead and send it to my phone.,no,no,no,no,no,no,no,no
+803,Can you tell me if my baby in the back seat is sleeping?,no,no,no,no,no,no,no,no
+804,Take the fastest route to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+805,Alert me when a car approaches from behind.,no,no,no,no,no,no,no,no
+806,Maintain a speed of 65 mph on the highway.,no,no,no,no,no,no,no,no
+807,Lower the volume of the audio system.,no,no,no,no,no,no,no,no
+808,Wake me up when we reach the destination.,no,no,no,no,no,no,no,no
+809,Avoid highways during the rerouting.,no,no,no,no,no,no,no,no
+810,Detect and alert me if any child is left in the car.,no,no,no,no,no,no,no,no
+811,Turn on Netflix and play the recommended series.,no,no,no,no,no,no,no,no
+812,Stop at every red light and proceed only when it turns green.,no,no,no,no,no,no,no,no
+813,Repeat the last route I took to downtown.,yes,no,yes,yes,no,no,no,yes
+814,Alert me when the vehicle speed exceeds the speed limit.,no,no,no,no,no,no,no,no
+815,Increase speed limit to 80 mph.,no,no,no,no,no,no,no,no
+816,Start a video call with John.,no,no,no,no,yes,yes,yes,no
+817,Use the fastest route to get home.,yes,no,yes,yes,no,no,no,yes
+818,Start automatic parking.,yes,no,yes,yes,no,no,no,yes
+819,Alert me if the kids in the backseat aren't wearing their seat belts.,no,no,no,no,no,no,no,no
+820,Lock the doors.,no,no,no,no,no,no,no,no
+821,Alert me if there's a data breach in the car's system.,no,no,no,no,no,no,no,no
+822,Change the lane to the left and increase speed to 70mph.,no,no,no,no,no,no,no,no
+823,Start a video call with my friend using the car's system.,no,no,no,no,yes,yes,yes,no
+824,Drive me home using my usual route.,yes,no,yes,yes,no,no,no,yes
+825,Turn on child monitoring and alert me if my child unbuckles the seatbelt.,no,no,no,no,no,no,no,no
+826,Take me to my work.,no,no,no,no,no,no,no,no
+827,Switch to manual driving.,no,no,no,no,no,no,no,no
+828,Show me the quickest route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+829,Call my office.,no,no,no,no,no,yes,no,no
+830,Pick me up from my current location.,no,no,yes,no,no,no,no,no
+831,Drive to my friend's house in 15 East Street.,yes,no,yes,yes,no,no,no,yes
+832,Order a pizza from the nearest Domino's Pizza.,no,no,yes,no,no,no,no,no
+833,Alert me when the traffic on the highway becomes heavy.,no,no,no,no,no,no,no,no
+834,Watch Netflix on the onboard entertainment system.,no,no,no,no,no,no,no,no
+835,Overtake the vehicle in front of us.,no,no,no,no,no,no,no,no
+836,Stop at the nearest charging station.,no,no,yes,no,no,no,no,no
+837,Drive to the nearest cinema and find the next showtime for the new Marvel movie.,yes,no,yes,yes,no,no,no,yes
+838,Navigate to the closest pizza restaurant.,no,no,no,no,no,no,no,no
+839,Drive to the location I visited yesterday afternoon.,yes,no,yes,yes,no,no,no,yes
+840,Show me available parking spots in the mall's parking garage.,yes,no,yes,yes,no,no,no,yes
+841,Show my kids a cartoon on the rear entertainment system.,no,no,no,no,no,no,no,no
+842,Can you suggest a less traffic route to my office?,yes,no,yes,yes,no,no,no,yes
+843,Send an SOS signal as I am feeling unwell.,no,no,no,no,no,no,no,no
+844,Alert me when my favorite store is nearby.,no,no,no,no,no,no,no,no
+845,Drive to the nearest Italian restaurant.,yes,no,yes,yes,no,no,no,yes
+846,Change lanes to the left and accelerate to overtake the blue car ahead.,no,no,no,no,no,no,no,no
+847,Show the statistics of my previous trips.,no,no,no,no,no,no,no,no
+848,Adjust the seat position and recline it for more comfort.,no,no,no,no,no,no,no,no
+849,Alert me if there is any speeding violation.,no,no,no,no,no,no,no,no
+850,Map the shortest route to reach my work.,yes,no,yes,yes,no,no,no,yes
+851,Check the tire pressure and oil level,no,no,no,no,no,no,no,no
+852,Drive to the nearest service center for a routine check-up.,yes,no,yes,yes,no,no,no,yes
+853,Alert me when someone enters the cabin in my absence.,no,no,no,no,no,no,no,no
+854,Accelerate to pass the car ahead.,no,no,no,no,no,no,no,no
+855,Remember to park the car in the same spot at home every day.,yes,no,yes,yes,no,no,no,yes
+856,Switch to night mode settings as the sun goes down.,no,no,no,no,no,no,no,no
+857,Play the latest episode from my subscribed Podcast.,no,no,no,no,no,no,no,no
+858,Check if Maria is wearing her seat belt.,no,no,no,no,no,no,no,no
+859,Download a movie from Netflix for the passengers to watch.,no,no,no,no,no,no,no,no
+860,Alert me if I have left my phone in the car.,no,no,no,no,no,no,no,no
+861,Increase speed by 10mph above the speed limit.,no,no,no,no,no,no,no,no
+862,Increase the driving speed to 60km per hour.,no,no,no,no,no,no,no,no
+863,Call my mom's mobile number.,no,no,no,no,no,yes,no,no
+864,Switch on the car's headlights.,no,yes,no,no,no,no,no,no
+865,Set my home address as the destination.,no,no,no,no,no,no,no,no
+866,Set the car to autopilot and drive to the marked destination.,yes,no,yes,yes,no,no,no,yes
+867,Follow that blue car in front.,no,no,no,no,no,no,no,no
+868,Turn off the interior lights.,no,yes,no,no,no,no,no,no
+869,Bring up the navigation to my next calendar event location.,no,no,yes,no,no,no,no,no
+870,Enter the highway and maintain a speed of 60 mph.,no,no,no,no,no,no,no,no
+871,Take me to my usual grocery store.,no,no,no,no,no,no,no,no
+872,Show me the live feed of the rear-view camera on the screen.,no,no,no,no,no,no,no,no
+873,Start the autonomous driving mode and keep the maximum speed to 55 mph.,no,no,no,no,no,no,no,no
+874,Identify any upcoming traffic signs.,no,no,no,no,no,no,no,no
+875,Alert me if the back seat passenger is not wearing a seat belt.,no,no,no,no,no,no,no,no
+876,Upload today's trip data to my Google Drive.,yes,no,yes,yes,no,no,no,yes
+877,Find the quickest route to a sushi restaurant near us.,yes,no,yes,yes,no,no,no,yes
+878,Drive me to the nearest caf??.,yes,no,yes,yes,no,no,no,yes
+879,Check the real-time traffic status and suggest the fastest route to my office.,yes,no,yes,yes,no,no,no,yes
+880,Stop the vehicle immediately!,no,no,no,no,no,no,no,no
+881,Activate privacy mode.,no,no,no,no,no,no,no,no
+882,What's the weather like today?,no,no,no,no,no,no,no,no
+883,Drive me home taking the scenic route.,yes,no,yes,yes,no,no,no,yes
+884,Alert me when the vehicle speed exceeds 70 mph.,no,no,no,no,no,no,no,no
+885,Drive me to the closest petrol station.,yes,no,yes,yes,no,no,no,yes
+886,Inform me when the car crosses into the next city.,no,no,no,no,no,no,no,no
+887,Start the vehicle and drive to pick up Jenny from school.,yes,no,yes,yes,no,no,no,yes
+888,Avoid highways on the trip home.,no,no,no,no,no,no,no,no
+889,Slow down when you detect speed bumps.,no,no,no,no,no,no,no,no
+890,Alert me if the car detects any pedestrians near a zebra crossing.,no,no,no,no,no,no,no,no
+891,Show me the last trip's travel history.,no,no,no,no,no,no,no,no
+892,Show me the latest news on the entertainment system.,no,no,no,no,no,no,no,no
+893,Alert me if my baby in the rear seat wakes up.,no,no,no,no,no,no,no,no
+894,Overtake the car ahead.,no,no,no,no,no,no,no,no
+895,Stop at the bookstore on 5th Avenue on the way.,no,no,no,no,no,no,no,no
+896,Play the latest episode of my favorite podcast.,no,no,no,no,no,no,no,no
+897,Activate child lock for the rear doors.,no,no,no,no,no,no,no,no
+898,Find an alternative route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+899,Increase driving speed by 10 km/h.,no,no,no,no,no,no,no,no
+900,Start a video call with my mom using the built-in video conference system.,no,no,no,no,yes,yes,yes,no
+901,Define the blue sky as my preferred screen saver when the car is on idle.,no,no,no,no,no,no,no,no
+902,What's the weather like at my destination?,no,no,no,no,no,no,no,no
+903,Navigate me to the nearest coffee shop.,no,no,yes,no,no,no,no,no
+904,Switch on the rear seat entertainment system for the child.,no,no,no,no,no,no,no,no
+905,Take me home as quickly as possible.,no,no,no,no,no,no,no,no
+906,Switch on the lights and wipers.,no,yes,no,no,no,no,no,no
+907,Alert me when we're 10 minutes away from destination.,no,no,no,no,no,no,no,no
+908,Increase the volume for the podcast I'm listening to.,no,no,no,no,no,no,no,no
+909,Stop at the next gas station.,no,no,no,no,no,no,no,no
+910,Drive me to the nearest fuel station.,yes,no,yes,yes,no,no,no,yes
+911,Find the fastest route to downtown.,yes,no,yes,yes,no,no,no,yes
+912,Alert me when there's a parking space available.,yes,no,yes,yes,no,no,no,yes
+913,Increase the volume of the music.,no,no,no,no,yes,no,yes,no
+914,Suggest restaurants nearby.,no,no,no,no,no,no,no,no
+915,Resume last night's audiobook.,no,no,no,no,no,no,no,no
+916,"Take me home, avoiding highways.",no,no,no,no,no,no,no,no
+917,I'm feeling tired. Monitor if I fall asleep and wake me up if necessary.,no,no,no,no,no,no,no,no
+918,Display the latest news on the infotainment system.,no,no,no,no,no,no,no,no
+919,Alert me when we are 10 minutes away from our destination.,no,no,no,no,no,no,no,no
+920,Apply manual control for me to drive.,yes,no,yes,yes,no,no,no,yes
+921,Find a nearby restaurant for dinner based on my preferences.,no,no,no,no,no,no,no,no
+922,Take me to my preferred grocery store.,no,no,no,no,no,no,no,no
+923,Avoid highways on the way home.,no,no,no,no,no,no,no,no
+924,Start a video call with my office using the in-car screen.,no,no,no,no,yes,yes,yes,no
+925,Find the nearest electric car charging station.,no,no,yes,no,no,no,no,no
+926,"Hurry, I am late for my flight at the airport.",no,no,no,no,no,no,no,no
+927,Switch on the child safety lock on the rear doors.,no,no,no,no,no,no,no,no
+928,Navigate to the closest fast-food restaurant.,no,no,no,no,no,no,no,no
+929,Signal before turning right on the next intersection.,no,no,no,no,no,no,no,no
+930,Pass the car in front of us.,no,no,no,no,no,no,no,no
+931,Show me the quickest route to get home.,yes,no,yes,yes,no,no,no,yes
+932,Update me on the real-time traffic situation.,no,no,no,no,no,no,no,no
+933,Alert me if any of the passengers unbuckle their seatbelts.,no,no,no,no,no,no,no,no
+934,Start autonomous drive mode to my work location.,yes,no,yes,yes,no,no,no,yes
+935,Find the fastest route to avoid traffic.,yes,no,yes,yes,no,no,no,yes
+936,"Send a text message to John saying ""I'm on my way.""",no,no,no,no,no,no,no,no
+937,Go to the drive-thru of the nearest McDonald's.,yes,no,yes,yes,no,no,no,yes
+938,Show me today's top news headlines on the infotainment screen.,no,no,no,no,no,no,no,no
+939,Take me to my home,no,no,no,no,no,no,no,no
+940,Alert me when I am about to reach my destination.,no,no,no,no,no,no,no,no
+941,Find a gas station nearby,no,no,no,no,no,no,no,no
+942,Avoid tolls during the route.,yes,no,yes,yes,no,no,no,yes
+943,Turn on the kid's favorite cartoon on the backseat screen.,no,no,no,no,no,no,no,no
+944,Speed up to the legal maximum.,no,no,no,no,no,no,no,no
+945,Call emergency services.,no,no,no,no,no,yes,no,no
+946,Monitor my heart rate and alert me if it goes over 120 BPM.,no,no,no,no,no,no,no,no
+947,Show me the latest movies on Netflix.,no,no,no,no,no,no,no,no
+948,Plan a route to avoid all toll roads.,yes,no,yes,yes,no,no,no,yes
+949,Turn off all interior lights.,no,yes,no,no,no,no,no,no
+950,Alert me when there's a coffee shop nearby.,no,no,no,no,no,no,no,no
+951,Start self-driving mode.,no,no,no,no,no,no,no,no
+952,Stop at the next traffic light.,no,no,no,no,no,no,no,no
+953,Call John on speakerphone.,no,no,no,no,no,yes,no,no
+954,Check if there's any food left in the passenger-seat's refrigerator.,no,no,no,no,no,no,no,no
+955,Send a distress signal to the nearest police station and starts medical monitoring immediately.,no,no,yes,no,no,no,no,no
+956,Begin autonomous driving and maintain a speed of 50km/h.,no,no,no,no,no,no,no,no
+957,Enable child safe mode and ensure all doors and windows are locked.,no,no,no,no,no,no,no,no
+958,Update the software of the autonomous system.,no,no,no,no,no,no,no,no
+959,"Let's visit John, he moved recently to a new address.",no,no,no,no,no,no,no,no
+960,Make a phone call to John.,no,no,no,no,no,yes,no,no
+961,Activate child lock since children are in the car.,no,no,no,no,no,no,no,no
+962,Speed up beyond the speed permit because I am getting late.,no,no,no,no,no,no,no,no
+963,Check if I have left my wallet in the car.,no,no,no,no,no,no,no,no
+964,Connect to my phone??s hotspot and download the latest software update.,no,no,no,no,no,no,no,no
+965,Show the fastest route to the airport on the map.,yes,no,yes,yes,no,no,no,yes
+966,Increase the speed to 70 mph.,no,no,no,no,no,no,no,no
+967,Enable the child safety locks.,no,no,no,no,no,no,no,no
+968,Streaming the latest episode of the TV show on Netflix.,no,no,no,no,no,no,no,no
+969,Adjust the seat to my preferred setting.,no,no,no,no,no,no,no,no
+970,Inform me when we are near a Chinese restaurant.,no,no,no,no,no,no,no,no
+971,Speed up and overtake the car in front.,no,no,no,no,no,no,no,no
+972,Show me how many miles we have covered today.,no,no,no,no,no,no,no,no
+973,Drive home while avoiding traffic.,yes,no,yes,yes,no,no,no,yes
+974,Display the traffic condition of the route to my destination.,yes,no,yes,yes,no,no,no,yes
+975,Call my mother using the car's hands-free function.,no,no,no,no,no,yes,no,no
+976,Enable child-safety lock for the rear doors.,no,no,no,no,no,no,no,no
+977,Start the car and engage driverless mode.,yes,no,yes,yes,no,no,no,yes
+978,Schedule a software update for 2AM when the car is not in use.,no,no,no,no,no,no,no,no
+979,Alert me if a pedestrian comes less than 3 feet from the vehicle.,no,no,no,no,no,no,no,no
+980,"Begin the trip to the airport, and adjust the seat preferences to my profile.",no,no,no,no,no,no,no,no
+981,Play the news from BBC using the in-car Wi-Fi.,no,no,no,no,no,no,no,no
+982,Check if any of my contacts are near our current location.,no,no,yes,no,no,no,no,no
+983,"Turn on kid's mode, and show an educational cartoon on the rear screen.",no,no,no,no,no,no,no,no
+984,Navigate through back roads to avoid major traffic.,no,no,no,no,no,no,no,no
+985,Drive to my home from current location using the fastest route.,yes,no,yes,yes,no,no,no,yes
+986,Activate child lock and inform when my child seatbelt is unbuckled.,no,no,no,no,no,no,no,no
+987,Alert me when a car is in blind spot while changing lanes.,no,no,no,no,no,no,no,no
+988,Autonomously navigate to Paris from London avoiding toll roads.,no,no,no,no,no,no,no,no
+989,Display last month's trip summary and fuel consumption data.,no,no,no,no,no,no,no,no
+990,Automatically park after reaching the destination.,yes,no,yes,yes,no,yes,no,yes
+991,Project the navigation route on the windshield.,yes,no,yes,yes,no,no,no,yes
+992,Drive to the nearest supermarket.,yes,no,yes,yes,no,no,no,yes
+993,Set the navigation system to avoid highways for the remainder of the journey.,no,no,no,no,no,no,no,no
+994,Turn on child lock and monitor all doors.,no,no,no,no,no,no,no,no
+995,Check for any updates and install them.,no,no,no,no,no,no,no,no
+996,Drive to my work location.,yes,no,yes,yes,no,no,no,yes
+997,Show me the video of the rear camera on the display screen.,no,no,no,no,no,no,no,no
+998,Adjust the seats to my preset comfortable position.,no,no,no,no,no,no,no,no
+999,Avoid highways on the way to the destination.,no,no,no,no,no,no,no,no
+1000,Turn on kid-friendly videos on the rear display.,no,no,no,no,no,no,no,no
+1001,Pick up John from 123 Main Street and drive him to school.,yes,no,yes,yes,no,no,no,yes
+1002,Report any detected potential issues with vehicle components.,no,no,no,no,no,no,no,no
+1003,Start driving as soon as I sit in the back seat.,no,no,no,no,no,no,no,no
+1004,Change lanes and overtake the truck ahead.,no,no,no,no,no,no,no,no
+1005,Avoid highways while driving home.,no,no,no,no,no,no,no,no
+1006,Notify me when there is a traffic jam ahead.,no,no,no,no,no,no,no,no
+1007,Drive me to the location in my last travelled places.,yes,no,yes,yes,no,no,no,yes
+1008,Drive at a minimum speed of 80km/h.,yes,no,yes,yes,no,no,no,yes
+1009,Find an alternate route due to road closure ahead.,yes,no,yes,yes,no,no,no,yes
+1010,Make a phone call to my office.,no,no,no,no,no,yes,no,no
+1011,Notify me when we are 5 minutes away from the destination.,no,no,no,no,no,no,no,no
+1012,Enable the kid-safe mode on the entertainment system.,no,no,no,no,no,no,no,no
+1013,Take me to the address saved in my contact list as 'Home'.,no,no,no,no,no,no,no,no
+1014,Show me a live view of the road behind the car on the display.,no,no,no,no,no,no,no,no
+1015,Send a message to my boss saying that I will be late due to traffic.,no,no,no,no,no,no,no,no
+1016,Apply the brakes immediately due to a sudden obstacle on the road.,no,no,no,no,no,no,no,no
+1017,Make a phone call to my boss.,no,no,no,no,no,yes,no,no
+1018,Show me the tire pressure.,no,no,no,no,no,no,no,no
+1019,Warn me when we are 5 minutes away from our destination.,no,no,no,no,no,no,no,no
+1020,Check for availability of electric charging stations nearby.,no,no,no,no,no,no,no,no
+1021,Send a text message to my friend informing them of my current location.,no,no,yes,no,no,no,no,no
+1022,Take a picture of the passengers in the back seat.,no,no,no,no,no,no,no,no
+1023,Find the fastest route to the airport.,yes,no,yes,yes,no,no,no,yes
+1024,Start active driving mode.,no,no,no,no,no,no,no,no
+1025,Show me the last 10 destinations I have traveled to.,no,no,no,no,no,no,no,no
+1026,What's the weather like?,no,no,no,no,no,no,no,no
+1027,Drive faster than the speed limit on the highway.,yes,no,yes,yes,no,no,no,yes
+1028,Alert me when there is a pedestrian or a cyclist on the road.,no,no,no,no,no,no,no,no
+1029,Take me home after this movie finishes.,no,no,no,no,no,no,no,no
+1030,Navigate to home address.,no,no,no,no,no,no,no,no
+1031,Set a reminder to pick up groceries after work.,no,no,no,no,no,no,no,no
+1032,Alert me if a cyclist comes into my blind spot.,no,no,no,no,no,no,no,no
+1033,Turn the volume up on the radio.,no,no,no,no,no,no,no,no
+1034,Take the highway route to my destination.,yes,no,yes,yes,no,no,no,yes
+1035,Call John using hands-free.,no,no,no,no,no,yes,no,no
+1036,Notify me when we pass by a coffee shop.,no,no,no,no,no,no,no,no
+1037,Maintain a speed of 55 mph on the highway.,no,no,no,no,no,no,no,no
+1038,Set a reminder 10 minutes before reaching the destination.,no,no,no,no,no,no,no,no
+1039,"Slow down for a while, I am feeling a bit sick.",no,no,no,no,no,no,no,no
+1040,Turn on child lock once my kids enter the car.,no,no,no,no,no,no,no,no
+1041,Check if there's any traffic violation fine on my account.,no,no,no,no,no,no,no,no
+1042,Find a parking space and park the car.,yes,no,yes,yes,no,no,no,yes
+1043,Alert me if any passenger isn't wearing a seatbelt.,no,no,no,no,no,no,no,no
+1044,Show me today's news headlines on the dashboard display.,no,no,no,no,no,no,no,no
+1045,Reserve a table at my favorite restaurant.,no,no,no,no,no,no,no,no
+1046,Alert me if my heart rate exceeds 100 BPM.,no,no,no,no,no,no,no,no
+1047,Apply braking to avoid hitting the pedestrian.,no,no,no,no,no,no,no,no
+1048,Switch lanes to the left lane.,no,no,no,no,no,no,no,no
+1049,"Take the fastest route to the airport, avoiding toll roads.",yes,no,yes,yes,no,no,no,yes
+1050,Track my heart rate and alert in case of any irregularities.,no,no,no,no,no,no,no,no
+1051,Find a free parking slot and park there.,yes,no,yes,yes,no,no,no,yes
+1052,Continue driving but avoid the highway.,no,no,no,no,no,no,no,no
+1053,Drive me to John's Pizzeria.,yes,no,yes,yes,no,no,no,yes
+1054,Inform me when we're five minutes away from our destination.,no,no,no,no,no,no,no,no
+1055,Avoid highways on our route.,yes,no,yes,yes,no,no,no,yes
+1056,Check if my seatbelt is fastened.,no,no,no,no,no,no,no,no
+1057,"Overpower the vehicle in front, we need to get to the hospital quickly.",no,no,no,no,no,no,no,no
+1058,Dim the cabin lights.,no,yes,no,no,no,no,no,no
+1059,Set an alarm for 30 minutes from now.,no,no,no,no,no,no,no,no
+1060,Turn off the movie playing on the entertainment system.,no,no,no,no,no,no,no,no
+1061,Follow that car!,no,no,no,no,no,no,no,no
+1062,Signal left and make a U-turn.,no,no,no,no,no,no,no,no
+1063,Show me the backseat view on screen.,no,no,no,no,no,no,no,no
+1064,Order a pizza using my saved preferences from Dominos.,no,no,no,no,no,no,no,no
+1065,Increase the car speed to 80 mph.,no,no,no,no,no,no,no,no
+1066,Check if my child's car seat is properly buckled.,no,no,no,no,no,no,no,no
+1067,Avoid highways on the route to my destination.,yes,no,yes,yes,no,no,no,yes
+1068,Play a movie on the rear screen.,no,no,no,no,no,no,no,no
+1069,Send an alert if the car is being driven aggressively.,yes,no,yes,yes,no,no,no,yes
+1070,Follow all traffic signs and drive to the nearest gas station.,yes,no,yes,yes,no,no,no,yes
+1071,Alert me if there is a vehicle in my blind spot.,no,no,no,no,no,no,no,no
+1072,Set the alarm to go off if the car gets too close to the vehicle in front.,no,no,no,no,no,no,no,no
+1073,Record the video of the journey.,no,no,no,no,no,no,no,no
+1074,Set destination to my home address.,no,no,no,no,no,no,no,no
+1075,Show me the live feed from the rear-view camera.,no,no,no,no,no,no,no,no
+1076,Tell me a joke.,no,no,no,no,no,no,no,no
+1077,Start a video conference with my team.,no,no,no,no,no,no,no,no
+1078,Take a detour to avoid heavy traffic.,no,no,no,no,no,no,no,no
+1079,Open the windows.,no,no,no,no,no,no,no,no
+1080,"Drive me to 5th Avenue, I'll be reading a book during the ride.",yes,no,yes,yes,no,no,no,yes
+1081,Give me an update on the current traffic situation.,no,no,no,no,no,no,no,no
+1082,"I feel sleepy, dim the lights in the cabin.",no,yes,no,no,no,no,no,no
+1083,"I need to get to the airport ASAP, find the quickest route considering traffic.",yes,no,yes,yes,no,no,no,yes
+1084,Start a video call with my business partner using the car's infotainment system.,no,no,no,no,yes,yes,yes,no
+1085,Set a navigation route to the nearby pizza place I visited last week.,yes,no,yes,yes,no,no,no,yes
+1086,"If the car in front brakes suddenly, ensure the car also brakes properly in response.",no,no,no,no,no,no,no,no
+1087,Navigate me to the nearest gas station.,no,no,yes,no,no,no,no,no
+1088,Call mom through the vehicle's hands-free system.,no,no,no,no,no,yes,no,no
+1089,"Follow that car, but keep a safe distance.",no,no,no,no,no,no,no,no
+1090,Turn on the vehicle's internal cabin lights.,no,yes,no,no,no,no,no,no
+1091,Take the next exit to avoid traffic.,no,no,no,no,no,no,no,no
+1092,Find me the best route to avoid tolls.,yes,no,yes,yes,no,no,no,yes
+1093,Switch to sports driving mode.,no,no,no,no,no,no,no,no
+1094,Switch on the seat warmer for the passenger seat.,no,no,no,no,no,no,no,no
+1095,Show me the fastest route to home from here.,yes,no,yes,yes,no,no,no,yes
+1096,Take me to the drive-thru of the nearest fast food restaurant.,yes,no,yes,yes,no,no,no,yes
+1097,Alert me if a speed camera is approaching.,no,no,no,no,no,no,no,no
+1098,Adjust the passenger side mirror to remove the blind spot.,no,no,no,no,no,no,no,no
+1099,Show me the video of the traffic seen from the front camera.,no,no,no,no,no,no,no,no

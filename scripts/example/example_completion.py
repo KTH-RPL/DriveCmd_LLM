@@ -1,12 +1,14 @@
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # This software may be used and distributed according to the terms of the Llama 2 Community License Agreement.
+import os, sys
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
+sys.path.append(BASE_DIR)
 
 from typing import Optional
 
 import fire
 
 from llama import Llama
-
 
 def main(
     ckpt_dir: str,

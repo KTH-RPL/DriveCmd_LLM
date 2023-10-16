@@ -15,7 +15,7 @@ from llama import Llama
 import pandas as pd
 
 # custom
-from prompt import *
+from utils.prompt import *
 import torch.distributed as dist
 import re, time
 import numpy as np
@@ -23,7 +23,7 @@ from tabulate import tabulate
 
 def read_all_command(path: str):
     commands_df = pd.read_csv(path, encoding='ISO-8859-1')
-    commands_df.replace({'Yes': 1, 'No': 0}, inplace=True)
+    commands_df.replace({'Yes': 1, 'No': 0, 'yes':1, 'no': 0}, inplace=True)
     preview = commands_df.head()
     # Detailed analysis of each command
 
@@ -68,6 +68,29 @@ def evaluate(pred, gt):
         acc.append(np.mean((pred[:, i] == gt[:, i]) & (pred[:, i] != -1)))
     return acc
 
+def print_result(pred, gt, tasks):
+    acc = evaluate(pred, gt[:len(pred)])
+    printed_data = []
+    for i, task in enumerate(tasks):
+        printed_data.append([task, acc[i]])
+    printed_data.append(["Overall", np.mean(acc)])
+    print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
+
+def get_completion_from_user_input(user_input, generator, provide_detailed_explain=False, provide_few_shots = False):
+    messages =  [  
+    {'role':'system', 'content': system_message},
+    ]
+
+    if provide_detailed_explain:
+        messages.append({'role':'assistant', 'content': f"{delimiter}{assitant}{delimiter}"})
+
+    if provide_few_shots:
+        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
+        messages.append({'role':'assistant', 'content': few_shot_assistant_1})
+        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
+        messages.append({'role':'assistant', 'content': few_shot_assistant_2})
+
+    messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}"})
 
 def main(
     ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
@@ -81,6 +104,8 @@ def main(
     max_batch_size: int = 6, # TODO changed according to the memory
     max_gen_len: Optional[int] = None,
     debug_len: int = 10, # TODO! if it's really big may have problem with memory
+    provide_detailed_explain: bool = False,
+    provide_few_shots: bool = False,
 ):
     
     generator = Llama.build(
@@ -96,49 +121,42 @@ def main(
 
     instructions = []
     for i, command in enumerate(commands):
-        instructions.append([{"role": "system", "content": FORMAT_PROMPT}, 
-                             {"role": "user", "content": DEFAULT_SYSTEM_PROMPT + command + FORMAT_PROMPT}])
+        response = get_completion_from_user_input(command, provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots )
         if i>debug_len: # debugging now
             break
 
-    print("Start generating....")
-    results = generator.chat_completion(
-        instructions,  # type: ignore
-        max_gen_len=max_gen_len,
-        temperature=temperature,
-        top_p=top_p,
-    )
+    # print("Start generating....")
+    # results = generator.chat_completion(
+    #     instructions,  # type: ignore
+    #     max_gen_len=max_gen_len,
+    #     temperature=temperature,
+    #     top_p=top_p,
+    # )
 
-    print("Here are results...")
-    all_results = []
-    all_pred = []
-    rank = dist.get_rank()
-    if rank == 0:
-        for i, result in enumerate(results):
-            print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
-            print(f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}")
-            all_results.append(result['generation'])
+    # print("Here are results...")
+    # all_results = []
+    # all_pred = []
+    # rank = dist.get_rank()
+    # if rank == 0:
+    #     for i, result in enumerate(results):
+    #         print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
+    #         print(f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}")
+    #         all_results.append(result['generation'])
 
-        with open("output_content.txt", "w") as f:
-            # with '---' as separator
-            f.write(f"""\n""".join([str(result) for result in all_results]))
+    #     with open("output_content.txt", "w") as f:
+    #         # with '---' as separator
+    #         f.write(f"""\n""".join([str(result) for result in all_results]))
 
-        for i, result in enumerate(all_results):
-            pred = extract_outputs(result, i)
-            # if pred is None: TODO, save i then rerun the command again.
-            all_pred.append(pred)
+    #     for i, result in enumerate(all_results):
+    #         pred = extract_outputs(result, i)
+    #         # if pred is None: TODO, save i then rerun the command again.
+    #         all_pred.append(pred)
 
-    print("Saving results....")
-    if rank == 0:
-        all_pred = np.vstack(all_pred)
-        np.save("pred_res.npy", all_pred)
-        acc = evaluate(all_pred, gt_array[:len(all_pred)])
-        printed_data = []
-
-        for i, task in enumerate(tasks):
-            printed_data.append([task, acc[i]])
-        printed_data.append(["Overall", np.mean(acc)])
-        print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
+    # print("Saving results....")
+    # if rank == 0:
+    #     all_pred = np.vstack(all_pred)
+    #     np.save("pred_res.npy", all_pred)
+    #     print_result(all_pred, gt_array[:len(all_pred)], tasks)
 
 if __name__ == "__main__":
     start_time = time.time()
