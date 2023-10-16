@@ -34,18 +34,17 @@ def read_all_command(path: str):
 
 def extract_outputs(text, i=-1):
     
-    pattern = r"//The output is \[([0-1\s]+)\]//"
+    pattern = r"Output is //\[([0-1\s]+)\]//"
     matches = re.findall(pattern, str(text))
 
     if len(matches) == 0:
-        pattern = r"The output is \[([0-1\s]+)\]"
-        matches = re.findall(pattern, str(text))
-
-    if len(matches) == 0:
-        pattern = r"would be \[([0-1\s]+)\]"
+        pattern = r"//\[([0-1\s]+)\]//"
         matches = re.findall(pattern, str(text))
     if len(matches) == 0:
-        print(f"No match found in {text}, Need check later at {i}.")
+        pattern = r"would be //\[([0-1\s]+)\]//"
+        matches = re.findall(pattern, str(text))
+    if len(matches) == 0:
+        print(f"No match found in {bc.FAIL}{text}{bc.ENDC}, Need check later at {i}.")
         return np.array([-1 for _ in range(8)])
     
     np_res = [np.fromstring(match, dtype=int, sep=' ') for match in matches][0]
@@ -76,7 +75,7 @@ def print_result(pred, gt, tasks):
     printed_data.append(["Overall", np.mean(acc)])
     print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
 
-def get_completion_from_user_input(user_input, generator, provide_detailed_explain=False, provide_few_shots = False):
+def get_completion_from_user_input(user_input, generator, max_gen_len, temperature, top_p, provide_detailed_explain=False, provide_few_shots = False):
     messages =  [  
     {'role':'system', 'content': system_message},
     ]
@@ -91,6 +90,13 @@ def get_completion_from_user_input(user_input, generator, provide_detailed_expla
         messages.append({'role':'assistant', 'content': few_shot_assistant_2})
 
     messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}"})
+    response = generator.chat_completion(
+        [messages],  # type: ignore
+        max_gen_len=max_gen_len,
+        temperature=temperature,
+        top_p=top_p,
+    )
+    return response[0]['generation']['content'], response[0]
 
 def main(
     ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
@@ -112,51 +118,44 @@ def main(
         ckpt_dir=ckpt_dir,
         tokenizer_path=tokenizer_path,
         max_seq_len=max_seq_len,
-        max_batch_size=max(max_batch_size, debug_len*2),
+        max_batch_size=max_batch_size,
     )
     print(f"""Model we use: {bc.OKCYAN}{ckpt_dir.split("/")[-1]}{bc.ENDC}""")
 
     commands, tasks, gt_array = read_all_command(csv_path)
     print("Read all commands....")
 
-    instructions = []
+    all_outputs = []
+    all_results = []
     for i, command in enumerate(commands):
-        response = get_completion_from_user_input(command, provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots )
+        response, style_response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
+                                                  provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots)
+        
+        print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
+        print(f"> {response}")
+        all_results.append(response)
+        all_outputs.append(style_response)
         if i>debug_len: # debugging now
             break
 
-    # print("Start generating....")
-    # results = generator.chat_completion(
-    #     instructions,  # type: ignore
-    #     max_gen_len=max_gen_len,
-    #     temperature=temperature,
-    #     top_p=top_p,
-    # )
 
-    # print("Here are results...")
-    # all_results = []
-    # all_pred = []
-    # rank = dist.get_rank()
-    # if rank == 0:
-    #     for i, result in enumerate(results):
-    #         print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
-    #         print(f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}")
-    #         all_results.append(result['generation'])
+    print("Here are results...")
+    all_pred = []
+    rank = dist.get_rank()
+    if rank == 0:
+        with open("output_content.txt", "w") as f:
+            f.write(f"""\n""".join([str(result) for result in all_outputs]))
 
-    #     with open("output_content.txt", "w") as f:
-    #         # with '---' as separator
-    #         f.write(f"""\n""".join([str(result) for result in all_results]))
+        for i, result in enumerate(all_results):
+            pred = extract_outputs(result, i)
+            # if pred is None: TODO, save i then rerun the command again.
+            all_pred.append(pred)
 
-    #     for i, result in enumerate(all_results):
-    #         pred = extract_outputs(result, i)
-    #         # if pred is None: TODO, save i then rerun the command again.
-    #         all_pred.append(pred)
-
-    # print("Saving results....")
-    # if rank == 0:
-    #     all_pred = np.vstack(all_pred)
-    #     np.save("pred_res.npy", all_pred)
-    #     print_result(all_pred, gt_array[:len(all_pred)], tasks)
+    print("Saving results....")
+    if rank == 0:
+        all_pred = np.vstack(all_pred)
+        np.save("pred_res.npy", all_pred)
+        print_result(all_pred, gt_array[:len(all_pred)], tasks)
 
 if __name__ == "__main__":
     start_time = time.time()

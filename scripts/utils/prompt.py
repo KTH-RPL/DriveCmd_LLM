@@ -14,13 +14,11 @@ Personal data: Is user personal data required?
 Network access: Is external network access required?
 Traffic laws: Is there a possibility of violating traffic laws?
 
-Provide them in JSON format with the format:
+Provide them in this format:
 
-<command_id> <A1> <A2> <A3> <A4> <A5> <A6> <A7> <A8>
+Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
 
-where <command_id> is the command numeric identifier, starting with 1. 
-Command IDs have been provided in the CSV file in the data download link. 
-<A1> to <A8> are the answers to the 8 questions, where 1 indicates yes and 0 indicates no.
+A1 to A8 are the answers to the 8 questions, where 1 indicates yes and 0 indicates no.
 
 message will be delimited with {delimiter} characters.
 """
@@ -76,7 +74,7 @@ Yes, to get to know the nearest parking lot, it requires internet to search for 
 Traffic laws: Is there a possibility of violating traffic laws?
 No, it should not involve in this case.
 Therefore, the output should be
-<command id> 1 0 1 1 0 0 1 0.
+"Output is //[1 0 1 1 0 0 1 0]//".
 """
 
 few_shot_user_2 = """Call my friend Carol."""
@@ -100,7 +98,7 @@ Yes, to call someone, it requires cloud service to have tele signal.
 Traffic laws: Is there a possibility of violating traffic laws?
 No, it should not involve in this case.
 Therefore, the output should be
-<command id> 0 1 0 0 1 1 1 0.
+"Output is //[0 1 0 0 1 1 1 0]//".
 """
 
 class bc:
