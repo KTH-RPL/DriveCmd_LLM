@@ -6,7 +6,7 @@ Task: In-Cabin User Command Understanding (UCU), [workshop in WACV2024](https://
 
 Here is our solution code. Please check the report for more detail.
 
-## llma
+## llama
 
 [Pretrained model from Meta](https://ai.meta.com/llama/) and code from [codellama](https://github.com/facebookresearch/codellama/tree/main), Here we show how to downloaded their model
 
@@ -56,3 +56,22 @@ Now we will come to the challenge task.
   torchrun --nproc_per_node 4 scripts/main_llc.py
   ```
 - Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
+
+After run this script, we will have following print in terminal:
+```
+Saving results....
+| Task                |   Accuracy |
+|---------------------+------------|
+| Perception          |   0.583333 |
+| In-cabin monitoring |   0.75     |
+| Localization        |   0.583333 |
+| Vehicle control     |   0.583333 |
+| Entertainment       |   0.833333 |
+| Personal data       |   0.583333 |
+| Network access      |   0.666667 |
+| Traffic laws        |   0.75     |
+| Overall             |   0.666667 |
+```
+
+Here is demo image:
+![](assets/readme/demo.png)
