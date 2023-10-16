@@ -11,7 +11,7 @@ import pandas as pd
 # custom
 from prompt import *
 import torch.distributed as dist
-import re
+import re, time
 import numpy as np
 from tabulate import tabulate
 
@@ -29,18 +29,20 @@ def read_all_command(path: str):
 def extract_outputs(text):
     
     pattern = r"//The output is \[([0-1\s]+)\]//"
-    matches = re.findall(pattern, text)
+    matches = re.findall(pattern, str(text))
 
     if len(matches) == 0:
         pattern = r"The output is \[([0-1\s]+)\]"
-        matches = re.findall(pattern, text)
+        matches = re.findall(pattern, str(text))
 
     if len(matches) == 0:
         pattern = r"would be \[([0-1\s]+)\]"
-        matches = re.findall(pattern, text)
+        matches = re.findall(pattern, str(text))
+    if len(matches) == 0:
+        print(f"No match found in {text}, Need check later.")
+        return np.array([-1 for _ in range(8)])
     
     numpy_arrays = [np.fromstring(match, dtype=int, sep=' ') for match in matches]
-    
     return numpy_arrays[0]
 
 # accuracy gt_array and all_pred
@@ -52,10 +54,9 @@ def evaluate(pred, gt):
     assert pred.shape[0] == num_samples
     assert pred.shape[1] == num_tasks
 
-    # calculate accuracy based on each task
     acc = []
     for i in range(num_tasks):
-        acc.append(np.mean(pred[:, i] == gt[:, i]))
+        acc.append(np.mean((pred[:, i] == gt[:, i]) & (pred[:, i] != -1)))
     return acc
 
 
@@ -107,16 +108,15 @@ def main(
         for i, result in enumerate(results):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
             print(f"> {result['generation']['role'].capitalize()}: {result['generation']['content']}")
-            all_results.append(result)
+            all_results.append(result['generation'])
 
         with open("output_content.txt", "w") as f:
             # with '---' as separator
-            f.write(f"""{"-"*20}\n""".join([str(result) for result in all_results]))
+            f.write(f"""\n""".join([str(result) for result in all_results]))
 
         for result in all_results:
             pred = extract_outputs(result)
             # if pred is None: TODO, save i then rerun the command again.
-            print(f"pred: {pred}")
             all_pred.append(pred)
 
     print("Saving results....")
@@ -132,4 +132,6 @@ def main(
         print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
 
 if __name__ == "__main__":
+    start_time = time.time()
     fire.Fire(main)
+    print(f"Time used: {time.time() - start_time:.2f} s")
