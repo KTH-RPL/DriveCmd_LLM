@@ -42,8 +42,11 @@ def extract_outputs(text):
         print(f"No match found in {text}, Need check later.")
         return np.array([-1 for _ in range(8)])
     
-    numpy_arrays = [np.fromstring(match, dtype=int, sep=' ') for match in matches]
-    return numpy_arrays[0]
+    np_res = [np.fromstring(match, dtype=int, sep=' ') for match in matches][0]
+    if np_res.shape[0] != 8:
+        print(f"Wrong shape in {text}, Need check later.")
+        return np.array([-1 for _ in range(8)])
+    return np_res
 
 # accuracy gt_array and all_pred
 def evaluate(pred, gt):
@@ -121,7 +124,7 @@ def main(
 
     print("Saving results....")
     if rank == 0:
-        all_pred = np.array(all_pred)
+        all_pred = np.vstack(all_pred)
         np.save("pred_res.npy", all_pred)
         acc = evaluate(all_pred, gt_array[:len(all_pred)])
         printed_data = []
