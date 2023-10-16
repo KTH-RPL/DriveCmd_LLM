@@ -1,1 +1,3 @@
 model/*
+codellama.egg-info/*
+*.pyc
