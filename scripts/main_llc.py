@@ -1,5 +1,11 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-# This software may be used and distributed according to the terms of the Llama 2 Community License Agreement.
+"""
+# Created: 2023-10-16 18:34
+# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
+# Author: Kin ZHANG  (https://kin-zhang.github.io/)
+
+# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
+# For a copy, see <https://opensource.org/licenses/MIT>.
+"""
 
 from typing import Optional
 
@@ -26,7 +32,7 @@ def read_all_command(path: str):
     gt_array = commands_df[task_name].values
     return all_commands_only, task_name, gt_array
 
-def extract_outputs(text):
+def extract_outputs(text, i=-1):
     
     pattern = r"//The output is \[([0-1\s]+)\]//"
     matches = re.findall(pattern, str(text))
@@ -39,12 +45,12 @@ def extract_outputs(text):
         pattern = r"would be \[([0-1\s]+)\]"
         matches = re.findall(pattern, str(text))
     if len(matches) == 0:
-        print(f"No match found in {text}, Need check later.")
+        print(f"No match found in {text}, Need check later at {i}.")
         return np.array([-1 for _ in range(8)])
     
     np_res = [np.fromstring(match, dtype=int, sep=' ') for match in matches][0]
     if np_res.shape[0] != 8:
-        print(f"Wrong shape in {text}, Need check later.")
+        print(f"Wrong shape in {text}, Need check later at {i}.")
         return np.array([-1 for _ in range(8)])
     return np_res
 
@@ -117,8 +123,8 @@ def main(
             # with '---' as separator
             f.write(f"""\n""".join([str(result) for result in all_results]))
 
-        for result in all_results:
-            pred = extract_outputs(result)
+        for i, result in enumerate(all_results):
+            pred = extract_outputs(result, i)
             # if pred is None: TODO, save i then rerun the command again.
             all_pred.append(pred)
 
