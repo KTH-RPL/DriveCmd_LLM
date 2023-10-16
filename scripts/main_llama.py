@@ -100,11 +100,10 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
 
 def main(
     ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
-    tokenizer_path: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct/tokenizer.model",
     # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-13b-Instruct",
-    # tokenizer_path: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-13b-Instruct/tokenizer.model",
+    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-34b-Instruct",
     csv_path: str = "assets/ucu.csv",
-    temperature: float = 0.2,
+    temperature: float = 0.0,
     top_p: float = 0.95,
     max_seq_len: int = 512, # if the sentence is really long, should consider longer this one.
     max_batch_size: int = 6, # TODO changed according to the memory
@@ -116,11 +115,12 @@ def main(
     
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
-        tokenizer_path=tokenizer_path,
+        tokenizer_path=ckpt_dir+"/tokenizer.model",
         max_seq_len=max_seq_len,
         max_batch_size=max_batch_size,
     )
-    print(f"""Model we use: {bc.OKCYAN}{ckpt_dir.split("/")[-1]}{bc.ENDC}""")
+    model_name = ckpt_dir.split("/")[-1]
+    print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 
     commands, tasks, gt_array = read_all_command(csv_path)
     print("Read all commands....")
@@ -130,20 +130,19 @@ def main(
     for i, command in enumerate(commands):
         response, style_response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
                                                   provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots)
-        
-        print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
-        print(f"> {response}")
+        if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
+            print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
+            print(f"> {response}")
         all_results.append(response)
         all_outputs.append(style_response)
-        if i>debug_len: # debugging now
+        if i>debug_len and debug_len != -1: # debugging now
             break
-
 
     print("Here are results...")
     all_pred = []
     rank = dist.get_rank()
     if rank == 0:
-        with open("output_content.txt", "w") as f:
+        with open(f"output_content_{model_name}.txt", "w") as f:
             f.write(f"""\n""".join([str(result) for result in all_outputs]))
 
         for i, result in enumerate(all_results):
@@ -154,8 +153,9 @@ def main(
     print("Saving results....")
     if rank == 0:
         all_pred = np.vstack(all_pred)
-        np.save("pred_res.npy", all_pred)
+        np.save(f"pred_res_{model_name}.npy", all_pred)
         print_result(all_pred, gt_array[:len(all_pred)], tasks)
+    print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 
 if __name__ == "__main__":
     start_time = time.time()

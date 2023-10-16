@@ -32,15 +32,9 @@ TODO table here
 
 | Model                  | GPU Memory Cost | Running Time |
 | ---------------------- | --------------- | ------------ |
-| CodeLlama-7b           |                 |              |
 | CodeLlama-7b-Instruct  |                 |              |
-| CodeLlama-7b-Python    |                 |              |
-| CodeLlama-13b          |                 |              |
 | CodeLlama-13b-Instruct |                 |              |
-| CodeLlama-13b-Python   |                 |              |
-| CodeLlama-34b          |                 |              |
 | CodeLlama-34b-Instruct |                 |              |
-| CodeLlama-34b-Python   |                 |              |
 
 
 
