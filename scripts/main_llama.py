@@ -34,7 +34,7 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
 
     messages =  [{'role':'system', 'content': fix_system_message},]
 
-    if provide_detailed_explain:
+    if not step_by_step and provide_detailed_explain:
         messages =  [  {'role':'system', 'content': fix_system_message+assistant},]
 
     if provide_few_shots:
@@ -101,7 +101,7 @@ def main(
         all_outputs.append(style_response)
         if i>debug_len and debug_len != -1: # debugging now
             break
-        
+
     if rank == 0:
         output_result(BASE_DIR, all_results, all_outputs, model_name, gt_array, tasks, debug_len=debug_len)
 
