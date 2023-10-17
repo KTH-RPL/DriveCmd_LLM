@@ -103,4 +103,6 @@ def print_result(pred, gt, tasks):
         printed_data.append([task, acc[i]])
     printed_data.append(["Overall", np.mean(acc)])
     print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
+    output = "\t".join([str(np.mean(acc))] + [str(a) for a in acc])
+    print(output)
     return acc
