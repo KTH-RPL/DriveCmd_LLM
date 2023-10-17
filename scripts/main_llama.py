@@ -96,9 +96,8 @@ def main(
         response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
                                                   provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step)
         style_response = {'id': i, 'command': command, 'response': response}
-        save_response_to_json(style_response, json_file_path)
-
         if rank == 0:
+            save_response_to_json(style_response, json_file_path)
             wandb.log({"cost (s)": time.time() - start_time})
         if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
             print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {command} =====================\n")

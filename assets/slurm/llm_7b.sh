@@ -15,6 +15,10 @@
 cd /proj/berzelius-2023-154/users/x_qinzh/workspace/llc
 module load Anaconda/2021.05-nsc1
 
-/proj/berzelius-2023-154/users/x_qinzh/mambaforge/envs/llc/bin/torchrun --nproc_per_node 1 --rdzv-endpoint=localhost:60112 scripts/main_llama.py \
+/proj/berzelius-2023-154/users/x_qinzh/mambaforge/envs/llc/bin/torchrun --nproc_per_node 1 --rdzv-endpoint=localhost:60112 scripts/main_codellama.py \
  --debug_len -1 --slurm_job_id $SLURM_JOB_ID --ckpt_dir /proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct \
+ --provide_detailed_explain True --provide_few_shots True
+
+/proj/berzelius-2023-154/users/x_qinzh/mambaforge/envs/llc/bin/torchrun --nproc_per_node 1 --rdzv-endpoint=localhost:60113 scripts/main_llama.py \
+ --debug_len -1 --slurm_job_id $SLURM_JOB_ID --ckpt_dir /proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-7b-chat \
  --provide_detailed_explain True --provide_few_shots True
