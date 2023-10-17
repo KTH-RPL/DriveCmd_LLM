@@ -11,7 +11,7 @@ import os, sys
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 sys.path.append(BASE_DIR)
 from argparse import ArgumentParser
-from main_llama import read_all_command, print_result
+from utils.mics import read_all_command, print_result
 import numpy as np
 
 if __name__ == "__main__":
