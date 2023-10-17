@@ -19,8 +19,6 @@ from utils.prompt import *
 from utils.mics import *
 import torch.distributed as dist
 import re, time, wandb
-import numpy as np
-from tabulate import tabulate
 import os, sys
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
