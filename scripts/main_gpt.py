@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 import fire
 from utils.prompt import *
-from utils.mics import read_all_command, output_result, wandb_log, create_save_name
+from utils.mics import read_all_command, output_result, wandb_log, create_save_name, save_response_to_json
 import time
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
@@ -33,8 +33,7 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
         messages=messages,
         temperature=temperature, # 控制模型输出的随机程度
     )
-    #     print(str(response.choices[0].message))   
-    return response.choices[0].message["content"], dict(response.choices[0].message)
+    return response.choices[0].message["content"]
 
 def main(
     csv_path: str = "/proj/berzelius-2023-154/users/x_yiyan/code/llvm/data/ucu.csv",
@@ -47,35 +46,35 @@ def main(
     slurm_job_id: str = "00000",
 ):
 
-    commands, tasks, gt_array = read_all_command(csv_path)
-    print("Read all commands....")
+    commands_w_id, tasks, gt_array = read_all_command(csv_path)
+    print("1. Finished Read all commands!")
     wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model, debug_len, slurm_job_id)
     model_name = create_save_name(model, provide_detailed_explain, provide_few_shots, step_by_step, debug_len)
 
-    all_outputs = []
     all_results = []
-    for i, command in enumerate(commands):
+    json_file_path = f"{BASE_DIR}/assets/result/{model_name}.json" # PLEASE DO NOT CHANGE THIS PATH
+    numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}.npy" # PLEASE DO NOT CHANGE THIS PATH
+    os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
+
+    for (i, command) in commands_w_id:
         start_time = time.time()
-        response, style_response = get_completion_from_user_input(command, 
+
+        response = get_completion_from_user_input(command, 
                                                     provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step, \
                                                     model=model, temperature=temperature)
 
-        if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
-            print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {commands[i]} =====================\n")
-            print(f"> {response}")
-            
-        all_results.append(response)
-        all_outputs.append(style_response)
-        if i == debug_len:
-            break
-    
-    
-    output_result(BASE_DIR, all_results, all_outputs, model_name, gt_array, tasks, debug_len=debug_len)
-    os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
-    
+        style_response = {'id': i, 'command': command, 'response': response}
+        save_response_to_json(style_response, json_file_path)
 
-    with open(f"{BASE_DIR}/assets/result/{model}.txt", "w") as f:
-        f.write(f"""\n""".join([str(result) for result in all_results]))
+        if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
+            print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {command} =====================\n")
+            print(f"> {response}")
+
+        all_results.append(response)
+        if i>debug_len and debug_len != -1: # debugging now
+            break
+
+    output_result(numpy_file_path, json_file_path, model_name, all_results, gt_array, tasks, debug_len=debug_len)
 
 if __name__ == "__main__":
     start_time = time.time()

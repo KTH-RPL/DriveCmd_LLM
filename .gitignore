@@ -2,6 +2,7 @@ model/*
 codellama.egg-info/*
 *.pyc
 .env
+*.json
 
 # produce data format...
 *.npy

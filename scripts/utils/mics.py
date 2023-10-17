@@ -1,27 +1,33 @@
 import pandas as pd
-import re, time, wandb, os, sys
+import re, time, wandb, os, sys, json
 import numpy as np
 from tabulate import tabulate
 from .prompt import bc
 
-def output_result(BASE_DIR, all_results, all_outputs, model_name, gt_array, tasks, debug_len=-1):
+def save_response_to_json(style_response, json_file_path):
+    if os.path.exists(json_file_path):
+        with open(json_file_path, "r") as f:
+            data = json.load(f)
+    else:
+        data = []
+    data.append(style_response)
+    with open(json_file_path, "w") as f:
+        json.dump(data, f, indent=2)
+
+def output_result(numpy_file_path, json_file_path, model_name, all_results, gt_array, tasks, debug_len=-1):
     print("Here are results...")
     all_pred = []
-    os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
     for i, result in enumerate(all_results):
         pred = extract_outputs(result, i)
         all_pred.append(pred)
-
-    with open(f"{BASE_DIR}/assets/result/{model_name}.txt", "w") as f:
-        f.write(f"""\n""".join([str(result) for result in all_outputs]))
     if debug_len == -1:
-        wandb.save(f"{BASE_DIR}/assets/result/{model_name}.txt")
+        wandb.save(json_file_path)
     print("Saving results....")
 
     all_pred = np.vstack(all_pred)
-    np.save(f"{BASE_DIR}/assets/result/{model_name}.npy", all_pred)
+    np.save(numpy_file_path, all_pred)
     if debug_len == -1:
-        wandb.save(f"{BASE_DIR}/assets/result/{model_name}.npy")
+        wandb.save(numpy_file_path)
     acc = print_result(all_pred, gt_array[:len(all_pred)], tasks)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
 
@@ -60,10 +66,11 @@ def read_all_command(path: str):
     preview = commands_df.head()
     # Detailed analysis of each command
 
-    all_commands_only = commands_df["Command"].str.lower().tolist()
+    all_commands_str = commands_df["Command"].str.lower().tolist()
+    all_commands_ids = commands_df["Command ID"].tolist()
     task_name = commands_df.columns[2:].tolist()
     gt_array = commands_df[task_name].values
-    return all_commands_only, task_name, gt_array
+    return zip(all_commands_ids, all_commands_str), task_name, gt_array
 
 def extract_outputs(text, i=-1):
     
