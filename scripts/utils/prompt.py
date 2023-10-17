@@ -1,58 +1,46 @@
 delimiter = "####"
 
 system_message = f"""
-Now I am providing you a command that a person can send to self-driving vehicle. 
-You task is to answer the following 8 Yes/No questions \
-    about executing the command in an autonomous vehicle:
+You will be presented with a command message intended for a self-driving vehicle. Your task: 
+Answer 8 Yes/No questions regarding the command's execution in the autonomous vehicle:
 
-external Perception system: Is the external perception system required?
-In-cabin monitoring: Is in-cabin monitoring required?
-Localization: Is localization required?
-Vehicle control: Is vehicle control required?
-Entertainment: Is the entertainment system required?
-Personal data: Is user personal data required?
-Network access: Is external network access required?
-Traffic laws: Is there a possibility of violating traffic laws?
+1. External Perception System: Does the command require the external perception system?
+2. In-Cabin Monitoring: Does it necessitate in-cabin monitoring?
+3. Localization: Is localization essential for the command?
+4. Vehicle Control: Does the command require vehicle control?
+5. Entertainment: Is the entertainment system needed?
+6. Personal Data: Will user personal data be accessed?
+7. Network Access: Does the command demand external network connectivity?
+8. Traffic Laws: Could executing this command violate any traffic laws?c
 
-Provide them in this format:
+Present your answers in this format:
 
 Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
 
-A1 to A8 are the answers to the 8 questions, where 1 indicates yes and 0 indicates no.
+Replace A1-A8 with 1 for 'Yes' and 0 for 'No'.
 
 message will be delimited with {delimiter} characters.
 """
 
 assistant = f"""
-For each of the question, in order to answer yes or no, \
-    you should refer the detailed explaination below: 
+To aid your decision-making, consider these detailed explanations:
 
-external perception system refers to the sensors and software that \
-     allow the autonomous vehicle to perceive its surroundings. 
-It typically includes cameras, lidar, radar, and other sensors to detect objects, \
-     pedestrians, other vehicles, road conditions, and traffic signs/signals.
+1. External Perception System: This comprises sensors and software that allow the vehicle to gauge its environment. It employs cameras, lidar, radar, and other detectors.
+2. In-Cabin Monitoring: Involves in-cabin gadgets like cameras or thermometers to check the occupants' state.
+3. Localization: The car's capacity to pinpoint its exact location using GPS, sensors, and high-definition maps.
+4. Vehicle Control: Refers to the driving decision system and the car's physical operations, such as steering or accelerating.
+5. Entertainment System: This is the car's multimedia unit, featuring radio, music players, and other entertainment tools.
+6. Personal Data: Information related to an individual, like contact details or travel history.
+7. Network Access: The vehicle's capacity to link to external networks, including the internet.
+8. Traffic Laws: Relates to any actions by the car that may breach the area's traffic rules.
 
-in-cabin monitoring involves cameras, thermometers, or other sensors \
-    placed inside the vehicle’s cabin to monitor the state of occupants and other conditions.
-localization is the ability of the vehicle to \
-    determine its precise position in a given environment. 
-    Typically done using a combination of GPS, sensors, and high-definition maps.
-vehicle control refers to the system that makes the driving decisions \
-    and physically controls the vehicle movements, such as steering, acceleration, braking, and signaling.
-entertainment system is the multimedia system in a vehicle, \
-     which can include radio, music players, video displays, and other entertainment features.
-user personal data is the information relating to \
-    an identified or identifiable individual, such as contact details, preferences, travel history, etc.
-external network access is the ability of the vehicle’s systems \
-    to connect to external networks, such as the internet or cloud services.
-violating traffic laws refers to any action performed by the vehicle\
-    that goes against the established traffic regulations of the region. 
-    An autonomous vehicle’s system is typically designed to adhere strictly to traffic laws.
+Always ensure autonomous vehicles respect traffic laws.
 """
 
 emphasis_output = f"""
-You must provide the result in this format where A1 to A8 are the answers to the 8 questions and the value is 1 indicates yes and 0 indicates no.:
+Ensure to format your answers as:
 Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
+Replace A1-A8 with 1 for 'Yes' and 0 for 'No'.
 """
 
 # few-shot example for the LLM to 
@@ -107,13 +95,9 @@ Therefore, the output should be
 """
 
 step_system_message = f"""
-Now I am providing you a command that a person can send to self-driving vehicle.
-The command comes with a command id in the beginning. 
-The user command will be delimited with four hashtags,\
-i.e. {delimiter}. 
+You'll receive a command message for a self-driving vehicle, prefixed with a command ID and delimited by {delimiter}.
 
-Following the following steps to answer the 8 Yes/No questions \
-    about executing the command in an autonomous vehicle.
+Follow these steps to respond:
 
 Step 1:{delimiter} First decide whether the external perception system required for this command. 
 External perception system includes the sensors and software that \
@@ -160,13 +144,8 @@ Step 5:{delimiter} <step 5 reasoning>
 Step 6:{delimiter} <step 6 reasoning>
 Step 7:{delimiter} <step 7 reasoning>
 Step 8:{delimiter} <step 8 reasoning>
-Response to user:{delimiter} <response to customer>.
-
-The <response to customer> should be in this format:
-
-Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
-
-A1 to A8 are the answers to the 8 questions, where 1 indicates yes and 0 indicates no.
+Response to user:{delimiter} Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
+Replace A1-A8 with 1 for 'Yes' and 0 for 'No'.
 
 message will be delimited with {delimiter} characters.
 """
