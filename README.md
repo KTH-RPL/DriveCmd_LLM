@@ -6,7 +6,7 @@ Task: In-Cabin User Command Understanding (UCU), [workshop in WACV2024](https://
 
 Here is our solution code. Please check the report for more detail.
 
-## llama
+## llama & codellama
 
 Here we introduced how to setup. [Pretrained model from Meta](https://ai.meta.com/llama/) and code from [codellama](https://github.com/facebookresearch/codellama/tree/main), Here we show how to downloaded their model:
 

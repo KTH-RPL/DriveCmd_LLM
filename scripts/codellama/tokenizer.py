@@ -3,7 +3,7 @@
 
 import os
 from logging import getLogger
-from typing import List
+from typing import List, Optional
 
 from sentencepiece import SentencePieceProcessor
 
@@ -12,14 +12,7 @@ logger = getLogger()
 
 
 class Tokenizer:
-    """tokenizing and encoding/decoding text using SentencePiece."""
     def __init__(self, model_path: str):
-        """
-        Initializes the Tokenizer with a SentencePiece model.
-
-        Args:
-            model_path (str): The path to the SentencePiece model file.
-        """
         # reload tokenizer
         assert os.path.isfile(model_path), model_path
         self.sp_model = SentencePieceProcessor(model_file=model_path)
@@ -30,23 +23,19 @@ class Tokenizer:
         self.bos_id: int = self.sp_model.bos_id()
         self.eos_id: int = self.sp_model.eos_id()
         self.pad_id: int = self.sp_model.pad_id()
+
+        # token IDs for special infilling tokens
+        self.prefix_id: Optional[int] = self.sp_model.piece_to_id("▁<PRE>") or None
+        self.middle_id: Optional[int] = self.sp_model.piece_to_id("▁<MID>") or None
+        self.suffix_id: Optional[int] = self.sp_model.piece_to_id("▁<SUF>") or None
+        self.eot_id: Optional[int] = self.sp_model.piece_to_id("▁<EOT>") or None
         logger.info(
-            f"#words: {self.n_words} - BOS ID: {self.bos_id} - EOS ID: {self.eos_id}"
+            f"#words: {self.n_words} - BOS ID: {self.bos_id} - EOS ID: {self.eos_id} "
+            f"- PRE ID: {self.prefix_id} - MID ID: {self.middle_id} - SUF ID: {self.suffix_id} - EOT ID: {self.eot_id}"
         )
         assert self.sp_model.vocab_size() == self.sp_model.get_piece_size()
 
     def encode(self, s: str, bos: bool, eos: bool) -> List[int]:
-        """
-        Encodes a string into a list of token IDs.
-
-        Args:
-            s (str): The input string to be encoded.
-            bos (bool): Whether to prepend the beginning-of-sequence token.
-            eos (bool): Whether to append the end-of-sequence token.
-
-        Returns:
-            List[int]: A list of token IDs.
-        """
         assert type(s) is str
         t = self.sp_model.encode(s)
         if bos:
@@ -56,13 +45,12 @@ class Tokenizer:
         return t
 
     def decode(self, t: List[int]) -> str:
-        """
-        Decodes a list of token IDs into a string.
+        return self.sp_model.decode(list(filter(lambda tk: tk != -1, t)))
 
-        Args:
-            t (List[int]): The list of token IDs to be decoded.
+    def encode_infilling(self, s: str) -> List[int]:
+        """Encode a string without an implicit leading space."""
+        return self.sp_model.encode("☺" + s)[2:]
 
-        Returns:
-            str: The decoded string.
-        """
-        return self.sp_model.decode(t)
+    def decode_infilling(self, t: List[int]) -> str:
+        """Decode a string without an implicit leading space."""
+        return self.sp_model.decode([self.sp_model.piece_to_id("☺")] + t)[1:]

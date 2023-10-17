@@ -19,12 +19,26 @@ from fairscale.nn.model_parallel.initialize import (
 from llama.model import ModelArgs, Transformer
 from llama.tokenizer import Tokenizer
 
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
+
 Role = Literal["system", "user", "assistant"]
 
 
 class Message(TypedDict):
     role: Role
     content: str
+
+
+class InfillingPrediction(TypedDict, total=False):
+    generation: str
+    full_text: str
+    tokens: List[str]  # not required
+    logprobs: List[float]  # not required
 
 
 class CompletionPrediction(TypedDict, total=False):
@@ -56,43 +70,23 @@ class Llama:
         max_seq_len: int,
         max_batch_size: int,
         model_parallel_size: Optional[int] = None,
-        seed: int = 1,
     ) -> "Llama":
-        """
-        Build a Llama instance by initializing and loading a pre-trained model.
-
-        Args:
-            ckpt_dir (str): Path to the directory containing checkpoint files.
-            tokenizer_path (str): Path to the tokenizer file.
-            max_seq_len (int): Maximum sequence length for input text.
-            max_batch_size (int): Maximum batch size for inference.
-            model_parallel_size (Optional[int], optional): Number of model parallel processes.
-                If not provided, it's determined from the environment. Defaults to None.
-
-        Returns:
-            Llama: An instance of the Llama class with the loaded model and tokenizer.
-
-        Raises:
-            AssertionError: If there are no checkpoint files in the specified directory,
-                or if the model parallel size does not match the number of checkpoint files.
-
-        Note:
-            This method initializes the distributed process group, sets the device to CUDA,
-            and loads the pre-trained model and tokenizer.
-
-        """
         if not torch.distributed.is_initialized():
-            torch.distributed.init_process_group("nccl")
+            if device == "cuda":
+                torch.distributed.init_process_group("nccl")
+            else:
+                torch.distributed.init_process_group("gloo")
         if not model_parallel_is_initialized():
             if model_parallel_size is None:
                 model_parallel_size = int(os.environ.get("WORLD_SIZE", 1))
             initialize_model_parallel(model_parallel_size)
 
         local_rank = int(os.environ.get("LOCAL_RANK", 0))
-        torch.cuda.set_device(local_rank)
+        if device == "cuda":
+            torch.cuda.set_device(local_rank)
 
         # seed must be the same in all processes
-        torch.manual_seed(seed)
+        torch.manual_seed(1)
 
         if local_rank > 0:
             sys.stdout = open(os.devnull, "w")
@@ -115,9 +109,17 @@ class Llama:
         )
         tokenizer = Tokenizer(model_path=tokenizer_path)
         model_args.vocab_size = tokenizer.n_words
-        torch.set_default_tensor_type(torch.cuda.HalfTensor)
+        # support for mac
+        if device == "cuda":
+            if torch.cuda.is_bf16_supported():
+                torch.set_default_tensor_type(torch.cuda.BFloat16Tensor)
+            else:
+                torch.set_default_tensor_type(torch.cuda.HalfTensor)
+        else:
+            torch.set_default_tensor_type(torch.HalfTensor)
         model = Transformer(model_args)
         model.load_state_dict(checkpoint, strict=False)
+        model.to(device)
         print(f"Loaded in {time.time() - start_time:.2f} seconds")
 
         return Llama(model, tokenizer)
@@ -135,26 +137,10 @@ class Llama:
         top_p: float = 0.9,
         logprobs: bool = False,
         echo: bool = False,
+        stop_token: Optional[int] = None,
     ) -> Tuple[List[List[int]], Optional[List[List[float]]]]:
-        """
-        Generate text sequences based on provided prompts using the language generation model.
-
-        Args:
-            prompt_tokens (List[List[int]]): List of tokenized prompts, where each prompt is represented as a list of integers.
-            max_gen_len (int): Maximum length of the generated text sequence.
-            temperature (float, optional): Temperature value for controlling randomness in sampling. Defaults to 0.6.
-            top_p (float, optional): Top-p probability threshold for nucleus sampling. Defaults to 0.9.
-            logprobs (bool, optional): Flag indicating whether to compute token log probabilities. Defaults to False.
-            echo (bool, optional): Flag indicating whether to include prompt tokens in the generated output. Defaults to False.
-
-        Returns:
-            Tuple[List[List[int]], Optional[List[List[float]]]]: A tuple containing generated token sequences and, if logprobs is True, corresponding token log probabilities.
-
-        Note:
-            This method uses the provided prompts as a basis for generating text. It employs nucleus sampling to produce text with controlled randomness.
-            If logprobs is True, token log probabilities are computed for each generated token.
-
-        """
+        if stop_token is None:
+            stop_token = self.tokenizer.eos_id
         params = self.model.params
         bsz = len(prompt_tokens)
         assert bsz <= params.max_batch_size, (bsz, params.max_batch_size)
@@ -165,26 +151,24 @@ class Llama:
         total_len = min(params.max_seq_len, max_gen_len + max_prompt_len)
 
         pad_id = self.tokenizer.pad_id
-        tokens = torch.full((bsz, total_len), pad_id, dtype=torch.long, device="cuda")
+        tokens = torch.full((bsz, total_len), pad_id, dtype=torch.long, device=device)
         for k, t in enumerate(prompt_tokens):
-            tokens[k, : len(t)] = torch.tensor(t, dtype=torch.long, device="cuda")
+            tokens[k, : len(t)] = torch.tensor(t, dtype=torch.long, device=device)
         if logprobs:
-            token_logprobs = torch.zeros_like(tokens, dtype=torch.float)
+            token_logprobs = torch.zeros_like(tokens, dtype=torch.float, device=device)
 
         prev_pos = 0
-        eos_reached = torch.tensor([False] * bsz, device="cuda")
+        stop_reached = torch.tensor([False] * bsz, device=device)
         input_text_mask = tokens != pad_id
-        if min_prompt_len == total_len:
-            logits = self.model.forward(tokens, prev_pos)
-            token_logprobs = -F.cross_entropy(
-                input=logits.transpose(1, 2),
-                target=tokens,
-                reduction="none",
-                ignore_index=pad_id,
-            )
-
         for cur_pos in range(min_prompt_len, total_len):
             logits = self.model.forward(tokens[:, prev_pos:cur_pos], prev_pos)
+            if logprobs:
+                token_logprobs[:, prev_pos + 1 : cur_pos + 1] = -F.cross_entropy(
+                    input=logits.transpose(1, 2),
+                    target=tokens[:, prev_pos + 1 : cur_pos + 1],
+                    reduction="none",
+                    ignore_index=pad_id,
+                )
             if temperature > 0:
                 probs = torch.softmax(logits[:, -1] / temperature, dim=-1)
                 next_token = sample_top_p(probs, top_p)
@@ -197,18 +181,9 @@ class Llama:
                 input_text_mask[:, cur_pos], tokens[:, cur_pos], next_token
             )
             tokens[:, cur_pos] = next_token
-            if logprobs:
-                token_logprobs[:, prev_pos + 1 : cur_pos + 1] = -F.cross_entropy(
-                    input=logits.transpose(1, 2),
-                    target=tokens[:, prev_pos + 1 : cur_pos + 1],
-                    reduction="none",
-                    ignore_index=pad_id,
-                )
-            eos_reached |= (~input_text_mask[:, cur_pos]) & (
-                next_token == self.tokenizer.eos_id
-            )
+            stop_reached |= (~input_text_mask[:, cur_pos]) & (next_token == stop_token)
             prev_pos = cur_pos
-            if all(eos_reached):
+            if all(stop_reached):
                 break
 
         if logprobs:
@@ -221,11 +196,11 @@ class Llama:
             probs = None
             if logprobs:
                 probs = token_logprobs[i][start : len(prompt_tokens[i]) + max_gen_len]
-            # cut to eos tok if any
-            if self.tokenizer.eos_id in toks:
-                eos_idx = toks.index(self.tokenizer.eos_id)
-                toks = toks[:eos_idx]
-                probs = probs[:eos_idx] if logprobs else None
+            # cut to stop token if present
+            if stop_token in toks:
+                stop_idx = toks.index(stop_token)
+                toks = toks[:stop_idx]
+                probs = probs[:stop_idx] if logprobs else None
             out_tokens.append(toks)
             out_logprobs.append(probs)
         return (out_tokens, out_logprobs if logprobs else None)
@@ -239,26 +214,6 @@ class Llama:
         logprobs: bool = False,
         echo: bool = False,
     ) -> List[CompletionPrediction]:
-        """
-        Perform text completion for a list of prompts using the language generation model.
-
-        Args:
-            prompts (List[str]): List of text prompts for completion.
-            temperature (float, optional): Temperature value for controlling randomness in sampling. Defaults to 0.6.
-            top_p (float, optional): Top-p probability threshold for nucleus sampling. Defaults to 0.9.
-            max_gen_len (Optional[int], optional): Maximum length of the generated completion sequence.
-                If not provided, it's set to the model's maximum sequence length minus 1.
-            logprobs (bool, optional): Flag indicating whether to compute token log probabilities. Defaults to False.
-            echo (bool, optional): Flag indicating whether to include prompt tokens in the generated output. Defaults to False.
-
-        Returns:
-            List[CompletionPrediction]: List of completion predictions, each containing the generated text completion.
-
-        Note:
-            This method generates text completions for the provided prompts, employing nucleus sampling to introduce controlled randomness.
-            If logprobs is True, token log probabilities are computed for each generated token.
-
-        """
         if max_gen_len is None:
             max_gen_len = self.model.params.max_seq_len - 1
         prompt_tokens = [self.tokenizer.encode(x, bos=True, eos=False) for x in prompts]
@@ -281,6 +236,62 @@ class Llama:
             ]
         return [{"generation": self.tokenizer.decode(t)} for t in generation_tokens]
 
+    def text_infilling(
+        self,
+        prefixes: List[str],
+        suffixes: List[str],
+        temperature: float = 0.6,
+        top_p: float = 0.9,
+        max_gen_len: Optional[int] = None,
+        logprobs: bool = False,
+        suffix_first: bool = False,
+    ) -> List[InfillingPrediction]:
+        assert self.tokenizer.eot_id is not None
+        if max_gen_len is None:
+            max_gen_len = self.model.params.max_seq_len - 1
+        prompt_tokens = [
+            infilling_prompt_tokens(
+                self.tokenizer, prefix, suffix, suffix_first=suffix_first
+            )
+            for prefix, suffix in zip(prefixes, suffixes)
+        ]
+        generation_tokens, generation_logprobs = self.generate(
+            prompt_tokens=prompt_tokens,
+            max_gen_len=max_gen_len,
+            temperature=temperature,
+            top_p=top_p,
+            logprobs=logprobs,
+            echo=False,
+            stop_token=self.tokenizer.eot_id,
+        )
+
+        generations = [self.tokenizer.decode_infilling(t) for t in generation_tokens]
+
+        if logprobs:
+            return [
+                {
+                    "generation": generation,
+                    "logprobs": logprobs_i,
+                    "tokens": t,
+                    "full_text": prefix + generation + suffix,
+                }
+                for prefix, suffix, generation, t, logprobs_i in zip(
+                    prefixes,
+                    suffixes,
+                    generations,
+                    generation_tokens,
+                    generation_logprobs,
+                )
+            ]
+        else:
+            return [
+                {
+                    "generation": generation,
+                    "full_text": prefix + generation + suffix,
+                }
+                for prefix, suffix, generation in zip(prefixes, suffixes, generations)
+            ]
+
     def chat_completion(
         self,
         dialogs: List[Dialog],
@@ -289,30 +300,6 @@ class Llama:
         max_gen_len: Optional[int] = None,
         logprobs: bool = False,
     ) -> List[ChatPrediction]:
-        """
-        Generate assistant responses for a list of conversational dialogs using the language generation model.
-
-        Args:
-            dialogs (List[Dialog]): List of conversational dialogs, where each dialog is a list of messages.
-            temperature (float, optional): Temperature value for controlling randomness in sampling. Defaults to 0.6.
-            top_p (float, optional): Top-p probability threshold for nucleus sampling. Defaults to 0.9.
-            max_gen_len (Optional[int], optional): Maximum length of the generated response sequence.
-                If not provided, it's set to the model's maximum sequence length minus 1.
-            logprobs (bool, optional): Flag indicating whether to compute token log probabilities. Defaults to False.
-
-        Returns:
-            List[ChatPrediction]: List of chat predictions, each containing the assistant's generated response.
-
-        Raises:
-            AssertionError: If the last message in a dialog is not from the user.
-            AssertionError: If the dialog roles are not in the required 'user', 'assistant', and optional 'system' order.
-
-        Note:
-            This method generates assistant responses for the provided conversational dialogs.
-            It employs nucleus sampling to introduce controlled randomness in text generation.
-            If logprobs is True, token log probabilities are computed for each generated token.
-
-        """
         if max_gen_len is None:
             max_gen_len = self.model.params.max_seq_len - 1
         prompt_tokens = []
@@ -396,21 +383,6 @@ class Llama:
 
 
 def sample_top_p(probs, p):
-    """
-    Perform top-p (nucleus) sampling on a probability distribution.
-
-    Args:
-        probs (torch.Tensor): Probability distribution tensor.
-        p (float): Probability threshold for top-p sampling.
-
-    Returns:
-        torch.Tensor: Sampled token indices.
-
-    Note:
-        Top-p sampling selects the smallest set of tokens whose cumulative probability mass
-        exceeds the threshold p. The distribution is renormalized based on the selected tokens.
-
-    """
     probs_sort, probs_idx = torch.sort(probs, dim=-1, descending=True)
     probs_sum = torch.cumsum(probs_sort, dim=-1)
     mask = probs_sum - probs_sort > p
@@ -419,3 +391,35 @@ def sample_top_p(probs, p):
     next_token = torch.multinomial(probs_sort, num_samples=1)
     next_token = torch.gather(probs_idx, -1, next_token)
     return next_token
+
+
+def infilling_prompt_tokens(
+    tokenizer: Tokenizer,
+    pre: str,
+    suf: str,
+    suffix_first: bool = False,
+) -> List[int]:
+    """
+    Format and encode an infilling problem.
+    If `suffix_first` is set, format in suffix-prefix-middle format.
+    """
+    assert tokenizer.prefix_id is not None
+    assert tokenizer.middle_id is not None
+    assert tokenizer.suffix_id is not None
+    if suffix_first:
+        # format as "<PRE> <SUF>{suf} <MID> {pre}"
+        return (
+            [tokenizer.bos_id, tokenizer.prefix_id, tokenizer.suffix_id]
+            + tokenizer.encode_infilling(suf)
+            + [tokenizer.middle_id]
+            + tokenizer.encode(pre, bos=False, eos=False)
+        )
+    else:
+        # format as "<PRE> {pre} <SUF>{suf} <MID>"
+        return (
+            [tokenizer.bos_id, tokenizer.prefix_id]
+            + tokenizer.encode(pre, bos=False, eos=False)
+            + [tokenizer.suffix_id]
+            + tokenizer.encode_infilling(suf)
+            + [tokenizer.middle_id]
+        )

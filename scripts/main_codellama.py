@@ -11,7 +11,7 @@ from typing import Optional
 
 import fire
 
-from llama import Llama
+from codellama import Llama
 import pandas as pd
 
 # custom
@@ -53,9 +53,9 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
     return response[0]['generation']['content'], response[0]
 
 def main(
-    ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-7b-chat",
-    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-13b-chat",
-    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-70b-chat",
+    ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-7b-Instruct",
+    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-13b-Instruct",
+    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/codellama/CodeLlama-34b-Instruct",
     csv_path: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llc/assets/ucu.csv",
     temperature: float = 0.1,
     top_p: float = 0.95,
@@ -71,7 +71,7 @@ def main(
     
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
-        tokenizer_path=str(os.path.abspath(os.path.join(ckpt_dir, '..')))+'/tokenizer.model',
+        tokenizer_path=ckpt_dir+"/tokenizer.model",
         max_seq_len=max_seq_len,
         max_batch_size=max_batch_size,
     )
