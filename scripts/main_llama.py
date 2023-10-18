@@ -65,6 +65,7 @@ def main(
     provide_few_shots: bool = False,
     step_by_step: bool = False,
     slurm_job_id: str = "00000",
+    resume: bool = False,
 ):
     
     generator = Llama.build(
@@ -89,8 +90,19 @@ def main(
     json_file_path = f"{BASE_DIR}/assets/result/{model_name}.json" # PLEASE DO NOT CHANGE THIS PATH
     numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}.npy" # PLEASE DO NOT CHANGE THIS PATH
     os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
-
+    
+    if resume and os.path.exists(json_file_path) and rank == 0:
+        with open(json_file_path, "r") as f:
+            data = json.load(f)
+        existing_ids = set([d['id'] for d in data])
+        print(f"\n{bc.HEADER}Resume from {json_file_path}{bc.ENDC}, {len(all_results)} results loaded.")
+        for d in data:
+            all_results.append(d['response'])
+    cnt = 0
     for (i, command) in commands_w_id:
+        if resume and os.path.exists(json_file_path) and i in existing_ids:
+            continue
+
         start_time = time.time()
 
         response = get_completion_from_user_input(command, generator, max_gen_len, temperature, top_p, \
@@ -104,7 +116,8 @@ def main(
             print(f"> {response}")
 
         all_results.append(response)
-        if i>debug_len and debug_len != -1: # debugging now
+        cnt = cnt + 1
+        if cnt>debug_len and debug_len != -1: # debugging now
             break
 
     if rank == 0:

@@ -1,5 +1,5 @@
 import openai
-import os
+import os, json
 from dotenv import load_dotenv, find_dotenv
 import fire
 from utils.prompt import *
@@ -44,19 +44,30 @@ def main(
     model: str = "gpt-3.5-turbo",
     debug_len: int = 10, # TODO! if it's really big may have problem with memory
     slurm_job_id: str = "00000",
+    resume: bool = False,
 ):
 
     commands_w_id, tasks, gt_array = read_all_command(csv_path)
     print("1. Finished Read all commands!")
-    wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model, debug_len, slurm_job_id)
     model_name = create_save_name(model, provide_detailed_explain, provide_few_shots, step_by_step, debug_len)
+    wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id)
 
     all_results = []
     json_file_path = f"{BASE_DIR}/assets/result/{model_name}.json" # PLEASE DO NOT CHANGE THIS PATH
     numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}.npy" # PLEASE DO NOT CHANGE THIS PATH
     os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
 
+    if resume and os.path.exists(json_file_path):
+        with open(json_file_path, "r") as f:
+            data = json.load(f)
+        existing_ids = set([d['id'] for d in data])
+        print(f"\n{bc.HEADER}Resume from {json_file_path}{bc.ENDC}, {len(all_results)} results loaded.")
+        for d in data:
+            all_results.append(d['response'])
+    cnt = 0
     for (i, command) in commands_w_id:
+        if resume and os.path.exists(json_file_path) and i in existing_ids:
+            continue
         start_time = time.time()
 
         response = get_completion_from_user_input(command, 
@@ -71,7 +82,8 @@ def main(
             print(f"> {response}")
 
         all_results.append(response)
-        if i>debug_len and debug_len != -1: # debugging now
+        cnt = cnt + 1
+        if cnt>debug_len and debug_len != -1: # debugging now
             break
 
     output_result(numpy_file_path, json_file_path, model_name, all_results, gt_array, tasks, debug_len=debug_len)
