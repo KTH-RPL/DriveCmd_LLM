@@ -100,7 +100,8 @@ def evaluate(pred, gt):
 
     acc = []
     for i in range(num_tasks):
-        acc.append(np.mean((pred[:, i] == gt[:, i]) & (pred[:, i] != -1)))
+        acc.append(sum((pred[:, i] == gt[:, i]) & (pred[:, i] != -1))/sum(pred[:, i] != -1))
+        # acc.append(np.mean(pred[:, i] == gt[:, i]))
     return acc
 
 def print_result(pred, gt, tasks):
