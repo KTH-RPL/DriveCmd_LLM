@@ -204,14 +204,14 @@ violating traffic laws refers to any action performed by the vehicle\
     For example, related to the traffic laws, like speed, traffic light, emergercy action etc.
 
 Answer the 8 questions use the following format:
-Step 1:{delimiter} <step 1 reasoning>
-Step 2:{delimiter} <step 2 reasoning>
-Step 3:{delimiter} <step 3 reasoning>
-Step 4:{delimiter} <step 4 reasoning>
-Step 5:{delimiter} <step 5 reasoning>
-Step 6:{delimiter} <step 6 reasoning>
-Step 7:{delimiter} <step 7 reasoning>
-Step 8:{delimiter} <step 8 reasoning>
+Step 1:{delimiter} 'Yes' or 'No' <step 1 reasoning>
+Step 2:{delimiter} 'Yes' or 'No' <step 2 reasoning>
+Step 3:{delimiter} 'Yes' or 'No' <step 3 reasoning>
+Step 4:{delimiter} 'Yes' or 'No' <step 4 reasoning>
+Step 5:{delimiter} 'Yes' or 'No' <step 5 reasoning>
+Step 6:{delimiter} 'Yes' or 'No' <step 6 reasoning>
+Step 7:{delimiter} 'Yes' or 'No' <step 7 reasoning>
+Step 8:{delimiter} 'Yes' or 'No' <step 8 reasoning>
 Response to user:{delimiter} Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
 Replace A1-A8 with 1 for 'Yes' and 0 for 'No'.
 
