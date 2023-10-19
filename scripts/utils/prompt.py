@@ -25,14 +25,26 @@ message will be delimited with {delimiter} characters.
 assistant = f"""
 To aid your decision-making, consider these detailed explanations:
 
-1. External Perception System: This comprises sensors and software that allow the vehicle to gauge its environment. It employs cameras, lidar, radar, and other detectors.
-2. In-Cabin Monitoring: Involves in-cabin gadgets like cameras or thermometers to check the occupants' state.
-3. Localization: The car's capacity to pinpoint its exact location using GPS, sensors, and high-definition maps.
-4. Vehicle Control: Refers to the driving decision system and the car's physical operations, such as steering or accelerating.
-5. Entertainment System: This is the car's multimedia unit, featuring radio, music players, and other entertainment tools.
-6. Personal Data: Information related to an individual, like contact details or travel history.
-7. Network Access: The vehicle's capacity to link to external networks, including the internet.
-8. Traffic Laws: Relates to any actions by the car that may breach the area's traffic rules.
+1. external perception system refers to the sensors and software that allow the autonomous vehicle to perceive its surroundings. It typically includes cameras, lidar, radar, and other sensors to detect objects, pedestrians, other vehicles, road conditions, and traffic signs/signals. \
+    For example, any movement, sense or detect the surrounding.
+2. in-cabin monitoring involves cameras, thermometers, or other sensors placed inside the vehicle’s cabin to monitor the state of occupants and other conditions. \
+    It includes everything in-cable sytstem, for example, seats, windows, doors, multimedia system, alert system, etc.
+3. localization is the ability of the vehicle to determine its precise position in a given environment. Typically done using a combination of GPS, sensors, and high-definition maps. \
+    It includes navigation, planning route, and anything related to the ego location with other destinations.
+4. vehicle control refers to the system that makes the driving decisions and physically controls the vehicle movements, such as steering, acceleration, braking, and signaling. \
+    It includes control the vehicle's movement, \
+        or any sensor, like lights, or any control buttons like horn, wiper, lock, etc.
+5. entertainment system is the multimedia system in a vehicle, which can include radio, music players, video displays, and other entertainment features. \
+    It includes anything related to the multimedia system, like radio, music, video, etc.
+6. user personal data is the information relating to an identified or identifiable individual, such as contact details, preferences, travel history, etc. \
+    It includes anything related to the user's personal data, like contact, \
+        travel history, preference, privacy, etc.
+7. external network access is the ability of the vehicle’s systems to connect to external networks, such as the internet or cloud services. \
+    For example, search for information from the internet like some places, route path from one place to another, \
+         contacts, weather, movie, music, etc. \
+    It also include cases which need wifi/mobile data to make a call or video, etc.
+8. violating traffic laws refers to any action performed by the vehicle that goes against the established traffic regulations of the region. An autonomous vehicle’s system is typically designed to adhere strictly to traffic laws. \
+    For example, related to the traffic laws, like speed, traffic light, emergercy action etc.
 
 Always ensure autonomous vehicles respect traffic laws.
 """
