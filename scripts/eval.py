@@ -36,6 +36,8 @@ if __name__ == "__main__":
     else:
         print("Wrong file format, please use .csv or .npy")
         exit()
-    print(f"\nTotal No correct output command Number: {bc.FAIL}{np.sum(all_pred[:,0]==-1)}{bc.ENDC}, \
-          \nError Ratio w Total: {bc.FAIL}{np.sum(all_pred[:,0]==-1)/all_pred.shape[0]:.2f}{bc.ENDC}\n")
+    error_num = np.sum(all_pred[:,0]==-1)
+    if error_num > 0:
+        print(f"\nTotal No correct output command Number: {bc.FAIL}{error_num}{bc.ENDC}, \
+            \nError Ratio w Total: {bc.FAIL}{error_num/all_pred.shape[0]:.2f}{bc.ENDC}\n")
     print_result(all_pred, gt, tasks)
