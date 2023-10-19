@@ -3,6 +3,7 @@ codellama.egg-info/*
 *.pyc
 .env
 *.json
+*.csv
 
 # produce data format...
 *.npy
