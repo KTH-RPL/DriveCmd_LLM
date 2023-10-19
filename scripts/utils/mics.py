@@ -42,7 +42,7 @@ def output_result(numpy_file_path, json_file_path, model_name, all_results, gt_a
     wandb.log({"acc": score})
     wandb.finish()
 
-def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id):
+def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id, num_shots=4):
     wandb.init(entity="hdmaptest", project="llc", 
         name=f"{slurm_job_id}-{model_name}",
         mode= ("online" if debug_len == -1 else "offline"),
@@ -52,6 +52,7 @@ def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_n
         "provide_few_shots": provide_few_shots,
         "step_by_step": step_by_step,
         "model_name": model_name,
+        "num_shots": num_shots,
         },
     )
 
