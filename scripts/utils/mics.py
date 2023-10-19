@@ -30,7 +30,10 @@ def output_result(numpy_file_path, json_file_path, model_name, all_results, gt_a
         wandb.save(numpy_file_path)
     acc = print_result(all_pred, gt_array[:len(all_pred)], tasks)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
-
+    
+    print(f"\nTotal No correct output command Number: {bc.FAIL}{np.sum(all_pred[:,0]==-1)}{bc.ENDC}, \
+          \nError Ratio w Total: {bc.FAIL}{np.sum(all_pred[:,0]==-1)/all_pred.shape[0]:.2f}{bc.ENDC}\n")
+    
     # save to wandb
     score = {'overall': np.mean(acc)}
     score.update(dict(zip(tasks, acc)))
