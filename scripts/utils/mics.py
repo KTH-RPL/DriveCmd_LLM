@@ -56,13 +56,14 @@ def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_n
         },
     )
 
-def create_save_name(model_base_name, provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=4):
+def create_save_name(model_base_name, provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=4, slurm_job_id=""):
     flags = [
         '1' if provide_detailed_explain else '0',
         '1' if provide_few_shots else '0',
         '1' if step_by_step else '0',
-        '' if debug_len == -1 else '-debug'
-        f'-ns-{num_shots}'
+        '' if debug_len == -1 else '-debug',
+        f'-ns_{num_shots}',
+        # f'-{slurm_job_id}',
     ]
     flag_str = ''.join(flags)
     return model_base_name + "-" + flag_str

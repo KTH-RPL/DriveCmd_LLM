@@ -95,7 +95,7 @@ def main(
         max_seq_len=max_seq_len,
         max_batch_size=max_batch_size,
     )
-    model_name = create_save_name(ckpt_dir.split("/")[-1], provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=num_shots)
+    model_name = create_save_name(ckpt_dir.split("/")[-1], provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=num_shots, slurm_job_id=slurm_job_id)
     rank = dist.get_rank()
 
     if rank == 0:
