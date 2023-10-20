@@ -1,0 +1,101 @@
+Command ID,Command,Perception,In-cabin monitoring,Localization,Vehicle control,Entertainment,Personal data,Network access,Traffic laws
+773,Check if my cargo in the trunk is secure.,No,Yes,No,No,No,No,No,No
+496,Find the fastest route to the nearest supermarket.,Yes,No,Yes,Yes,No,No,Yes,No
+76,Check if the kid at the back seat is sleeping.,No,Yes,No,No,No,No,No,No
+198,Find the nearest parking area.,Yes,No,Yes,Yes,No,No,Yes,No
+670,Send my current location to my husband.,No,No,Yes,No,No,Yes,Yes,No
+248,Overtake the slow vehicle in front.,Yes,No,Yes,Yes,No,No,No,Yes
+1003,Start driving as soon as I sit in the back seat.,Yes,Yes,Yes,Yes,No,No,No,No
+81,Start a video call with my mom on the vehicle's display.,No,Yes,No,No,Yes,Yes,Yes,No
+27,Alert me if a child seat is not correctly fastened.,No,Yes,No,No,No,No,No,No
+199,Find the fastest route to my home and avoid tolls.,Yes,No,Yes,Yes,No,Yes,Yes,No
+141,Play the news from BBC radio.,No,No,No,No,Yes,No,Yes,No
+690,Take me to my office.,Yes,No,Yes,Yes,No,Yes,Yes,No
+682,Warn me if a pedestrian comes too close.,Yes,No,No,Yes,No,No,No,No
+223,Call emergency services and share our location.,No,No,Yes,No,No,No,Yes,No
+921,Find a nearby restaurant for dinner based on my preferences.,No,No,Yes,No,No,Yes,Yes,No
+1077,Start a video conference with my team.,No,Yes,No,No,Yes,Yes,Yes,No
+204,Show me the latest news headlines on the infotainment screen.,No,No,No,No,Yes,No,Yes,No
+1029,Take me home after this movie finishes.,Yes,Yes,Yes,Yes,No,Yes,Yes,No
+1071,Alert me if there is a vehicle in my blind spot.,Yes,No,No,No,No,No,No,No
+618,Show me the realtime view of the rear camera.,Yes,No,No,No,No,No,No,No
+216,Start highway autopilot mode.,Yes,Yes,Yes,Yes,No,No,No,No
+188,Watch a movie on Netflix.,No,No,No,No,Yes,Yes,Yes,No
+637,Please drive to my home.,Yes,No,Yes,Yes,No,Yes,Yes,No
+522,Show a comedy movie on the rear screen.,No,Yes,No,No,Yes,No,Yes,No
+283,Navigate to the nearest Chinese restaurant.,Yes,No,Yes,Yes,No,No,Yes,No
+49,Alert me when there's a car too close to us.,Yes,Yes,No,No,No,No,No,No
+754,Show me the latest news on the digital display.,No,No,No,No,Yes,No,Yes,No
+934,Start autonomous drive mode to my work location.,Yes,Yes,Yes,Yes,No,Yes,Yes,No
+423,Drive me to the nearest supermarket.,Yes,No,Yes,Yes,No,No,Yes,No
+313,Find a parking spot in the mall's parking lot.,Yes,No,Yes,Yes,No,No,No,No
+353,Take me to the fastest route to avoid traffic.,Yes,No,Yes,Yes,No,Yes,Yes,No
+461,Find the quickest route to my home.,Yes,No,Yes,Yes,No,Yes,Yes,No
+173,Turn on rearview camera.,Yes,No,No,No,No,No,No,No
+99,Share the vehicle's location to my Dad.,No,No,Yes,No,No,Yes,Yes,No
+884,Alert me when the vehicle speed exceeds 70 mph.,Yes,No,Yes,Yes,No,No,No,Yes
+167,Show the backseat passenger's movie on the main screen.,No,Yes,No,No,Yes,No,Yes,No
+667,Book a table for four at my favorite restaurant at 7,No,No,No,No,No,Yes,Yes,No
+1067,Avoid highways on the route to my destination.,Yes,No,Yes,Yes,No,No,Yes,No
+246,Alert me if a child is forgotten inside the car.,No,Yes,No,No,No,No,Yes,No
+814,Alert me when the vehicle speed exceeds the speed limit.,Yes,No,Yes,Yes,No,No,No,No
+969,Adjust the seat to my preferred setting.,No,Yes,No,No,No,Yes,No,No
+998,Adjust the seats to my preset comfortable position.,No,Yes,No,No,No,Yes,No,No
+751,Start self-cleaning mode after I leave the car.,No,Yes,No,No,No,No,No,No
+314,Navigate to the nearest gas station using Waze app.,Yes,No,Yes,Yes,No,No,Yes,No
+546,Identify and alert me about any objects approaching the vehicle.,Yes,No,No,No,No,No,No,No
+451,Navigate to the nearest shopping mall avoiding any toll roads.,Yes,No,Yes,Yes,No,No,Yes,No
+434,Lock the doors and close the windows.,No,Yes,No,No,No,No,No,No
+481,Detect any potential danger inside the cabin.,No,Yes,No,No,No,No,No,No
+87,Take me to the nearest gas station.,Yes,No,Yes,Yes,No,No,Yes,No
+3,Make a video call to James using the in-car system.,No,Yes,No,No,Yes,Yes,Yes,No
+23,Show the next week's calendar events.,No,No,No,No,Yes,Yes,Yes,No
+951,Start self-driving mode.,Yes,Yes,Yes,Yes,No,No,No,No
+144,Increase the car speed to overtake the vehicle in front.,Yes,No,Yes,Yes,No,No,No,Yes
+95,Drive to the nearest sushi restaurant,Yes,No,Yes,Yes,No,Yes,Yes,No
+288,Stop if you detect an obstacle on the road.,Yes,No,Yes,Yes,No,No,No,No
+253,Avoid toll roads on the way to our destination.,Yes,No,Yes,Yes,No,No,Yes,No
+708,Show me the live traffic situation on my route to work.,No,No,Yes,No,Yes,Yes,Yes,No
+158,Follow the car ahead of us.,Yes,No,Yes,Yes,No,No,No,Yes
+597,Direct me to John's last known location.,Yes,No,Yes,Yes,No,Yes,Yes,No
+574,Drive me to the nearest Italian restaurant.,Yes,No,Yes,Yes,No,No,Yes,No
+75,Drive to Bob's house.,Yes,No,Yes,Yes,No,Yes,Yes,Yes
+333,Drive to a less crowded area.,Yes,No,Yes,Yes,No,No,No,No
+561,Rapidly accelerate for fun.,Yes,No,No,Yes,No,No,No,Yes
+183,Take me to the nearest McDonald's.,Yes,No,Yes,Yes,No,No,Yes,No
+258,Turn on the rear-view camera.,Yes,No,No,No,No,No,No,No
+373,Switch off all internal lights.,No,Yes,No,No,No,No,No,No
+834,Watch Netflix on the onboard entertainment system.,No,No,No,No,Yes,Yes,Yes,No
+1008,Drive at a minimum speed of 80km/h.,Yes,No,No,Yes,No,No,No,Yes
+252,Send a text message to John saying I’m 15 minutes away.,No,No,No,No,No,Yes,Yes,No
+993,Set the navigation system to avoid highways for the remainder of the journey.,Yes,No,Yes,Yes,No,Yes,Yes,No
+556,Take a photo of the landscape as we drive by the lake.,Yes,No,No,No,No,No,No,No
+208,Alert me if any of the passengers fall asleep.,No,Yes,No,No,No,No,No,No
+377,Warn me if any passenger isn't wearing their seatbelt.,No,Yes,No,No,No,No,No,No
+550,Alert me when someone enters the vehicle while I'm not there.,No,Yes,No,No,No,No,Yes,No
+490,Speed up to match the traffic flow.,Yes,No,No,Yes,No,No,No,Yes
+646,Notify me when the car's battery is low.,No,Yes,No,No,No,No,No,No
+1011,Notify me when we are 5 minutes away from the destination.,No,Yes,Yes,No,No,No,No,No
+777,Take the scenic route to our destination.,Yes,No,Yes,Yes,No,Yes,Yes,No
+891,Show me the last trip's travel history.,No,No,No,No,No,Yes,Yes,No
+1035,Call John using hands-free.,No,Yes,No,No,Yes,Yes,Yes,No
+119,Emergency stop.,Yes,No,No,Yes,No,No,No,No
+790,Navigate to the places I visited most last month.,Yes,No,Yes,Yes,No,Yes,Yes,No
+936,"Send a text message to John saying ""I'm on my way.""",No,Yes,No,No,No,Yes,Yes,No
+1013,Take me to the address saved in my contact list as 'Home'.,Yes,No,Yes,Yes,No,Yes,Yes,No
+865,Set my home address as the destination.,Yes,No,Yes,Yes,No,Yes,No,No
+907,Alert me when we're 10 minutes away from destination.,Yes,No,Yes,Yes,No,Yes,Yes,No
+273,Turn on the radio to station 95.5 FM.,No,No,No,No,Yes,No,No,No
+1063,Show me the backseat view on screen.,No,Yes,No,No,Yes,No,No,No
+222,Show me the quickest route to the nearest gas station.,Yes,No,Yes,Yes,No,No,Yes,No
+286,Take the kids to school and return home.,Yes,Yes,Yes,Yes,No,Yes,Yes,No
+146,Stop the vehicle after the traffic light.,Yes,No,Yes,Yes,No,No,No,No
+1059,Set an alarm for 30 minutes from now.,No,Yes,No,No,Yes,No,Yes,No
+669,Make an emergency stop.,Yes,Yes,No,Yes,No,No,No,Yes
+1045,Reserve a table at my favorite restaurant.,No,No,No,No,No,Yes,Yes,No
+41,Call an emergency hotline.,No,Yes,No,No,No,Yes,Yes,No
+143,Drive me to the nearest pizza restaurant.,Yes,No,Yes,Yes,No,No,Yes,No
+566,Start a video call with my wife.,No,Yes,No,No,Yes,Yes,Yes,No
+945,Call emergency services.,No,Yes,Yes,No,No,Yes,Yes,No
+336,Check if there are any nearby vehicles before I open the door for exit.,Yes,Yes,No,No,No,No,No,No
+721,Call my sister on speaker.,No,Yes,No,No,Yes,Yes,Yes,No
