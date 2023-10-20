@@ -5,6 +5,7 @@ import fire
 from utils.prompt import *
 from utils.mics import read_all_command, output_result, wandb_log, create_save_name, save_response_to_json
 import time
+import random
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 
@@ -25,6 +26,10 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
         messages.append({'role':'assistant', 'content': few_shot_assistant_1})
         messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
         messages.append({'role':'assistant', 'content': few_shot_assistant_2})
+        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_3}{delimiter}"})
+        messages.append({'role':'assistant', 'content': few_shot_assistant_3})
+        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_4}{delimiter}"})
+        messages.append({'role':'assistant', 'content': few_shot_assistant_4})
 
     messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}"})
 
@@ -45,6 +50,7 @@ def main(
     debug_len: int = 10, # TODO! if it's really big may have problem with memory
     slurm_job_id: str = "00000",
     resume: bool = False,
+    start_from: str = "0",
 ):
 
     commands_w_id, tasks, gt_array = read_all_command(csv_path)
@@ -53,8 +59,8 @@ def main(
     wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id)
 
     all_results = []
-    json_file_path = f"{BASE_DIR}/assets/result/{model_name}.json" # PLEASE DO NOT CHANGE THIS PATH
-    numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}.npy" # PLEASE DO NOT CHANGE THIS PATH
+    json_file_path = f"{BASE_DIR}/assets/result/{model_name}_{slurm_job_id}.json" # PLEASE DO NOT CHANGE THIS PATH
+    numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}_{slurm_job_id}.npy" # PLEASE DO NOT CHANGE THIS PATH
     os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
 
     if resume and os.path.exists(json_file_path):
@@ -65,24 +71,39 @@ def main(
         for d in data:
             all_results.append(d['response'])
     cnt = 0
+    
+    start_from = int(start_from)
     for (i, command) in commands_w_id:
         if resume and os.path.exists(json_file_path) and i in existing_ids:
             continue
+        if i< start_from*100 or i >= (start_from+1) * 100:
+            continue
+
         start_time = time.time()
 
-        response = get_completion_from_user_input(command, 
-                                                    provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step, \
-                                                    model=model, temperature=temperature)
+        for delay_secs in (2**x for x in range(0, 6)):
+            try: 
+                response = get_completion_from_user_input(command, 
+                                                            provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step, \
+                                                            model=model, temperature=temperature)
 
-        style_response = {'id': i, 'command': command, 'response': response}
-        save_response_to_json(style_response, json_file_path)
+                style_response = {'id': i, 'command': command, 'response': response}
+                save_response_to_json(style_response, json_file_path)
 
-        if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
-            print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {command} =====================\n")
-            print(f"> {response}")
+                if (i % 100 == 0 and debug_len == -1) or (debug_len>0):
+                    print(f"\n===== command {bc.BOLD}{i}{bc.ENDC}: {command} =====================\n")
+                    print(f"> {response}")
 
-        all_results.append(response)
-        cnt = cnt + 1
+                all_results.append(response)
+                cnt = cnt + 1
+                break
+        
+            except openai.OpenAIError as e:
+                randomness_collision_avoidance = random.randint(0, 1000) / 1000.0
+                sleep_dur = delay_secs + randomness_collision_avoidance
+                print(f"Error: {e}. Retrying in {round(sleep_dur, 2)} seconds.")
+                time.sleep(sleep_dur)
+                continue
         if cnt>debug_len and debug_len != -1: # debugging now
             break
 

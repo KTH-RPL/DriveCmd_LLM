@@ -30,14 +30,19 @@ def output_result(numpy_file_path, json_file_path, model_name, all_results, gt_a
         wandb.save(numpy_file_path)
     acc = print_result(all_pred, gt_array[:len(all_pred)], tasks)
     print(f"""Model we use: {bc.OKCYAN}{model_name}{bc.ENDC}""")
-
+    
+    error_num = np.sum(all_pred[:,0]==-1)
+    if error_num > 0:
+        print(f"\nTotal No correct output command Number: {bc.FAIL}{error_num}{bc.ENDC}, \
+            \nError Ratio w Total: {bc.FAIL}{error_num/all_pred.shape[0]:.2f}{bc.ENDC}\n")
+    
     # save to wandb
     score = {'overall': np.mean(acc)}
     score.update(dict(zip(tasks, acc)))
     wandb.log({"acc": score})
     wandb.finish()
 
-def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id):
+def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id, num_shots=4):
     wandb.init(entity="hdmaptest", project="llc", 
         name=f"{slurm_job_id}-{model_name}",
         mode= ("online" if debug_len == -1 else "offline"),
@@ -47,15 +52,17 @@ def wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_n
         "provide_few_shots": provide_few_shots,
         "step_by_step": step_by_step,
         "model_name": model_name,
+        "num_shots": num_shots,
         },
     )
 
-def create_save_name(model_base_name, provide_detailed_explain, provide_few_shots, step_by_step, debug_len):
+def create_save_name(model_base_name, provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=4):
     flags = [
         '1' if provide_detailed_explain else '0',
         '1' if provide_few_shots else '0',
         '1' if step_by_step else '0',
         '' if debug_len == -1 else '-debug'
+        f'-ns-{num_shots}'
     ]
     flag_str = ''.join(flags)
     return model_base_name + "-" + flag_str

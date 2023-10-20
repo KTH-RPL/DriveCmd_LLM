@@ -12,6 +12,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 sys.path.append(BASE_DIR)
 from argparse import ArgumentParser
 from utils.mics import read_all_command, print_result, extract_outputs
+from utils.prompt import bc
 import numpy as np
 
 if __name__ == "__main__":
@@ -35,4 +36,8 @@ if __name__ == "__main__":
     else:
         print("Wrong file format, please use .csv or .npy")
         exit()
+    error_num = np.sum(all_pred[:,0]==-1)
+    if error_num > 0:
+        print(f"\nTotal No correct output command Number: {bc.FAIL}{error_num}{bc.ENDC}, \
+            \nError Ratio w Total: {bc.FAIL}{error_num/all_pred.shape[0]:.2f}{bc.ENDC}\n")
     print_result(all_pred, gt, tasks)
