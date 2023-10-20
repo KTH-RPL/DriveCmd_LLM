@@ -37,7 +37,7 @@ TODO table here
 | CodeLlama-34b-Instruct |         63GB    |              |
 
 ## ChatGPT
-## setup
+
 copy your OPENAI_API_KEY and save it in `.env`.
 `OPENAI_API_KEY='blabla'`
 
@@ -56,25 +56,34 @@ Now we will come to the challenge task.
 - Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
 - Result txt and npy will be saved inside [assets/results](assets/results) so you can run it again.
 
-After run this script, we will have following print in terminal:
-```
-Saving results....
-| Task                |   Accuracy |
-|---------------------+------------|
-| Perception          |   0.583333 |
-| In-cabin monitoring |   0.75     |
-| Localization        |   0.583333 |
-| Vehicle control     |   0.583333 |
-| Entertainment       |   0.833333 |
-| Personal data       |   0.583333 |
-| Network access      |   0.666667 |
-| Traffic laws        |   0.75     |
-| Overall             |   0.666667 |
+Then you will have a result `.json` file finally. Then run the `eval.py` For each task-level accuracy:
+
+```bash
+python scripts/eval.py -g assets/ucu.csv -e assets/result/test.json
 ```
 
 Here is demo image:
 ![](assets/readme/demo.png)
 
+### LLVM_AD Official Leaderboard
+
+Here is [official evaluate.py](), we copy directly from their repo but you can either input the `.json` or `.csv` file they required. 
+
+```bash
+python3 scripts/llvm_ad/official_eval.py -g assets/ucu.csv -e assets/result/test.json
+```
+
+Here is demo output:
+```
+➜  llcommand git:(master) ✗ python3 scripts/llvm_ad/official_eval.py
+Since the input file is .json, we save the prediction to .csv file:
+ /home/kin/workspace/llc/assets/result/gpt-35.csv 
+
+Following is the evaluation result in official way: 
+
+Command-level acc: 0.362147406733394
+Question-level acc: 0.8803457688808007
+```
 
 ## Issue I met and record here
 - torchrun error with ddp:
