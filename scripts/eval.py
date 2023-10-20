@@ -19,6 +19,7 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Input two files to evaluate the accuracy of the model.")
     parser.add_argument("--ground_truth", "-g", type=str, default='/home/kin/workspace/llcommand/assets/ucu.csv', help='Ground truth file.')
     parser.add_argument("--evaluate_file", "-e", type=str, default='/home/kin/workspace/llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
+    parser.add_argument('--official', '-o', action='store_true', help='Official.')
     args = parser.parse_args()
     temp, tasks, gt = read_all_command(args.ground_truth)
     (command_ids, _ ) = zip(*list(temp))
@@ -42,4 +43,7 @@ if __name__ == "__main__":
     if error_num > 0:
         print(f"\nTotal No correct output command Number: {bc.FAIL}{error_num}{bc.ENDC}, \
             \nError Ratio w Total: {bc.FAIL}{error_num/all_pred.shape[0]:.2f}{bc.ENDC}\n")
-    print_result(all_pred, gt, tasks)
+    if args.official:
+        print_result(all_pred, gt, tasks, official=True)
+    else:
+        print_result(all_pred, gt, tasks)

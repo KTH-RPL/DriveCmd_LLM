@@ -100,19 +100,22 @@ def extract_outputs(text, i=-1):
         return np.array([-1 for _ in range(8)])
     return np_res
 
-def evaluate(pred, gt):
+def evaluate(pred, gt, official=False):
     num_samples, num_tasks = gt.shape
     assert pred.shape[0] == num_samples
     assert pred.shape[1] == num_tasks
 
     acc = []
     for i in range(num_tasks):
-        acc.append(sum((pred[:, i] == gt[:, i]) & (pred[:, i] != -1))/sum(pred[:, i] != -1))
+        if not official:
+            acc.append(sum((pred[:, i] == gt[:, i]) & (pred[:, i] != -1))/sum(pred[:, i] != -1))
+        else:
+            acc.append(np.mean(pred[:, i] == gt[:, i]))
         # acc.append(np.mean(pred[:, i] == gt[:, i]))
     return acc
 
-def print_result(pred, gt, tasks):
-    acc = evaluate(pred, gt[:len(pred)])
+def print_result(pred, gt, tasks, official=False):
+    acc = evaluate(pred, gt[:len(pred)], official=official)
     printed_data = []
     for i, task in enumerate(tasks):
         printed_data.append([task, acc[i]])
