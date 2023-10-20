@@ -20,7 +20,8 @@ if __name__ == "__main__":
     parser.add_argument("--ground_truth", "-g", type=str, default='/home/kin/workspace/llcommand/assets/ucu.csv', help='Ground truth file.')
     parser.add_argument("--evaluate_file", "-e", type=str, default='/home/kin/workspace/llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
     args = parser.parse_args()
-    _, tasks, gt = read_all_command(args.ground_truth)
+    temp, tasks, gt = read_all_command(args.ground_truth)
+    (command_ids, _ ) = zip(*list(temp))
     all_pred = np.ones_like(gt)*(-1)
     if args.evaluate_file.endswith('.npy'):
         all_pred = np.load(args.evaluate_file)
@@ -29,10 +30,11 @@ if __name__ == "__main__":
     elif args.evaluate_file.endswith('.json'):
         with open(args.evaluate_file, "r") as f:
             data = json.load(f)
-        for result in data:
+        for i, result in enumerate(data):
             command_id = result['id']
             pred = extract_outputs(result['response'], command_id)
-            all_pred[(command_id-1),:] = pred # since command_id start with 1
+            index_id = command_ids.index(command_id)
+            all_pred[index_id,:] = pred # since command_id start with 1
     else:
         print("Wrong file format, please use .csv or .npy")
         exit()
