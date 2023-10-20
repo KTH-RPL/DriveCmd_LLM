@@ -50,6 +50,7 @@ def main(
     debug_len: int = 10, # TODO! if it's really big may have problem with memory
     slurm_job_id: str = "00000",
     resume: bool = False,
+    start_from: str = "0",
 ):
 
     commands_w_id, tasks, gt_array = read_all_command(csv_path)
@@ -58,8 +59,8 @@ def main(
     wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id)
 
     all_results = []
-    json_file_path = f"{BASE_DIR}/assets/result/{model_name}.json" # PLEASE DO NOT CHANGE THIS PATH
-    numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}.npy" # PLEASE DO NOT CHANGE THIS PATH
+    json_file_path = f"{BASE_DIR}/assets/result/{model_name}_{slurm_job_id}.json" # PLEASE DO NOT CHANGE THIS PATH
+    numpy_file_path = f"{BASE_DIR}/assets/result/{model_name}_{slurm_job_id}.npy" # PLEASE DO NOT CHANGE THIS PATH
     os.makedirs(f"{BASE_DIR}/assets/result", exist_ok=True)
 
     if resume and os.path.exists(json_file_path):
@@ -70,9 +71,14 @@ def main(
         for d in data:
             all_results.append(d['response'])
     cnt = 0
+    
+    start_from = int(start_from)
     for (i, command) in commands_w_id:
         if resume and os.path.exists(json_file_path) and i in existing_ids:
             continue
+        if i< start_from*100 or i >= (start_from+1) * 100:
+            continue
+
         start_time = time.time()
 
         for delay_secs in (2**x for x in range(0, 6)):
