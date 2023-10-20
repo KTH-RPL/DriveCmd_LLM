@@ -20,7 +20,8 @@ if __name__ == "__main__":
     parser.add_argument("--ground_truth", "-g", type=str, default='/home/kin/workspace/llcommand/assets/ucu.csv', help='Ground truth file.')
     parser.add_argument("--evaluate_file", "-e", type=str, default='/home/kin/workspace/llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
     args = parser.parse_args()
-    (command_ids, _), tasks, gt = read_all_command(args.ground_truth)
+    temp, tasks, gt = read_all_command(args.ground_truth)
+    (command_ids, _ ) = zip(*list(temp))
     all_pred = np.ones_like(gt)*(-1)
     if args.evaluate_file.endswith('.npy'):
         all_pred = np.load(args.evaluate_file)
