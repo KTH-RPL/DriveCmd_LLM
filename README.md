@@ -37,8 +37,15 @@ TODO table here
 | CodeLlama-34b-Instruct |         63GB    |              |
 
 ## ChatGPT
+## setup
+copy your OPENAI_API_KEY and save it in `.env`.
+`OPENAI_API_KEY='blabla'`
 
-TODO Yi Yang here.
+install below
+```
+pip install openai
+pip install -U python-dotenv
+```
 
 ## Command Analysis 
 
