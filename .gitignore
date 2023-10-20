@@ -11,3 +11,5 @@ codellama.egg-info/*
 assets/logs/*
 
 wandb/*
+
+.history/*
