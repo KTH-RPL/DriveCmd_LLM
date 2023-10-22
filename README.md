@@ -16,27 +16,12 @@ Here we show how to downloaded their model:
 2. Dependencies: `sudo apt install wget ucommon-utils`
 3. run `./scripts/llama/download.sh` to download Llama models.
 4. `mamba create --name llc python=3.8 && mamba activate llc && pip install -r requirements.txt`
-5. run the example:
-
-   ```bash
-   torchrun --nproc_per_node 1 scripts/example/example_instructions.py \
-       --ckpt_dir model/CodeLlama-7b/ \
-       --tokenizer_path model/CodeLlama-7b/tokenizer.model \
-       --max_seq_len 128 --max_batch_size 4
-   ```
-
-Here is the table to show how many memory we need use when run different models. Then you should read [this part](#command-analysis) for running this task
-
-| Model                  | GPU Memory Cost |
-| ---------------------- | --------------- |
-| CodeLlama-7b-Instruct  |     ~12.55GB    |
-| CodeLlama-13b-Instruct |         24GB    |
-| CodeLlama-34b-Instruct |         63GB    |
+5. run the example.
 
 ## GPT API
 
 copy your OPENAI_API_KEY and save it in `.env`.
-`OPENAI_API_KEY='blabla'`
+`OPENAI_API_KEY='xxxx'`
 
 install below
 ```
@@ -55,6 +40,7 @@ Now we will come to the challenge task.
 
 - Data preparation: Already downloaded to this repo inside [assets](assets/ucu.csv).
 - Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
+- Run with `torchrun --nproc_per_node 1 scripts/main_x.py`
 - Result txt and npy will be saved inside [assets/results](assets/results) so you can run it again.
 
 Then you will have a result `.json` file finally. Then run the `eval.py` For each task-level accuracy:
