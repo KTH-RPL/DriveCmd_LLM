@@ -9,7 +9,7 @@ import random
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 
-def get_completion_from_user_input(user_input, provide_detailed_explain=False, provide_few_shots = False, step_by_step = False, model="gpt-3.5-turbo", temperature=0):
+def get_completion_from_user_input(user_input, provide_detailed_explain=False, provide_few_shots = False, step_by_step = False, model="gpt-3.5-turbo", temperature=0, num_shots=4):
     fix_system_message = system_message
     if step_by_step:
         fix_system_message = step_system_message
@@ -22,14 +22,30 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
         messages.append({'role':'assistant', 'content': f"{delimiter}{assistant}{delimiter}"})
 
     if provide_few_shots:
-        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
-        messages.append({'role':'assistant', 'content': few_shot_assistant_1})
-        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
-        messages.append({'role':'assistant', 'content': few_shot_assistant_2})
-        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_3}{delimiter}"})
-        messages.append({'role':'assistant', 'content': few_shot_assistant_3})
-        messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_4}{delimiter}"})
-        messages.append({'role':'assistant', 'content': few_shot_assistant_4})
+        if num_shots == 4:
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_1})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_2})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_3}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_3})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_4}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_4})
+        elif num_shots == 3:
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_1})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_2})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_3}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_3})
+        elif num_shots == 2:
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_1})
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_2}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_2})
+        elif num_shots == 1:
+            messages.append({'role':'user', 'content': f"{delimiter}{few_shot_user_1}{delimiter}"})
+            messages.append({'role':'assistant', 'content': few_shot_assistant_1})
 
     messages.append({'role':'user', 'content': f"{delimiter}{user_input}{delimiter}"})
 
@@ -41,7 +57,7 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
     return response.choices[0].message["content"]
 
 def main(
-    csv_path: str = "/proj/berzelius-2023-154/users/x_yiyan/code/llvm/data/ucu.csv",
+    csv_path: str = "/home/x_cili/x_cili_yy/llc/assets/ucu_subset.csv", #"/proj/berzelius-2023-154/users/x_yiyan/code/llvm/data/ucu.csv",
     temperature: float = 0.0,
     provide_detailed_explain: bool = False,
     provide_few_shots: bool = False,
@@ -51,12 +67,13 @@ def main(
     slurm_job_id: str = "00000",
     resume: bool = False,
     start_from: str = "0",
+    num_shots: int = 4,
 ):
 
     commands_w_id, tasks, gt_array = read_all_command(csv_path)
     print("1. Finished Read all commands!")
-    model_name = create_save_name(model, provide_detailed_explain, provide_few_shots, step_by_step, debug_len)
-    wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id)
+    model_name = create_save_name(model, provide_detailed_explain, provide_few_shots, step_by_step, debug_len, num_shots=num_shots)
+    wandb_log(provide_detailed_explain, provide_few_shots, step_by_step, model_name, debug_len, slurm_job_id, num_shots=num_shots)
 
     all_results = []
     json_file_path = f"{BASE_DIR}/assets/result/{model_name}_{slurm_job_id}.json" # PLEASE DO NOT CHANGE THIS PATH
@@ -76,8 +93,8 @@ def main(
     for (i, command) in commands_w_id:
         if resume and os.path.exists(json_file_path) and i in existing_ids:
             continue
-        if i< start_from*100 or i >= (start_from+1) * 100:
-            continue
+        #if i< start_from*100 or i >= (start_from+1) * 100:
+        #    continue
 
         start_time = time.time()
 
@@ -85,7 +102,7 @@ def main(
             try: 
                 response = get_completion_from_user_input(command, 
                                                             provide_detailed_explain=provide_detailed_explain, provide_few_shots=provide_few_shots, step_by_step=step_by_step, \
-                                                            model=model, temperature=temperature)
+                                                            model=model, temperature=temperature, num_shots=num_shots)
 
                 style_response = {'id': i, 'command': command, 'response': response}
                 save_response_to_json(style_response, json_file_path)
