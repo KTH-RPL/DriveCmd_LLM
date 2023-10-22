@@ -13,11 +13,10 @@ Here we introduced how to setup. [Pretrained model from Meta](https://ai.meta.co
 Here we show how to downloaded their model:
 
 1. Send request to their form and you will receive an email with some details.
-2. `git clone https://github.com/KTH-RPL/llc && cd llc` 
-3. Dependencies: `sudo apt install wget ucommon-utils`
-4. run `./download.sh` Then enter **<u>the link</u>** you received at first step.
-5. `mamba create --name llc python=3.8 && mamba activate llc && pip install -r requirements.txt`
-6. run the example:
+2. Dependencies: `sudo apt install wget ucommon-utils`
+3. run `./scripts/llama/download.sh` to download Llama models.
+4. `mamba create --name llc python=3.8 && mamba activate llc && pip install -r requirements.txt`
+5. run the example:
 
    ```bash
    torchrun --nproc_per_node 1 scripts/example/example_instructions.py \
@@ -28,7 +27,13 @@ Here we show how to downloaded their model:
 
 Here is the table to show how many memory we need use when run different models. Then you should read [this part](#command-analysis) for running this task
 
-## ChatGPT
+| Model                  | GPU Memory Cost |
+| ---------------------- | --------------- |
+| CodeLlama-7b-Instruct  |     ~12.55GB    |
+| CodeLlama-13b-Instruct |         24GB    |
+| CodeLlama-34b-Instruct |         63GB    |
+
+## GPT API
 
 copy your OPENAI_API_KEY and save it in `.env`.
 `OPENAI_API_KEY='blabla'`
@@ -38,13 +43,17 @@ install below
 pip install openai
 pip install -U python-dotenv
 ```
+Run the example:
+
+```bash
+python scripts/main_gpt.py --provide_few_shots True --step_by_step True
+```
 
 ## Command Analysis 
 
 Now we will come to the challenge task.
 
 - Data preparation: Already downloaded to this repo inside [assets](assets/ucu.csv).
-- Scripts which is based on Different models require different model-parallel (MP) values, check the [assets/slurm](assets/slurm) for more detail.
 - Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
 - Result txt and npy will be saved inside [assets/results](assets/results) so you can run it again.
 
@@ -61,21 +70,14 @@ Here is [official evaluate.py](), we copy directly from their repo but you can e
 ```bash
 python3 scripts/llvm_ad/official_eval.py -g assets/ucu.csv -e assets/result/test.json
 ```
+We attach the raw `.json` output files (with explainations and output), and its corresponding `.cvs` files (binary output only) under `assets/result` folder. 
 
 Here is demo output:
 ```
-Since the input file is .json, we save the prediction to .csv file:
- /home/user/workspace/llc/our_best.csv 
+Since the input file is .json, we save the prediction to .csv file: assets/result/gpt4_best.csv
 
 Following is the evaluation result in official way: 
 
 Command-level acc: 0.38034576888080074
 Question-level acc: 0.8902411282984531
 ```
-
-## Issue I met and record here
-- torchrun error with ddp:
-  ```bash
-  RuntimeError: The server socket has failed to listen on any local network address. The server socket has failed to bind to [::]:29500 (errno: 98 - Address already in use). The server socket has failed to bind to 0.0.0.0:29500 (errno: 98 - Address already in use).
-  ```
-  Solution: [ref1](https://discuss.pytorch.org/t/runtimeerror-the-server-socket-has-failed-to-listen-on-any-local-network-address-the-server-socket-has-failed-to-bind-to-29500/180333), [ref2](https://pytorch.org/docs/stable/elastic/run.html), running with flag `--rdzv-endpoint=localhost:60012`

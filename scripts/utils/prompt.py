@@ -49,12 +49,6 @@ To aid your decision-making, consider these detailed explanations:
 Always ensure autonomous vehicles respect traffic laws.
 """
 
-emphasis_output = f"""
-Ensure to format your answers as:
-Output is //[A1 A2 A3 A4 A5 A6 A7 A8]//
-Replace A1-A8 with 1 for 'Yes' and 0 for 'No'.
-"""
-
 # few-shot example for the LLM to 
 # learn desired behavior by example
 

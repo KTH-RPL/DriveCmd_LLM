@@ -8,8 +8,8 @@ import numpy as np
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Input two files to evaluate the accuracy of the model.")
-    parser.add_argument("--ground_truth", "-g", type=str, default='llcommand/assets/ucu.csv', help='Ground truth file.')
-    parser.add_argument("--evaluate_file", "-e", type=str, default='llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
+    parser.add_argument("--ground_truth", "-g", type=str, default='assets/ucu.csv', help='Ground truth file.')
+    parser.add_argument("--evaluate_file", "-e", type=str, default='assets/result/test.json', help='Evaluate file, could be .csv or .npy')
     args = parser.parse_args()
     temp, tasks, gt = read_all_command(args.ground_truth)
     (command_ids, _ ) = zip(*list(temp))

@@ -6,7 +6,7 @@ import os
 import random
 
 # Load the CSV file into a DataFrame
-commands_df = pd.read_csv("code/llvm/data/ucu.csv", encoding='ISO-8859-1')
+commands_df = pd.read_csv("assets/ucu.csv", encoding='ISO-8859-1')
 
 keys = ["Perception", "In-cabin monitoring", "Localization", "Vehicle control", 
             "Entertainment", "Personal data", "Network access", "Traffic laws"]
@@ -26,5 +26,5 @@ for index, row in commands_df.iterrows():
 
 # Save the updated DataFrame to a CSV file
 filename_without_extension = os.path.splitext(os.path.basename(__file__))[0]
-output_path = f"code/llc/assets/result/rule_based/{filename_without_extension}_commands.csv"
+output_path = f"assets/result/rule_based/{filename_without_extension}_commands.csv"
 commands_df.to_csv(output_path, index=False)

@@ -52,7 +52,7 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages,
-        temperature=temperature, # 控制模型输出的随机程度
+        temperature=temperature, # control the randomness of the model's output
     )
     return response.choices[0].message["content"]
 
@@ -63,7 +63,7 @@ def main(
     provide_few_shots: bool = False,
     step_by_step: bool = False,
     model: str = "gpt-3.5-turbo",
-    debug_len: int = 10, # TODO! if it's really big may have problem with memory
+    debug_len: int = 10,
     slurm_job_id: str = "00000",
     resume: bool = False,
     start_from: str = "0",
