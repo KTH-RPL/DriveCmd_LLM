@@ -57,7 +57,7 @@ def get_completion_from_user_input(user_input, provide_detailed_explain=False, p
     return response.choices[0].message["content"]
 
 def main(
-    csv_path: str = "/home/x_cili/x_cili_yy/llc/assets/ucu_subset.csv", #"/proj/berzelius-2023-154/users/x_yiyan/code/llvm/data/ucu.csv",
+    csv_path: str = "llc/assets/ucu_subset.csv", #"code/llvm/data/ucu.csv",
     temperature: float = 0.0,
     provide_detailed_explain: bool = False,
     provide_few_shots: bool = False,

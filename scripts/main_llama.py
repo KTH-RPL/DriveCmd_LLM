@@ -1,11 +1,3 @@
-"""
-# Created: 2023-10-16 18:34
-# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
-# Author: Kin ZHANG  (https://kin-zhang.github.io/)
-
-# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
-# For a copy, see <https://opensource.org/licenses/MIT>.
-"""
 
 from typing import Optional
 
@@ -71,10 +63,10 @@ def get_completion_from_user_input(user_input, generator, max_gen_len, temperatu
     return response[0]['generation']['content']
 
 def main(
-    ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-7b-chat",
-    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-13b-chat",
-    # ckpt_dir: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llama/llama-2-70b-chat",
-    csv_path: str = "/proj/berzelius-2023-154/users/x_qinzh/workspace/llc/assets/ucu.csv",
+    ckpt_dir: str = "workspace/llama/llama-2-7b-chat",
+    # ckpt_dir: str = "workspace/llama/llama-2-13b-chat",
+    # ckpt_dir: str = "workspace/llama/llama-2-70b-chat",
+    csv_path: str = "workspace/llc/assets/ucu.csv",
     temperature: float = 0.1,
     top_p: float = 0.95,
     max_seq_len: int = 4096, # if the sentence is really long, should consider longer this one.

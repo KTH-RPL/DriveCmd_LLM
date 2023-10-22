@@ -62,9 +62,6 @@ Then you will have a result `.json` file finally. Then run the `eval.py` For eac
 python scripts/eval.py -g assets/ucu.csv -e assets/result/test.json
 ```
 
-Here is demo image:
-![](assets/readme/demo.png)
-
 ### LLVM_AD Official Leaderboard
 
 Here is [official evaluate.py](), we copy directly from their repo but you can either input the `.json` or `.csv` file they required. 
@@ -75,14 +72,13 @@ python3 scripts/llvm_ad/official_eval.py -g assets/ucu.csv -e assets/result/test
 
 Here is demo output:
 ```
-➜  llcommand git:(master) ✗ python3 scripts/llvm_ad/official_eval.py
 Since the input file is .json, we save the prediction to .csv file:
- /home/users/workspace/llc/assets/result/gpt-35.csv 
+ /home/user/workspace/llc/our_best.csv 
 
 Following is the evaluation result in official way: 
 
-Command-level acc: 0.362147406733394
-Question-level acc: 0.8803457688808007
+Command-level acc: 0.38034576888080074
+Question-level acc: 0.8902411282984531
 ```
 
 ## Issue I met and record here

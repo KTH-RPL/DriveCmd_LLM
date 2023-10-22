@@ -1,12 +1,3 @@
-"""
-# Created: 2023-10-16 23:49
-# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
-# Author: Kin ZHANG  (https://kin-zhang.github.io/)
-
-# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
-# For a copy, see <https://opensource.org/licenses/MIT>.
-"""
-
 import os, sys, json
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 sys.path.append(BASE_DIR)
@@ -17,8 +8,8 @@ import numpy as np
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Input two files to evaluate the accuracy of the model.")
-    parser.add_argument("--ground_truth", "-g", type=str, default='/home/kin/workspace/llcommand/assets/ucu.csv', help='Ground truth file.')
-    parser.add_argument("--evaluate_file", "-e", type=str, default='/home/kin/workspace/llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
+    parser.add_argument("--ground_truth", "-g", type=str, default='llcommand/assets/ucu.csv', help='Ground truth file.')
+    parser.add_argument("--evaluate_file", "-e", type=str, default='llcommand/assets/result/test.json', help='Evaluate file, could be .csv or .npy')
     args = parser.parse_args()
     temp, tasks, gt = read_all_command(args.ground_truth)
     (command_ids, _ ) = zip(*list(temp))

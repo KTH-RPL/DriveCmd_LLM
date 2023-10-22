@@ -72,8 +72,8 @@ def save_pred_csv(path):
 
 if __name__ == "__main__":
     parser = ArgumentParser(description="Input two files to evaluate the accuracy of the model.")
-    parser.add_argument("--ground_truth", "-g", type=str, default='/home/kin/workspace/llcommand/assets/ucu.csv', help='Ground truth file.')
-    parser.add_argument("--evaluate_file", "-e", type=str, default='/home/kin/workspace/llcommand/assets/result/gpt-3.5-turbo-011_merged.json', help='Evaluate file json.')
+    parser.add_argument("--ground_truth", "-g", type=str, default='llcommand/assets/ucu.csv', help='Ground truth file.')
+    parser.add_argument("--evaluate_file", "-e", type=str, default='llcommand/assets/result/gpt-3.5-turbo-011_merged.json', help='Evaluate file json.')
     args = parser.parse_args()
     pred_csv = None
     if args.evaluate_file.endswith('.json'):
