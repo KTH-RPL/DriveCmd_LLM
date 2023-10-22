@@ -28,14 +28,6 @@ Here we show how to downloaded their model:
 
 Here is the table to show how many memory we need use when run different models. Then you should read [this part](#command-analysis) for running this task
 
-TODO table here
-
-| Model                  | GPU Memory Cost | Running Time |
-| ---------------------- | --------------- | ------------ |
-| CodeLlama-7b-Instruct  |     ~12.55GB    |              |
-| CodeLlama-13b-Instruct |         24GB    |              |
-| CodeLlama-34b-Instruct |         63GB    |              |
-
 ## ChatGPT
 
 copy your OPENAI_API_KEY and save it in `.env`.
