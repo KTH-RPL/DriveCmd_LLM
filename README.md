@@ -77,7 +77,7 @@ Here is demo output:
 ```
 ➜  llcommand git:(master) ✗ python3 scripts/llvm_ad/official_eval.py
 Since the input file is .json, we save the prediction to .csv file:
- /home/kin/workspace/llc/assets/result/gpt-35.csv 
+ /home/users/workspace/llc/assets/result/gpt-35.csv 
 
 Following is the evaluation result in official way: 
 
