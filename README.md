@@ -13,10 +13,17 @@ Here we introduced how to setup. [Pretrained model from Meta](https://ai.meta.co
 Here we show how to downloaded their model:
 
 1. Send request to their form and you will receive an email with some details.
+
 2. Dependencies: `sudo apt install wget ucommon-utils`
+
 3. run `./scripts/llama/download.sh` to download Llama models.
+
 4. `mamba create --name llc python=3.8 && mamba activate llc && pip install -r requirements.txt`
-5. run the example.
+
+6. Run the example:
+	```bash
+	torchrun --nproc_per_node 1 scripts/main_codellama.py
+	```
 
 ## GPT API
 
@@ -34,16 +41,9 @@ Run the example:
 python scripts/main_gpt.py --provide_few_shots True --step_by_step True
 ```
 
-## Command Analysis 
+## Evaluation
 
-Now we will come to the challenge task.
-
-- Data preparation: Already downloaded to this repo inside [assets](assets/ucu.csv).
-- Prompt modified inside [scripts/prompt.py](scripts/prompt.py)
-- Run with `torchrun --nproc_per_node 1 scripts/main_x.py`
-- Result txt and npy will be saved inside [assets/results](assets/results) so you can run it again.
-
-Then you will have a result `.json` file finally. Then run the `eval.py` For each task-level accuracy:
+You will have a result `.json` file finally. Then run the `eval.py` For each task-level accuracy:
 
 ```bash
 python scripts/eval.py -g assets/ucu.csv -e assets/result/test.json
