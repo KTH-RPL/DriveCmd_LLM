@@ -1,3 +1,11 @@
+"""
+# Created: 2023-10-16 18:34
+# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
+# Author: Kin Zhang  (https://kin-zhang.github.io/)
+
+# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
+# For a copy, see <https://opensource.org/licenses/MIT>.
+"""
 
 from typing import Optional
 

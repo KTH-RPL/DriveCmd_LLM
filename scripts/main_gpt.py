@@ -1,3 +1,11 @@
+"""
+# Created: 2023-10-17 12:39
+# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
+# Author: Yi Yang & Qingwen Zhang
+
+# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
+# For a copy, see <https://opensource.org/licenses/MIT>.
+"""
 import openai
 import os, json
 from dotenv import load_dotenv, find_dotenv

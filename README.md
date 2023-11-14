@@ -1,4 +1,5 @@
-# llcommand-AD
+DriveCmd_LLM
+---
 
 Large Language Command in Autonomous driving.
 
@@ -20,7 +21,7 @@ Here we show how to downloaded their model:
 
 4. `mamba create --name llc python=3.8 && mamba activate llc && pip install -r requirements.txt`
 
-6. Run the example:
+5. Run the example:
 	```bash
 	torchrun --nproc_per_node 1 scripts/main_codellama.py
 	```
@@ -47,6 +48,22 @@ You will have a result `.json` file finally. Then run the `eval.py` For each tas
 
 ```bash
 python scripts/eval.py -g assets/ucu.csv -e assets/result/test.json
+```
+
+Here is the demo output:
+```
+Evaluating assets/result/gpt-4_best.json ...
+| Task                |   Accuracy |
+|---------------------+------------|
+| Perception          |   0.931756 |
+| In-cabin monitoring |   0.748863 |
+| Localization        |   0.915378 |
+| Vehicle control     |   0.88626  |
+| Entertainment       |   0.944495 |
+| Personal data       |   0.859873 |
+| Network access      |   0.919927 |
+| Traffic laws        |   0.915378 |
+| Overall             |   0.890241 |
 ```
 
 ### LLVM_AD Official Leaderboard

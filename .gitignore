@@ -1,0 +1,13 @@
+model/*
+*.pyc
+.env
+*.json
+*.csv
+
+*.npy
+*.txt
+assets/logs/*
+
+wandb/*
+
+.history/*

@@ -1,3 +1,12 @@
+"""
+# Created: 2023-10-16 18:34
+# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
+# Author: Kin Zhang  (https://kin-zhang.github.io/)
+
+# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
+# For a copy, see <https://opensource.org/licenses/MIT>.
+"""
+
 import pandas as pd
 import re, time, wandb, os, sys, json
 import numpy as np
@@ -122,6 +131,7 @@ def print_result(pred, gt, tasks, official=False):
         printed_data.append([task, acc[i]])
     printed_data.append(["Overall", np.mean(acc)])
     print(tabulate(printed_data, headers=['Task', 'Accuracy'], tablefmt='orgtbl'))
-    output = "\t".join([str(round(np.mean(acc),4))] + [str(round(a,4)) for a in acc])
-    print(output)
+    # for copy directly to excel
+    # output = "\t".join([str(round(np.mean(acc),4))] + [str(round(a,4)) for a in acc])
+    # print(output)
     return acc
