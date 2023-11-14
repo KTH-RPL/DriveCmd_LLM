@@ -1,7 +1,7 @@
-DriveCmd_LLM
+Human-Centric Autonomous Systems With LLMs for User Command Reasoning
 ---
 
-Large Language Command in Autonomous driving.
+[![arXiv](https://img.shields.io/badge/arXiv-TODO.TODO-b31b1b.svg)](https://arxiv.org/abs/TODO.TODO)
 
 Task: In-Cabin User Command Understanding (UCU), [workshop in WACV2024](https://llvm-ad.github.io/challenges/)
 
@@ -83,4 +83,17 @@ Following is the evaluation result in official way:
 
 Command-level acc: 0.38034576888080074
 Question-level acc: 0.8902411282984531
+```
+
+## Acknowledgements
+
+
+### Cite Our Paper
+```bash
+@article{yi2024drivecmdllm,
+  author={Yi Yang, Qingwen Zhang, Ci Li, Daniel Simões Marta, Nazre Batool, John Folkesson},
+  title={Human-Centric Autonomous Systems With LLMs for User Command Reasoning},
+  journal={arXiv preprint arXiv:TODO.TODO},
+  year={2024}
+}
 ```
