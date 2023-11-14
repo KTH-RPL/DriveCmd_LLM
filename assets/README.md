@@ -5,7 +5,7 @@ Data Analysis
 
 ChatGPT 4.0 [chat shared](https://chat.openai.com/share/cff8d050-b819-4faa-95ae-49b2ade8e29d)
 
-Original Data:
+Original Data: `assets/ucu.csv`
 
 |Task | No |Yes|
 | ---- | ---- | ---- |
@@ -18,7 +18,7 @@ Original Data:
 |Network access       | 0.451319  | 0.548681 |
 |Traffic laws         | 0.853503  | 0.146497 |
 
-Subset Data:
+Subset Data: `assets/ucu_subset.csv`
 
 |Task | No |Yes|
 | ---- | ---- | ---- |

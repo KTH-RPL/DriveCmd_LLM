@@ -5,7 +5,7 @@ import pandas as pd
 import os
 
 # Load the CSV file into a DataFrame
-commands_df = pd.read_csv("/proj/berzelius-2023-154/users/x_yiyan/code/llvm/data/ucu.csv", encoding='ISO-8859-1')
+commands_df = pd.read_csv("assets/ucu.csv", encoding='ISO-8859-1')
 commands_df.head()
 
 
@@ -77,5 +77,5 @@ commands_df.head()
 
 # Save the updated DataFrame to a CSV file
 filename_without_extension = os.path.splitext(os.path.basename(__file__))[0]
-output_path = f"/proj/berzelius-2023-154/users/x_yiyan/code/llc/assets/result/rule_based/{filename_without_extension}_commands.csv"
+output_path = f"assets/result/rule_based/{filename_without_extension}_commands.csv"
 commands_df.to_csv(output_path, index=False)

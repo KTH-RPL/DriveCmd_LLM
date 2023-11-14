@@ -1,12 +1,3 @@
-"""
-# Created: 2023-10-16 23:49
-# Copyright (C) 2023-now, RPL, KTH Royal Institute of Technology
-# Author: Kin ZHANG  (https://kin-zhang.github.io/)
-
-# Only this code is licensed under the terms of the MIT license. All other references are subjected to their own licenses.
-# For a copy, see <https://opensource.org/licenses/MIT>.
-"""
-
 import os, sys, json
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..' ))
 sys.path.append(BASE_DIR)
