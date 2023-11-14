@@ -9,11 +9,9 @@ Here is our solution code. Please check the report for more detail.
 
 ## llama & codellama
 
-Here we introduced how to setup. [Pretrained model from Meta](https://ai.meta.com/llama/) and code from [codellama](https://github.com/facebookresearch/codellama/tree/main). check the [assets/slurm](assets/slurm) for more detail on all our experiments includes different models and all ablation study running. 
+Here we introduced how to setup and the way to downloaded their model:
 
-Here we show how to downloaded their model:
-
-1. Send request to their form and you will receive an email with some details.
+1. Send request to their form [Apply here in Meta official page](https://ai.meta.com/llama/) and you will receive an email with some details.
 
 2. Dependencies: `sudo apt install wget ucommon-utils`
 
