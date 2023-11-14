@@ -68,18 +68,18 @@ Evaluating assets/result/gpt-4_best.json ...
 
 ### LLVM_AD Official Leaderboard
 
-Here is [official evaluate.py](), we copy directly from their repo but you can either input the `.json` or `.csv` file they required. 
+Here is official evaluate with `-o`:
 
 ```bash
-python3 scripts/llvm_ad/official_eval.py -g assets/ucu.csv -e assets/result/test.json
+python3 scripts/llvm_ad/official_eval.py -o -g assets/ucu.csv -e assets/result/gpt4_best.csv
 ```
 We attach the raw `.json` output files (with explainations and output), and its corresponding `.cvs` files (binary output only) under `assets/result` folder. 
 
 Here is demo output:
 ```
-Since the input file is .json, we save the prediction to .csv file: assets/result/gpt4_best.csv
-
-Following is the evaluation result in official way: 
+Since the input file is .json, we save the prediction to .csv file at assets/result/gpt-4_best.csv
+Evaluating assets/result/gpt-4_best.json ...
+Following is the evaluation result in official way:
 
 Command-level acc: 0.38034576888080074
 Question-level acc: 0.8902411282984531
@@ -87,13 +87,18 @@ Question-level acc: 0.8902411282984531
 
 ## Acknowledgements
 
+This work was funded by Vinnova, Sweden (research grant). The computations were enabled by the supercomputing resource Berzelius provided by National Supercomputer Centre at Linköping University and the Knut and Alice Wallenberg foundation, Sweden.
+
+This implementation is based on codes from several repositories. Thanks for these authors who kindly open-sourcing their work to the community. Please see our paper reference part to get more information.
+
+❤️: [llvm-ad](https://llvm-ad.github.io/), [llama2](https://github.com/facebookresearch/llama/tree/main)
 
 ### Cite Our Paper
 ```bash
-@article{yi2024drivecmdllm,
-  author={Yi Yang, Qingwen Zhang, Ci Li, Daniel Simões Marta, Nazre Batool, John Folkesson},
+@article{yi2023drivecmdllm,
+  author={Yang, Yi and Zhang, Qingwen and Li, Ci and Simões Marta, Daniel and Batool, Nazre and Folkesson, John},
   title={Human-Centric Autonomous Systems With LLMs for User Command Reasoning},
   journal={arXiv preprint arXiv:TODO.TODO},
-  year={2024}
+  year={2023}
 }
 ```

@@ -16,13 +16,8 @@ if __name__ == "__main__":
     temp, tasks, gt = read_all_command(args.ground_truth)
     (command_ids, _ ) = zip(*list(temp))
     all_pred = np.ones_like(gt)*(-1)
-    if args.evaluate_file.endswith('.npy'):
-        all_pred = np.load(args.evaluate_file)
-    elif args.evaluate_file.endswith('.csv') and not args.official:
+    if args.evaluate_file.endswith('.csv') and not args.official:
         commands, tasks, all_pred = read_all_command(args.evaluate_file)
-    elif args.evaluate_file.endswith('.csv') and args.official:
-        tr_dict = open_true_csv(args.ground_truth)
-        pr_dict = open_pred_csv(args.evaluate_file)
     elif args.evaluate_file.endswith('.json'):
         with open(args.evaluate_file, "r") as f:
             data = json.load(f)
@@ -32,8 +27,10 @@ if __name__ == "__main__":
             index_id = command_ids.index(command_id)
             all_pred[index_id,:] = pred # since command_id start with 1
         # official leaderbaord format if you want to submit to leaderboard
-        # tmp_all_pred = np.concatenate([np.array(command_ids).reshape(-1,1), all_pred], axis=1).astype(int)
-        # np.savetxt(args.evaluate_file.replace('.json', '.csv'), tmp_all_pred, delimiter=" ", fmt='%s')
+        if args.official:
+            tmp_all_pred = np.concatenate([np.array(command_ids).reshape(-1,1), all_pred], axis=1).astype(int)
+            np.savetxt(args.evaluate_file.replace('.json', '.csv'), tmp_all_pred, delimiter=" ", fmt='%s')
+            print(f"Since the input file is .json, we save the prediction to .csv file at {args.evaluate_file.replace('.json', '.csv')}")
     else:
         print("Wrong file format, please use .csv or .npy")
         exit()
@@ -42,6 +39,8 @@ if __name__ == "__main__":
     if args.official:
         print("Following is the evaluation result in official way:")
         print(bc.BOLD)
+        tr_dict = open_true_csv(args.ground_truth)
+        pr_dict = open_pred_csv(args.evaluate_file.replace('.json', '.csv'))
         command_level_acc(tr_dict, pr_dict)
         question_level_acc(tr_dict, pr_dict)
         print(bc.ENDC)
