@@ -31,6 +31,9 @@ if __name__ == "__main__":
             pred = extract_outputs(result['response'], command_id)
             index_id = command_ids.index(command_id)
             all_pred[index_id,:] = pred # since command_id start with 1
+        # official leaderbaord format if you want to submit to leaderboard
+        # tmp_all_pred = np.concatenate([np.array(command_ids).reshape(-1,1), all_pred], axis=1).astype(int)
+        # np.savetxt(args.evaluate_file.replace('.json', '.csv'), tmp_all_pred, delimiter=" ", fmt='%s')
     else:
         print("Wrong file format, please use .csv or .npy")
         exit()
