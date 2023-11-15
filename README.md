@@ -1,7 +1,7 @@
 Human-Centric Autonomous Systems With LLMs for User Command Reasoning
 ---
 
-[![arXiv](https://img.shields.io/badge/arXiv-TODO.TODO-b31b1b.svg)](https://arxiv.org/abs/TODO.TODO)
+[![arXiv](https://img.shields.io/badge/arXiv-2311.08206-b31b1b.svg)](https://arxiv.org/abs/2311.08206)
 
 Task: In-Cabin User Command Understanding (UCU), [workshop in WACV2024](https://llvm-ad.github.io/challenges/)
 
@@ -96,7 +96,7 @@ This implementation is based on codes from several repositories. Thanks for thes
 @article{yi2023drivecmdllm,
   author={Yang, Yi and Zhang, Qingwen and Li, Ci and Simões Marta, Daniel and Batool, Nazre and Folkesson, John},
   title={Human-Centric Autonomous Systems With LLMs for User Command Reasoning},
-  journal={arXiv preprint arXiv:TODO.TODO},
+  journal={arXiv preprint arXiv:2311.08206},
   year={2023}
 }
 ```
