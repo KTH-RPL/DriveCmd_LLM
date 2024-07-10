@@ -93,10 +93,11 @@ This implementation is based on codes from several repositories. Thanks for thes
 
 ### Cite Our Paper
 ```bash
-@article{yi2023drivecmdllm,
-  author={Yang, Yi and Zhang, Qingwen and Li, Ci and Simões Marta, Daniel and Batool, Nazre and Folkesson, John},
-  title={Human-Centric Autonomous Systems With LLMs for User Command Reasoning},
-  journal={arXiv preprint arXiv:2311.08206},
-  year={2023}
+@inproceedings{yang2024human,
+  title={Human-centric autonomous systems with llms for user command reasoning},
+  author={Yang, Yi and Zhang, Qingwen and Li, Ci and Marta, Daniel Sim{\~o}es and Batool, Nazre and Folkesson, John},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={988--994},
+  year={2024}
 }
 ```
